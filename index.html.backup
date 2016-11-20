@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>olback.net</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Description" content="olback.net" lang="en">
+		<meta name="author" content="Edwin Svensson">
+
+		<!-- icons -->
+		<link rel="shortcut icon" href="/img/olback.jpg">
+
+		<!-- Override CSS file - add your own CSS rules -->
+		<link rel="stylesheet" href="/css/styles.css">
+		
+		<script type="text/javascript" src="/js/google.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<h1 class="header-heading"><a href="https://olback.net/" target="">
+                <img src="/img/olback.jpg" alt="" width="32" height="32"></a> olback.net</h1>
+			</div>
+		</div>
+		<div class="nav-bar">
+			<div class="container">
+				<ul class="nav">
+				    <li><a href="index">Home</a></li> 
+					<li><a href="blog">Blog</a></li>
+					<li><a href="projects">Projects</a></li>
+					<li><a href="contact">Contact</a></li>
+					<li><a href="about">About</a></li>
+                    <li><a href="downloads">Downloads</a></li>
+					<li><a href="youtube">YouTube</a></li>
+					<li><a href="/dev/urandom">/dev/urandom</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="container">
+				<div class="main">
+					<h1>Welcome to olback.net</h1>
+					<hr>
+
+					<p>
+					Some profund text goes here.
+					</p>
+					<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>  <br> <br> <br> <br> <br> <br> <br> <br>
+					
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				All rights reserved &copy <script type="text/javascript">var cur = 2015; var year = new Date(); if(cur == year.getFullYear()) year = year.getFullYear(); else year = cur + ' - ' + year.getFullYear(); document.write(year);</script>
+			</div>
+		</div>
+	
+</body>
+
+<!-- <audio autoplay>
+<source src="/download/russia.mp3" type="audio/mpeg">
+</audio> -->
+</html>
+

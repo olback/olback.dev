@@ -1,0 +1,25 @@
+<ifModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Frame-Options "DENY"
+Header always edit Set-Cookie (.*) "$1; HttpOnly"
+Header always edit Set-Cookie (.*) "$1; Secure"
+RewriteBase /
+</ifModule>
+
+Options -Indexes
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options nosniff
+</IfModule>
+
+Options +MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+ErrorDocument 500 /404.html
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 401 /404.html
+ErrorDocument 400 /404.html
