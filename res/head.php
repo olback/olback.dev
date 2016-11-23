@@ -4,7 +4,10 @@
     <title>olback.net</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="img/olback.jpg">
+    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/fa/css/font-awesome.css">
+    <!-- JS -->
     <script type="text/javascript" src="js/google.js"></script>
     <script type="text/javascript" src="js/jsLog.js"></script>
   </head>
