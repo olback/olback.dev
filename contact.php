@@ -72,6 +72,7 @@ endif;
               <i class="fa fa-github" aria-hidden="true" style="font-size: 500%; color: black;"></i>
             </a><br><br>
             <p>Jabber: <a href="https://olback.net/dev/urandom/jfinger.html"> XMPP</a>
+              <br><br><br><br><br><br><br><br>
             </p>
           </center>
         </div>
