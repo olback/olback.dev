@@ -2,7 +2,7 @@
 Base styles
 ------------------------*/
 
-body
+html, body
 {
 	margin: 0;
 	padding: 0;
@@ -10,6 +10,7 @@ body
 	background-color: #333333;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 	background: #333333 url("bg.png") repeat fixed center;
+	height: 100%;
 }
 
 h1,h2,h3,h4,h5,h6
@@ -68,14 +69,13 @@ th, td
 Layout styles
 ------------------------*/
 
-.container
-{
+.container {
 	max-width: 50em;
 	margin: 0 auto;
+	
 }
 
-.header
-{
+.header {
 	color: #fff;
 	background: #999;
 	padding: 1em 1.25em;
@@ -85,18 +85,27 @@ Layout styles
 .header-heading { margin: 0; }
 
 
-.content
-{
-	padding: 1em 1.25em;
+.content {
+	padding: 1em;
 	background-color: #fff;
 	background: #333333 url("bg.png") repeat fixed center;
+	padding-bottom: 100px; /* Height of the footer element */
 }
 
-.footer
-{
+.wrapper {
+	min-height:100%;
+	position:relative;
+}
+
+#footer {
 	color: #fff;
 	background: #111;
-	padding: 1em 1.25em;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 
 /* -----------------------
