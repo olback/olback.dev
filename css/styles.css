@@ -94,14 +94,14 @@ Layout styles
 
 .wrapper {
 	min-height:100%;
-	position:relative;
+	position: relative;
 }
 
 #footer {
 	color: #fff;
 	background: #111;
-	padding-top: 2em;
-	padding-bottom: 1em;
+	padding-top: 1em;
+	padding-bottom: 0.5em;
 	width: 100%;
 	position: absolute;
 	bottom: 0;
