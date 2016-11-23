@@ -7,7 +7,7 @@
       <div class="main">
         <h1>Projects</h1>
         <hr>
-        <p> All of my projects will probably be on <a href="https://github.com/olback">GitHub</a> some day.</p>
+        <p>First project is up on <i class="fa fa-github"></i> GitHub!</p>
       </div>
     </div>
   </div>
