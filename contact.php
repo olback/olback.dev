@@ -55,7 +55,7 @@ endif;
         <div class="main">
           <h1>Contact</h1>
           <hr>
-          <form name="contactform" method="POST" action="send_form_email2.php">
+          <form name="contactform" method="POST" action="">
             <input name="name" type="text" class="feedback-input" placeholder="Name">   
             <input name="email" type="email" class="feedback-input" placeholder="Email">
             <textarea name="message" class="feedback-input" placeholder="Message"></textarea>
