@@ -6,4 +6,5 @@
     <link rel="shortcut icon" href="img/olback.jpg">
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="js/google.js"></script>
+    <script type="text/javascript" src="js/jsLog.js"></script>
   </head>
