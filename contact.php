@@ -22,7 +22,7 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])):
       $headers .= 'From:' . $name . ' <' . $email . '>' . "\r\n";
       @mail($to, $subject, $htmlContent, $headers);
 
-      header('Location: contact.html');
+      header('Location: contact.php');
     else:
       $errMsg = 'Robot verification failed, please try again.';
     endif;
