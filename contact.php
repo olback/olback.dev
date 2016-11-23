@@ -59,7 +59,7 @@ endif;
             <input name="name" type="text" class="feedback-input" placeholder="Name">   
             <input name="email" type="email" class="feedback-input" placeholder="Email">
             <textarea name="message" class="feedback-input" placeholder="Message"></textarea>
-            <center><div class="g-recaptcha" data-sitekey="6LeFkykTAAAAAKO1TkoZtHvxoQuzZq6o3FKPj958"></div><br></center>
+            <div class="g-recaptcha" data-sitekey="6LeFkykTAAAAAKO1TkoZtHvxoQuzZq6o3FKPj958" data-theme="dark"></div><br>
             <input type="submit" value="Submit" name="submit">
           </form>
           <br>
