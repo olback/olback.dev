@@ -49,7 +49,6 @@ endif;
     <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>
   <body>
-    <div class="wrapper">
     <?php include __DIR__ . '/res/navbar.php'; ?>
     <div class="content">
       <div class="container">
