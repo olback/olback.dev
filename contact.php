@@ -22,7 +22,8 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])):
       $headers .= 'From:' . $name . ' <' . $email . '>' . "\r\n";
       @mail($to, $subject, $htmlContent, $headers);
 
-      header('Location: contact.php');
+      $succMsg = "Mail sent! We'll get back to you shortly.";
+      //header('Location: contact.php');
     else:
       $errMsg = 'Robot verification failed, please try again.';
     endif;
@@ -55,6 +56,18 @@ endif;
         <div class="main">
           <h1>Contact</h1>
           <hr>
+          <p style="color: red;"><?php
+					if(isset($errMsg)){
+					echo $errMsg;
+					}
+					?></p>
+					<p style="color: green;">
+					<?php
+					if(isset($succMsg)){
+					echo $succMsg;
+					}
+					?>
+					</p>
           <form name="contactform" method="POST" action="">
             <input name="name" type="text" class="feedback-input" placeholder="Name">   
             <input name="email" type="email" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
