@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php include __DIR__ . '/res/head.php'; ?>
+<?php $fn = basename(__FILE__, '.php'); ?>
 <body>
   <?php include __DIR__ . '/res/navbar.php'; ?>
   <div class="content">

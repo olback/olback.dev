@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php include __DIR__ . '/res/head.php'; ?>
+<?php $fn = basename(__FILE__, '.php'); ?>
 <body>
   <?php include __DIR__ . '/res/navbar.php'; ?>
   <div class="content">
@@ -23,7 +24,7 @@
           Oh and btw, I use the European date format. <code>YYYY-MM-DD</code> <br>
           <code>2015-10-09</code>
         </p>
-
+		    <br><br>
       </div>
     </div>
   </div>

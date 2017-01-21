@@ -10,7 +10,7 @@ echo -n "Is "$UN" the correct username (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
 
-PACKAGES="sl landscape-common screen nyancat cmatrix thefuck openshh-server lolcat make"
+PACKAGES="landscape-common vlc screen pidgin netbeans gparted nyancat cmatrix xrdp thefuck gnome-tweak-tool openshh-server lolcat make sl"
 
 apt update
 apt-get install -y $PACKAGES

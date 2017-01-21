@@ -50,6 +50,7 @@ endif;
     <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>
   <body>
+    <?php $fn = basename(__FILE__, '.php'); ?>
     <?php include __DIR__ . '/res/navbar.php'; ?>
     <div class="content">
       <div class="container">
@@ -69,7 +70,7 @@ endif;
 					?>
 					</p>
           <form name="contactform" method="POST" action="">
-            <input name="name" type="text" class="feedback-input" placeholder="Name">   
+            <input name="name" type="text" class="feedback-input" placeholder="Name">
             <input name="email" type="email" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
             <textarea name="message" class="feedback-input" placeholder="Message"></textarea>
             <div class="g-recaptcha" data-sitekey="6LeFkykTAAAAAKO1TkoZtHvxoQuzZq6o3FKPj958" data-theme="dark"></div><br>

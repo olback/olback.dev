@@ -14,7 +14,7 @@
 		<!-- Override CSS file - add your own CSS rules -->
 		<link rel="stylesheet" href="/css/styles.css">
 		<link rel="stylesheet" href="bash.css">
-		
+
 		<script type="text/javascript" src="/js/google.js"></script>
 	</head>
 	<body>
@@ -27,7 +27,7 @@
 		<div class="nav-bar">
 			<div class="container">
 				<ul>
-				    <li><a href="index">Home</a></li> 
+				    <li><a href="index">Home</a></li>
 					<li><a href="mwb">Malwarebytes</a></li>
 					<li><a href="gtas">GTA Scripts</a></li>
 					<li><a href="jfinger">Jabber</a></li>
@@ -71,7 +71,7 @@
 
 					</div>
 					<br>
-					<a href="new.sh">This</a> simple script updates ~/.bash_aliases. (chmod +x new.sh)<br> 
+					<a href="new.sh">This</a> simple script updates ~/.bash_aliases. (chmod +x new.sh)<br>
 					This won't be usefull on servers but really cool for desktops.<br>
 					Create a link in the root directory and call it ".bash_aliases".<br>
 					Point the link to ".bash_aliases" in your home directory.<br>
@@ -89,21 +89,8 @@
                                         ?>
 					</div>
 					<br><hr>
-					This script is better optimized for servers. If you are logged in as root, enter the username you used for the system set-up.
-					<br><br>
-					<div id="box">
-					<?php
-                                        $myfile = fopen("server.sh", "r") or die("Unable to open file!");
-                                        // Output one line until end-of-file
-                                        while(!feof($myfile)) {
-                                          echo fgets($myfile) . "<br>";
-                                        }
-                                        fclose($myfile);
-                                        ?>
-                                        </div>
-
 					</p>
-					<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+					<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 				</div>
 			</div>
 		</div>
@@ -112,11 +99,10 @@
 				All rights reserved &copy <script type="text/javascript">var cur = 2015; var year = new Date(); if(cur == year.getFullYear()) year = year.getFullYear(); else year = cur + ' - ' + year.getFullYear(); document.write(year);</script>
 			</div>
 		</div>
-	
+
 </body>
 
 <!-- <audio autoplay>
 <source src="/download/russia.mp3" type="audio/mpeg">
 </audio> -->
 </html>
-

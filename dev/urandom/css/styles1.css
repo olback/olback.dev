@@ -2,15 +2,13 @@
 Base styles
 ------------------------*/
 
-html, body
+body
 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
-	background-color: #333333;
+	background-color: #eee;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-	background: #333333 url("bg.png") repeat fixed center;
-	height: 100%;
 }
 
 h1,h2,h3,h4,h5,h6
@@ -37,7 +35,7 @@ blockquote
 {
 	padding: 1em 2em;
 	margin: 0 0 2em;
-	border-left: 5px solid #333333;
+	border-left: 5px solid #eee;
 }
 
 hr
@@ -46,7 +44,7 @@ hr
 	margin-top: 1em;
 	margin-bottom: 2em;
 	border: 0;
-	border-top: 1px solid #333333;
+	border-top: 1px solid #ddd;
 }
 
 table
@@ -54,7 +52,7 @@ table
 	background-color: transparent;
 	border-spacing: 0;
 	border-collapse: collapse;
-	border-top: 1px solid #333333;
+	border-top: 1px solid #ddd;
 }
 
 th, td
@@ -62,56 +60,102 @@ th, td
 	padding: .5em 1em;
 	vertical-align: top;
 	text-align: left;
-	border-bottom: 1px solid #333333;
+	border-bottom: 1px solid #ddd;
 }
+
+a:link { color: gray; }
+a:visited { color: gray; }
+a:focus { color: gray; }
+a:hover { color: gray; }
+a:active { color: gray; }
 
 /* -----------------------
 Layout styles
 ------------------------*/
 
-.container {
+.container
+{
 	max-width: 50em;
 	margin: 0 auto;
-	
 }
 
-.header {
+.header
+{
 	color: #fff;
 	background: #999;
 	padding: 1em 1.25em;
-	background: #333333 url("bg.png") repeat fixed center;
+	background: #00ff00 url("bg.jpg") repeat fixed center;
 }
 
 .header-heading { margin: 0; }
 
+.nav-bar
+{
+    color: #fff;
+	background: #111;
+	padding: 0;
+}
 
-.content {
-	padding: 1em;
+.content
+{
+	padding: 1em 1.25em;
 	background-color: #fff;
-	background: #333333 url("bg.png") repeat fixed center;
-	padding-bottom: 100px; /* Height of the footer element */
+	background: #eee url("bg.jpg") repeat fixed center;
 }
 
-.wrapper {
-	min-height:100%;
-	position: relative;
-}
-
-#footer {
+.footer
+{
 	color: #fff;
 	background: #111;
-	padding-top: 1.25em;
-	padding-bottom: 0em;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	padding: 1em 1.25em;
 }
 
 /* -----------------------
 Nav
 ------------------------*/
 
+.nav
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nav li
+{
+	display: inline;
+	margin: 0;
+}
+
+.nav a
+{
+	display: block;
+	padding: .7em 1.25em;
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px solid gray;
+}
+
+.nav a:link { color: white; }
+.nav a:visited { color: white; }
+
+.nav a:focus
+{
+	color: black;
+	background-color: white;
+}
+
+.nav a:hover
+{
+	color: white;
+	background-color: black;
+}
+
+.nav a:active
+{
+	color: white;
+	background-color: black;
+}
 
 /* -----------------------
 Single styles
@@ -190,7 +234,7 @@ Wide styles
 @media (min-width: 42em)
 {
 	.header { padding: 1.5em 3em; }
-
+	.nav-bar { padding: 1em 3em; }
 	.content { padding: 2em 3em; }
 	.footer { padding: 2em 3em; }
 	
@@ -206,81 +250,4 @@ Wide styles
 		padding: 0;
 		border-bottom: 0;
 	}
-}
-
-@media screen and (max-width: 600px){
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
-}
-
-a:link { color: white; }
-a:visited { color: white; }
-a:focus { color: white; }
-a:hover { color: white; }
-a:active { color: white; }
-
-.nav-bar
-{
-    color: #fff;
-	background: #111;
-	padding: 0;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #111;
-}
-
-li {
-    float: left;
-}
-
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #4CAF50;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-    
-}
-
-.active {
-    background-color: #4CAF50;
-}
-
-form {
-	float: left;
 }
