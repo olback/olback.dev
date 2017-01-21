@@ -8,13 +8,13 @@
     <div class="nav-bar">
       <div class="container">
         <ul>
-          <li class="<?php if ($fn == index) { echo "active"; } ?>"><a href="./">Home</a></li>
-          <li class="<?php if ($fn == blog) { echo "active"; } ?>"><a href="blog.php">Blog</a></li>
-          <li class="<?php if ($fn == projects) { echo "active"; } ?>"><a href="projects.php">Projects</a></li>
-          <li class="<?php if ($fn == contact) { echo "active"; } ?>"><a href="contact.php">Contact</a></li>
-          <li class="<?php if ($fn == about) { echo "active"; } ?>"><a href="about.php">About</a></li>
-          <li class="<?php if ($fn == downloads) { echo "active"; } ?>"><a href="downloads.php">Downloads</a></li>
-          <li class="<?php if ($fn == youtube) { echo "active"; } ?>"><a href="youtube.php">YouTube</a></li>
+          <li class="<?php if ($_SESSION['fn'] == index) { echo "active"; } ?>"><a href="./">Home</a></li>
+          <li class="<?php if ($_SESSION['fn'] == blog) { echo "active"; } ?>"><a href="blog.php">Blog</a></li>
+          <li class="<?php if ($_SESSION['fn'] == projects) { echo "active"; } ?>"><a href="projects.php">Projects</a></li>
+          <li class="<?php if ($_SESSION['fn'] == contact) { echo "active"; } ?>"><a href="contact.php">Contact</a></li>
+          <li class="<?php if ($_SESSION['fn'] == about) { echo "active"; } ?>"><a href="about.php">About</a></li>
+          <li class="<?php if ($_SESSION['fn'] == downloads) { echo "active"; } ?>"><a href="downloads.php">Downloads</a></li>
+          <li class="<?php if ($_SESSION['fn'] == youtube) { echo "active"; } ?>"><a href="youtube.php">YouTube</a></li>
           <li style="float:right" class="dropdown">
             <a href="#" class="dropbtn">☰</a>
             <div class="dropdown-content">
