@@ -50,7 +50,7 @@ endif;
     <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>
   <body>
-    <?php $fn = basename(__FILE__, '.php'); ?>
+    <?php $_SESSION['fn'] = basename(__FILE__, '.php'); ?>
     <?php include __DIR__ . '/res/navbar.php'; ?>
     <div class="content">
       <div class="container">
