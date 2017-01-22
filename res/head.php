@@ -1,5 +1,6 @@
 <?php
-$_SESSION['title'] = ucfirst($_SESSION['fn']);
+//$_SESSION['title'] = ucfirst($_SESSION['fn']);
+$_SESSION['title'] = $_SESSION['fn'];
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
