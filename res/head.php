@@ -4,7 +4,7 @@ $_SESSION['title'] = ucfirst($_SESSION['fn']);
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title><?php echo "$_SESSION['title']"; ?></title>
+    <title><?php echo $_SESSION['title']; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="img/olback.jpg">
     
