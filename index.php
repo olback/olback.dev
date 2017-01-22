@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php $_SESSION['fn'] = basename(__FILE__, '.php'); ?>
 <?php include __DIR__.'/res/head.php';?>
   <body>
