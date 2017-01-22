@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<?php include __DIR__ . '/res/head.php'; ?>
 <?php $_SESSION['fn'] = basename(__FILE__, '.php'); ?>
+<?php include __DIR__ . '/res/head.php'; ?>
 <body>
   <?php include __DIR__ . '/res/navbar.php'; ?>
   <div class="content">
