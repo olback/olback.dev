@@ -36,21 +36,9 @@ else:
 endif;
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Contact - olback.net</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./img/olback.jpg">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/form.css">
-    <link rel="stylesheet" href="css/fa/css/font-awesome.css">
-    <script type="text/javascript" src="/js/google.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-  </head>
+<?php $_SESSION['fn'] = basename(__FILE__, '.php'); ?>
+<?php include __DIR__.'/res/head.php';?>
   <body>
-    <?php $_SESSION['fn'] = basename(__FILE__, '.php'); ?>
     <?php include __DIR__ . '/res/navbar.php'; ?>
     <div class="content">
       <div class="container">
