@@ -15,7 +15,7 @@ if ($_SESSION['title'] == Index) {
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles_v2.css">
-    <link rel="stylesheet" href="css/fa/css/font-awesome.css">
+    <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/form.css">
 
     <!-- JS -->
