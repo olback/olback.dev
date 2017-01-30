@@ -21,5 +21,4 @@ if ($_SESSION['title'] == Index) {
     <!-- JS -->
     <script type="text/javascript" src="js/google.js"></script>
     <script type="text/javascript" src="js/jsLog.js"></script>
-    <script type="text/javascript" src="js/date-time.js"></script>
   </head>
