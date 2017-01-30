@@ -32,4 +32,5 @@
   </div>
   <?php include __DIR__ . '/res/footer.php'; ?>
  </body>
+  <script type="text/javascript" src="js/date-time.js"></script>
 </html>
