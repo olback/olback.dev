@@ -19,6 +19,5 @@ if ($_SESSION['title'] == Index) {
     <link rel="stylesheet" href="css/form.css">
 
     <!-- JS -->
-    <script type="text/javascript" src="js/google.js"></script>
     <script type="text/javascript" src="js/jsLog.js"></script>
   </head>
