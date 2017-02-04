@@ -1,6 +1,6 @@
 
 if ( typeof(Yesup) == "undefined" || ! Yesup.hasNetwork("clicksor") ) {
-    document.write("<img src=\"http://tr1.myroitracking.com/newServing/tracking_id.php?d=b.yu0123456.com&r=http%3A%2F%2Fb.yu0123456.com%2FnewServing%2Ftracking_id.php%3Fb%3D1%26&gtruid=1\" width=\"1\" height=\"1\" />");
+    document.write("<img src=\"https://tr1.myroitracking.com/newServing/tracking_id.php?d=b.yu0123456.com&r=http%3A%2F%2Fb.yu0123456.com%2FnewServing%2Ftracking_id.php%3Fb%3D1%26&gtruid=1\" width=\"1\" height=\"1\" />");
 }
 
 
@@ -8,14 +8,14 @@ private_label_prefix = "clicksor";
 clicksor_company_name = "Clicksor";
 clicksor_static_host = "pub.clicksor.net";
 clicksor_service = "b.yu0123456.com";
-clicksor_image_base_url = "http://pub.clicksor.net/newServing/img/";
-clicksor_search_base_url = "http://b.yu0123456.com/newServing/yesupSearch/web.php?q=";
+clicksor_image_base_url = "https://pub.clicksor.net/newServing/img/";
+clicksor_search_base_url = "https://b.yu0123456.com/newServing/yesupSearch/web.php?q=";
 
 clicksor_banner_panel = false;
 
-clicksor_adhere_url = "http://signup.clicksor.com/advertise_here.php?nid=1&srid=32362089";
+clicksor_adhere_url = "https://signup.clicksor.com/advertise_here.php?nid=1&srid=32362089";
 clicksor_widget_title = "Clicksor Connect";
-clicksor_widget_title_link = "http://www.clicksor.com/connect-widget";
+clicksor_widget_title_link = "https://www.clicksor.com/connect-widget";
 
 clicksor_pub_host = "admin.clicksor.com/publisher";
 clicksor_nid=1;
