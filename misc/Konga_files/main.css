@@ -39,7 +39,7 @@ figure.ditto {
 	margin:0px;
 	width:499px;
 	height:439px;
-	background-image:url(https://olback.net/misc/Konga_files/ditto.gif);
+	background-image:url("https://olback.net/misc/Konga_files/ditto.gif");
 	background-repeat:no-repeat;
 }
 figure.ditto.hero {
