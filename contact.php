@@ -17,6 +17,7 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])):
                 <p><b>Email: </b>" . $email . "</p>
                 <p><b>Message: </b>" . $message . "</p>
             ";
+	    include __DIR__ . '/res/config.php';
             require __DIR__ . '/mail/PHPMailerAutoload.php';
             $mail = new PHPMailer;
 
