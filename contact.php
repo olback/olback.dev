@@ -57,6 +57,7 @@ endif;
 					}
 					?>
 					</p>
+	  <p style="color: red;">Contact form is not working, dm me on twitter</p>
           <form name="contactform" method="POST" action="">
             <input name="name" type="text" class="feedback-input" placeholder="Name">
             <input name="email" type="email" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
