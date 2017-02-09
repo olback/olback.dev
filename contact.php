@@ -17,10 +17,29 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])):
                 <p><b>Email: </b>" . $email . "</p>
                 <p><b>Message: </b>" . $message . "</p>
             ";
-      $headers = "MIME-Version: 1.0" . "\r\n";
-      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-      $headers .= 'From:' . $name . ' <' . $email . '>' . "\r\n";
-      @mail($to, $subject, $htmlContent, $headers);
+            require __DIR__ . '/mail/PHPMailerAutoload.php';
+            $mail = new PHPMailer;
+
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'mail.olback.net';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'olback@olback.net';                 // SMTP username
+            $mail->Password = $mail_pass; // SMTP password
+            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 587;                                    // TCP port to connect to
+            $mail->isHTML(true);
+
+
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            if(!$mail->send()) {
+                echo 'Message could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                //echo 'Message has been sent';
+            }
 
       $succMsg = "Mail sent! We'll get back to you shortly.";
       //header('Location: contact.php');
