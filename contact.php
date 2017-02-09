@@ -29,6 +29,8 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])):
             $mail->Port = 587;                                    // TCP port to connect to
             $mail->isHTML(true);
 
+            $mail->setFrom('cfo@olback.net', 'olback.net');
+            $mail->addAddress('cfo@olback.net', 'Contact-Form olback.net');     // Add a recipient
 
             $mail->Subject = $subject;
             $mail->Body    = $message;
