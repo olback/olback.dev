@@ -61,6 +61,7 @@ endif;
             <input name="name" type="text" class="feedback-input" placeholder="Name">
             <input name="email" type="email" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
             <textarea name="message" class="feedback-input" placeholder="Message"></textarea>
+	    <script src='https://www.google.com/recaptcha/api.js'></script>
             <div class="g-recaptcha" data-sitekey="6LeFkykTAAAAAKO1TkoZtHvxoQuzZq6o3FKPj958" data-theme="dark"></div><br>
             <input type="submit" value="Submit" name="submit">
           </form>
@@ -72,9 +73,7 @@ endif;
             </a><br><br>
             <a href="https://github.com/olback">
               <i class="fa fa-github" aria-hidden="true" style="font-size: 500%; color: black;"></i>
-            </a><br><br>
-            <p>Jabber: <a href="https://olback.net/dev/urandom/jfinger.html"> XMPP</a>
-              <br><br><br><br><br><br><br><br><br><br><br><br>
+            </a><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </p>
           </center>
         </div>
