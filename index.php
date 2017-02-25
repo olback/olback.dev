@@ -49,7 +49,8 @@
 			2. Make sure that you don't have any VNC servers installed.<br>
 			<code>sudp apt remove vnc4server tightvnc</code><br><br>
 
-			3. Download and extract TigerVNC. You can either download it <a href="download/tigervncserver_1.6.80-4_amd64.zip">here</a> or build it yourself. Read more <a href="https://www.hiroom2.com/2016/05/24/ubuntu-16-04-remote-connect-to-gnome-classic-desktop-with-vnc-xrdp/" target="_blank">here</a>.<br><br>
+			3. Download and extract TigerVNC. You can either download it <a href="download/tigervncserver_1.6.80-4_amd64.zip">here</a> or build it yourself. Read more <a href="https://www.hiroom2.com/2016/05/24/ubuntu-16-04-remote-connect-to-gnome-classic-desktop-with-vnc-xrdp/" target="_blank">here</a>.<br>
+	    		You can find the GitHub Repo <a href="https://github.com/TigerVNC/tigervnc">here</a>.<br><br>
 
 			4. Install TigerVNC.<br><br>
 
