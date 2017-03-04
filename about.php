@@ -8,7 +8,7 @@
       <div class="main">
         <h1>About</h1>
         <hr>
-        <p>You creepy fuck...</p>
+        <p></p>
       </div>
     </div>
   </div>
