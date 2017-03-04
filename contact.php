@@ -95,10 +95,10 @@ endif;
           <br>
           <p>
           <center>
-            <a href="https://twitter.com/mrolback">
+            <a href="https://twitter.com/mrolback" title="MrOlback">
               <i class="fa fa-twitter" aria-hidden="true" style="font-size: 500%; color: #55acee;"></i>
             </a><br><br>
-            <a href="https://github.com/olback">
+            <a href="https://github.com/olback" title="olback">
               <i class="fa fa-github" aria-hidden="true" style="font-size: 500%; color: black;"></i>
             </a><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </p>
