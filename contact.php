@@ -67,18 +67,23 @@ endif;
         <div class="main">
           <h1>Contact</h1>
           <hr>
-          <p style="color: red;"><?php
-					if(isset($errMsg)){
-					echo $errMsg;
-					}
-					?></p>
-					<p style="color: green;">
-					<?php
-					if(isset($succMsg)){
-					echo $succMsg;
-					}
-					?>
-		</p>
+          <p style="color: red;">
+	    <?php
+		if(isset($errMsg)){
+		echo $errMsg;
+		}
+	     ?>
+	   </p>
+	   <p style="color: green;">
+             <?php
+		if(isset($succMsg)){
+		echo $succMsg;
+		}
+	      ?>
+ 	  </p>
+	  <p>
+	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
+	  </p>
           <form name="contactform" method="POST" action="">
             <input name="name" type="text" class="feedback-input" placeholder="Name">
             <input name="email" type="email" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
