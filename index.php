@@ -1,6 +1,6 @@
 <?php $_SESSION['fn'] = basename(__FILE__, '.php'); ?>
 <?php include __DIR__.'/res/head.php';?>
-  <body>
+  <body class="fa fa-spin">
     <?php include __DIR__.'/res/navbar.php';?>
     <div class="content">
       <div class="container">
