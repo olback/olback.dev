@@ -8,7 +8,14 @@
       <div class="main">
         <h1>Projects</h1>
         <hr>
-        <p>First project is up on <i class="fa fa-github"></i><a href="https://github.com/olback/olback.net">GitHub!</a></p>
+        <h3>EasyShop</h3>
+        <p>
+          <a href="https://esyshop.se" target="_blank">EasyShop</a> (School Project)
+        </p>
+        <h3>olback.net</h3>
+        <p>
+          <a href="https://github.com/olback/olback.net" target="_blank">GitHub</a> (This Website on GitHub)
+        </p>
       </div>
     </div>
   </div>
