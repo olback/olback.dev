@@ -13,7 +13,7 @@
       <li><a href="blog.php"  class="<?php if ($_SESSION['fn'] == blog) { echo "active"; } ?>">Blog</a></li>
       <li><a href="projects.php" class="<?php if ($_SESSION['fn'] == projects) { echo "active"; } ?>">Projects</a></li>
       <li><a href="contact.php" class="<?php if ($_SESSION['fn'] == contact) { echo "active"; } ?>">Contact</a></li>
-      <li><a href="about.php"  class="<?php if ($_SESSION['fn'] == about) { echo "active"; } ?>">About</a></li>
+      <!--<li><a href="about.php"  class="<?php if ($_SESSION['fn'] == about) { echo "active"; } ?>">About</a></li>-->
       <li><a href="youtube.php"  class="<?php if ($_SESSION['fn'] == youtube) { echo "active"; } ?>">YouTube</a></li>
       <center>
         <li class="dropdown right">
