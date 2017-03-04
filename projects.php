@@ -14,7 +14,7 @@
         </p>
         <h3>olback.net</h3>
         <p>
-          <a href="https://github.com/olback/olback.net" target="_blank">GitHub</a> (This Website on GitHub)
+          <a href="https://github.com/olback/olback.net" target="_blank">olback.net on GitHub</a>
         </p>
       </div>
     </div>
