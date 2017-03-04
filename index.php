@@ -8,7 +8,8 @@
           <h1>Welcome to olback.net</h1>
           <hr>
 	  <p id="1">
-		This is my personal website, not much here. If you need to contact me for some reason, you can do so by clicking on the 'Conact' tab.
+		This is my personal website, not much here.
+		If you need to contact me for some reason, you can do so by clicking on the 'Conact' tab.
 	  </p>
         </div>
       </div>
