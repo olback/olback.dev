@@ -8,6 +8,10 @@
       <div class="main">
         <h1>Projects</h1>
         <hr>
+        <h3>GitHub</h3>
+        <p>
+          Some of my projects are available on <a href="https://github.com" target="_blank">GitHub</a>
+        </p>
         <h3>EasyShop</h3>
         <p>
           <a href="https://esyshop.se" target="_blank">EasyShop</a> (School Project)
