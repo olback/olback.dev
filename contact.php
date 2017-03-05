@@ -91,7 +91,7 @@ endif;
           </form>
           <br>
           <center>
-           <p>
+           <p style="margin: 10px;">
 	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
 	   </p>
            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
