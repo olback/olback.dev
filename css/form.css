@@ -46,12 +46,12 @@ textarea {
 [type="submit"]:hover { background:#CC4949; }
 
 .l {
-  float: left;
+  left: 0px;
   width: 49.9999%;
 }
 
 
 .r {
-  float: right;
+  right: 0px;
   width: 49.9999%;
 }
