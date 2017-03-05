@@ -93,7 +93,7 @@ endif;
   	  
           <center>
            <p style="margin: 10px; margin-top: 80px;">
-	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
+	    If you'd like to contact me, please use the contact form. Messages are NOT encrypted. Do not send any sensitive information. You can also contact me via <a href="https://twitter.com/mrolback">twitter</a>.
 	   </p>
            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	  </center>
