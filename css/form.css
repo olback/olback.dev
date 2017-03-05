@@ -44,3 +44,14 @@ textarea {
   font-weight:700;
 }
 [type="submit"]:hover { background:#CC4949; }
+
+.l {
+  float: left;
+  width: 49.9999%;
+}
+
+
+.r {
+  float: right;
+  width: 49.9999%;
+}
