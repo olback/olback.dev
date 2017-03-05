@@ -81,9 +81,6 @@ endif;
 		}
 	      ?>
  	  </p>
-	  <p>
-	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
-	  </p>
           <form name="contactform" method="POST" action="">
             <input name="name" type="text" class="feedback-input" placeholder="Name">
             <input name="email" type="email" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
@@ -93,15 +90,11 @@ endif;
             <input type="submit" value="Submit" name="submit">
           </form>
           <br>
-          <p>
           <center>
-            <a href="https://twitter.com/mrolback" title="MrOlback">
-              <i class="fa fa-twitter" aria-hidden="true" style="font-size: 500%; color: #55acee;"></i>
-            </a><br><br>
-            <a href="https://github.com/olback" title="olback">
-              <i class="fa fa-github" aria-hidden="true" style="font-size: 500%; color: black;"></i>
-            </a><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            </p>
+           <p>
+	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
+	   </p>
+           <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </center>
         </div>
       </div>
