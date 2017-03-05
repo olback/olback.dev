@@ -10,7 +10,7 @@
         <hr>
         <h3>GitHub</h3>
         <p>
-          Some of my projects are available on <a href="https://github.com" target="_blank">GitHub</a>
+          Some of my projects are available on <a href="https://github.com/olback" target="_blank">GitHub</a>
         </p>
         <h3>EasyShop</h3>
         <p>
