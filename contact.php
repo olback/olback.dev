@@ -92,7 +92,7 @@ endif;
           </form>
   	  
           <center>
-           <p style="margin: 10px; margin-top: 50px;">
+           <p style="margin: 10px; margin-top: 70px;">
 	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
 	   </p>
            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
