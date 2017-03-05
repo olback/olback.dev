@@ -81,7 +81,7 @@ endif;
 		}
 	      ?>
  	  </p>
-	  <div class="l">
+	  
           <form name="contactform" method="POST" action="">
             <input name="name" type="text" class="feedback-input" placeholder="Name">
             <input name="email" type="email" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*">
@@ -90,14 +90,13 @@ endif;
             <div class="g-recaptcha" data-sitekey="6LeFkykTAAAAAKO1TkoZtHvxoQuzZq6o3FKPj958" data-theme="dark"></div><br>
             <input type="submit" value="Submit" name="submit">
           </form>
-  	  </div>
-          <div class="r">
-          
+  	  
+          <center>
            <p style="margin: 10px; margin-top: 50px;">
 	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
 	   </p>
            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	  </div>
+	  </center>
         </div>
       </div>
     </div>
