@@ -92,12 +92,11 @@ endif;
           </form>
   	  </div>
           <div class="r">
-          <center>
+          
            <p style="margin: 10px; margin-top: 50px;">
 	    If you'd like to contact me, please use the contact form below. Messages are NOT encrypted. Do not send any sensitive information.
 	   </p>
            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          </center>
 	  </div>
         </div>
       </div>
