@@ -20,6 +20,10 @@
         <p>
           <a href="https://github.com/olback/olback.net" target="_blank">olback.net on GitHub</a>
         </p>
+        <h3>olback.ninja</h3>
+        <p>
+          <a href="https://github.com/olback/olback.ninja" target="_blank">olback.ninja on GitHub</a>
+        </p>
       </div>
     </div>
   </div>
