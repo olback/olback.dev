@@ -9,10 +9,10 @@
 
   <ul class="topnav">
     <div class="container">
-      <li><a href="./" class="<?php if ($_SESSION['fn'] == index) { echo "active"; } ?>">Home</a></li>
-      <li><a href="projects.php" class="<?php if ($_SESSION['fn'] == projects) { echo "active"; } ?>">Projects</a></li>
-      <li><a href="contact.php" class="<?php if ($_SESSION['fn'] == contact) { echo "active"; } ?>">Contact</a></li>
-      <li><a href="about.php"  class="<?php if ($_SESSION['fn'] == about) { echo "active"; } ?>">About</a></li>
+      <li><a href="./" class="<?php if ($_SESSION['fn'] == 'index') { echo "active"; } ?>">Home</a></li>
+      <li><a href="projects.php" class="<?php if ($_SESSION['fn'] == 'projects') { echo "active"; } ?>">Projects</a></li>
+      <li><a href="contact.php" class="<?php if ($_SESSION['fn'] == 'contact') { echo "active"; } ?>">Contact</a></li>
+      <li><a href="about.php"  class="<?php if ($_SESSION['fn'] == 'about') { echo "active"; } ?>">About</a></li>
       <li><a href="https://github.com/olback">GitHub</a></li>
       <li><a href="https://twitter.com/mrolback">Twitter</a></li>
       <center>
