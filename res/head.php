@@ -1,8 +1,8 @@
 <?php
 $_SESSION['title'] = ucfirst($_SESSION['fn']);
 
-if ($_SESSION['title'] == Index) {
-  $_SESSION['title'] = Home;
+if ($_SESSION['title'] == 'Index') {
+  $_SESSION['title'] = 'Home';
 }
 ?>
 
