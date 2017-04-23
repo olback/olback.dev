@@ -16,6 +16,10 @@
         <p>
           <a href="https://esyshop.se" target="_blank">EasyShop</a> (School Project)
         </p>
+        <h3>WHOIS Lookup</h3>
+        <p>
+          <a href="https://github.com/olback/simple-whois-lookup" target="_blank">WHOIS Lookup on GitHub</a> 
+        </p>
         <h3>olback.net</h3>
         <p>
           <a href="https://github.com/olback/olback.net" target="_blank">olback.net on GitHub</a>
