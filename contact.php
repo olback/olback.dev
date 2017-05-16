@@ -44,7 +44,7 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])):
                 //echo 'Message has been sent';
             }
 
-      $succMsg = "Mail sent! We'll get back to you shortly.";
+      $succMsg = "Mail sent! I'll get back to you shortly.";
       //header('Location: contact.php');
     else:
       $errMsg = 'Robot verification failed, please try again.';
