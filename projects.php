@@ -18,15 +18,15 @@
         </p>
         <h3>WHOIS Lookup</h3>
         <p>
-          <a href="https://github.com/olback/simple-whois-lookup" target="_blank">WHOIS Lookup on GitHub</a> 
+          <a href="https://github.com/olback/simple-whois-lookup" target="_blank">WHOIS Lookup (Source code on GitHub)</a> 
         </p>
         <h3>olback.net</h3>
         <p>
-          <a href="https://github.com/olback/olback.net" target="_blank">olback.net on GitHub</a>
+          <a href="https://github.com/olback/olback.net" target="_blank">olback.net (Source code on GitHub)</a>
         </p>
         <h3>olback.ninja</h3>
         <p>
-          <a href="https://github.com/olback/olback.ninja" target="_blank">olback.ninja on GitHub</a>
+          <a href="https://github.com/olback/olback.ninja" target="_blank">olback.ninja (Source code on GitHub)</a>
         </p>
       </div>
     </div>
