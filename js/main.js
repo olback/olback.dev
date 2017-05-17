@@ -89,7 +89,7 @@ scrollHome = function() {
 }
 
 scrollProjects = function() {
-    document.getElementById('home').scrollIntoView({ 
+    document.getElementById('projects').scrollIntoView({ 
         behavior: 'smooth' 
     });
 }

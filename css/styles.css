@@ -9,7 +9,7 @@ body, html {
 .bgimg-1 {
     background-position: center;
     background-size: cover;
-    background-image: url("../bg.png");
+    background-image: url("../img/bg.png");
     min-height: 100%;
     top: -15px;
 }
@@ -26,7 +26,7 @@ body, html {
 
 .centerincssisabitch {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -47,6 +47,17 @@ body, html {
 
 .fa {
     text-decoration: none;
+}
+
+.x300 {
+    height: 300px;
+    width: 300px;
+}
+
+.p100 {
+    height: 99%;
+    width: 99%;
+    position: relative;
 }
 
 @-moz-keyframes bounce {
