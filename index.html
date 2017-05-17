@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<title>Edwin - olback.net</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-transparent w3-card-2 w3-text-white no-shadows" id="myNavbar">
+    <a onclick="scrollHome();" class="ch w3-bar-item w3-button w3-wide">olback.net</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a onclick="scrollAbout();" class="ch w3-bar-item w3-button">ABOUT</a>
+      <a onclick="scrollProjects();" class="ch w3-bar-item w3-button">PROJECTS</a>
+      <a onclick="scrollContact();" class="ch w3-bar-item w3-button">CONTACT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="ch w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <hr>
+  <a href="#top" onclick="w3_close()" class="w3-bar-item w3-button w3-large">TOP <i class="fa fa-arrow-up"></i></a>
+  <hr>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-large">ABOUT</a>
+  <hr>
+  <a href="#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-large">PROJECTS</a>
+  <hr>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-large">CONTACT</a>
+  <hr>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large">Close <i class="fa fa-times" aria-hidden="true"></i></a>
+  <hr>
+</nav>
+
+<!-- Header with full-height image --> <!-- EDIT THIS!! -->
+<header class="bgimg-1 w3-display-container" id="home">
+  <div class="w3-text-white centerincssisabitch" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">BlaBla some bs</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">BlaBla some bs</span><br>
+    <span class="w3-large">Hey, I'm Edwin.</span>
+  </div>
+  <!-- Social media buttons -->
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/mrolback"></a>
+    <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/1edwinsvensson"></a>
+    <a class="fa fa-github w3-hover-opacity" href="https://github.com/olback"></a>
+  </div>
+  <p><a href="javascript:scrollAbout();" class="arrow bottom-button bounce"></a></p>
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">About me</h3>
+  <p class="w3-center w3-large">Key features of our company</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Responsive</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Passion</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Design</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Projects Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">My projects</h3>
+  <p class="w3-center w3-large">Key features of our company</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <p class="w3-large">olback.ninja</p>
+      <p><a href="https://olback.ninja">olback.ninja</a> is available on <a href="https://github.com/olback/olback.ninja">GitHub</a>.<br>100% pointless...</p>
+    </div>
+    <div class="w3-quarter">
+      <p class="w3-large">WHOIS Lookup</p>
+      <p>Don't want to use someone else's WHOIS lookup service?<br>Just host your own.<br>Source code available on <a href="https://github.com/olback/simple-whois-lookup">GitHub</a>.</p>
+    </div>
+    <div class="w3-quarter">
+      <p class="w3-large">EsyShop</p>
+      <p>This is a dead school project, but you can still try it out. Read more on <a href="https://esyshop.se">esyshop.se</a> for more information.</p>
+    </div>
+    <div class="w3-quarter">
+      <p class="w3-large">olback.net</p>
+      <p>You're here right now.<br>Source code is available on <a href="https://github.com/olback/olback.net">GitHub</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">CONTACT</h3>
+  <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px;">
+      <form method="POST">
+        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+        <p><textarea class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></textarea></p>
+        <p>
+          <button class="w3-button w3-black" type="submit">
+            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          </button>
+        </p>
+      </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a onclick="scrollHome();" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/mrolback"></a>
+    <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/1edwinsvensson"></a>
+    <a class="fa fa-github w3-hover-opacity" href="https://github.com/olback"></a>
+  </div>
+  <p>CSS Framework by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
