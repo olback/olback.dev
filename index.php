@@ -1,3 +1,56 @@
+<?php
+if (isset($_POST['submit']) && !empty($_POST['submit'])):
+  if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])):
+    $secret = '6LeFkykTAAAAANm39F0-v-CCFFgPw3stCNaiHwAK';
+    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
+    $responseData = json_decode($verifyResponse);
+    if ($responseData->success):
+      $name = !empty($_POST['name']) ? $_POST['name'] : '';
+      $email = !empty($_POST['email']) ? $_POST['email'] : '';
+      $subject = !empty($_POST['email']) ? $_POST['subject'] : '';
+      $message = !empty($_POST['message']) ? $_POST['message'] : '';
+
+      $htmlContent = "
+                <h1>Contact request details</h1>
+                <p><b>Name: </b>" . $name . "</p>
+                <p><b>Email: </b>" . $email . "</p>
+                <p><b>Message: </b>" . $message . "</p>
+            ";
+	          include __DIR__ . 'config.php';
+            require __DIR__ . '/mail/PHPMailerAutoload.php';
+            $mail = new PHPMailer;
+            $mail->isSMTP();                                       // Set mailer to use SMTP
+            $mail->Host = 'mail.olback.net';                       // Specify SMTP server
+            $mail->SMTPAuth = true;                                // Enable SMTP authentication
+            $mail->Username = 'olback@olback.net';                 // SMTP username
+            $mail->Password = $mail_pass;                          // SMTP password
+            $mail->SMTPSecure = 'tls';                             // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 587;                                     // TCP port to connect to
+            $mail->isHTML(true);
+            $mail->setFrom('cfo@olback.net', 'olback.net');
+            $mail->addAddress('cfo@olback.net', 'Contact-Form olback.net');     // Add a recipient
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            if(!$mail->send()) {
+                echo 'Message could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                //echo 'Message has been sent';
+            }
+      $succMsg = "Mail sent! I'll get back to you shortly.";
+      //header('Location: contact.php');
+    else:
+      $errMsg = 'Robot verification failed, please try again.';
+    endif;
+  else:
+    $errMsg = 'Please click on the reCAPTCHA box.';
+  endif;
+else:
+  $errMsg = '';
+  $succMsg = '';
+endif;
+?>
 <!DOCTYPE html>
 <html>
 <title>Edwin - olback.net</title>
@@ -95,11 +148,13 @@
   <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
   <div class="w3-row-padding w3-center" style="margin-top:64px;">
       <form method="POST">
-        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-        <p><textarea class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></textarea></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="name"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="email"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
+        <p><textarea class="w3-input w3-border" type="text" placeholder="Message" required name="message"></textarea></p>
         <p>
+          <script src='https://www.google.com/recaptcha/api.js'></script>
+          <div class="g-recaptcha" data-sitekey="6LeFkykTAAAAAKO1TkoZtHvxoQuzZq6o3FKPj958" data-theme="dark"></div><br>
           <button class="w3-button w3-black" type="submit">
             <i class="fa fa-paper-plane"></i> Send message
           </button>
