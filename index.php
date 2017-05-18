@@ -94,7 +94,7 @@ if(isset($_POST['submit'])) {
     </div>
 
     <!-- Sidebar on small screens when clicking the menu icon -->
-    <nav class="w3-sidebar w3-bar-block w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" style="display:none; top: 0px;" id="mySidebar">
       <hr>
       <a href="#top" onclick="w3_close()" class="w3-bar-item w3-button w3-large">Top <i class="fa fa-arrow-up"></i></a>
       <hr>
