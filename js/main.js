@@ -1,6 +1,4 @@
 
-// JS added by W3
-
 // Toggle between showing and hiding the sidebar when clicking the menu icon
 var mySidebar = document.getElementById("mySidebar");
 
@@ -17,42 +15,16 @@ function w3_close() {
     mySidebar.style.display = "none";
 }
 
-///////////////////////////////////////////////
-
-// JS added by olback
-
 // Close side-nav on touch-event outside nav
-// ctcsn = click to close side nav
-
-var home = document.getElementById('home');
-var about = document.getElementById('about');
-var contact = document.getElementById('contact');
+var close = document.getElementById('close');
 
 window.addEventListener('load', function(){
  
-    home.addEventListener('touchstart', function(){
+    close.addEventListener('touchstart', function(){
         w3_close();
     }, false);
 
 }, false)
-
-window.addEventListener('load', function(){
- 
-    about.addEventListener('touchstart', function(){
-        w3_close();
-    }, false);
-
-}, false)
-
-window.addEventListener('load', function(){
- 
-    contact.addEventListener('touchstart', function(){
-        w3_close();
-    }, false);
-
-}, false)
-
-// End of side-nav JS.
 
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
@@ -69,21 +41,15 @@ function myFunction() {
 		}
 }
 
+// Smooth scrolling
+scrollHome = function() {
+    document.getElementById('home').scrollIntoView({ 
+        behavior: 'smooth' 
+    });
+}
 
 scrollAbout = function() {
     document.getElementById('about').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
-}
-
-scrollContact = function() {
-    document.getElementById('contact').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
-}
-
-scrollHome = function() {
-    document.getElementById('home').scrollIntoView({ 
         behavior: 'smooth' 
     });
 }
@@ -94,4 +60,10 @@ scrollProjects = function() {
     });
 }
 
-console.log("'Main.js' loaded.")
+scrollContact = function() {
+    document.getElementById('contact').scrollIntoView({ 
+        behavior: 'smooth' 
+    });
+}
+
+console.log("'Main.js' loaded.");
