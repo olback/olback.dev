@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['REMOTE_ADDR'] == '37.123.186.121') {
-  header('Location: 31.192.120.36');
+  header('Location: http://31.192.120.36');
 }
 
 if(isset($_POST['submit'])) {
