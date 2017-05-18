@@ -60,6 +60,10 @@ body, html {
     position: relative;
 }
 
+.mw800 {
+  max-width: 800px;
+}
+
 @-moz-keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     -moz-transform: translateY(0);

@@ -162,10 +162,10 @@ if(isset($_POST['submit'])) {
         <?php if (isset($status)) {echo $status;}?>
           <center>
             <form method="POST" action="index.php" id="cForm">
-              <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="name"></p>
-              <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
-              <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
-              <p><textarea class="w3-input w3-border" type="text" placeholder="Message" required name="message"></textarea></p>
+              <p><input class="w3-input w3-border mw800" type="text" placeholder="Name" required name="name"></p>
+              <p><input class="w3-input w3-border mw800" type="email" placeholder="Email" required name="email"></p>
+              <p><input class="w3-input w3-border mw800" type="text" placeholder="Subject" required name="subject"></p>
+              <p><textarea class="w3-input w3-border mw800" type="text" placeholder="Message" required name="message"></textarea></p>
               <p>
                 <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
                 <br>
