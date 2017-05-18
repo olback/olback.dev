@@ -1,9 +1,5 @@
 <?php
 
-if ($_SERVER['REMOTE_ADDR'] == '37.123.186.121') {
-  header('Location: http://31.192.120.36');
-}
-
 if(isset($_POST['submit'])) {
     $secretKey = '6Lfu0CEUAAAAAKqXhqoVtbuyKc6-hrdw38X99KOZ';
     $response = $_POST['g-recaptcha-response'];     
