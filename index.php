@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_POST['submit'])) {
     $secretKey = '6Lfu0CEUAAAAAKqXhqoVtbuyKc6-hrdw38X99KOZ';
     $response = $_POST['g-recaptcha-response'];     
