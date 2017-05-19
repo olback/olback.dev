@@ -164,8 +164,7 @@ if(isset($_POST['submit'])) {
              <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
              <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
              <p><textarea class="w3-input w3-border" placeholder="Message" required name="message"></textarea></p>
-             <p>
-               <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
+             <p><div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
                <br>
                <button class="w3-button w3-black" type="submit" name="submit">
                  <i class="fa fa-paper-plane"></i> Send message
