@@ -107,8 +107,7 @@ if(isset($_POST['submit'])) {
       <hr>
     </nav>
 
-    <div class="span">
-    <!--<span id="close">-->
+    <div class="span" id="close">
       <!-- Header with full height image -->
       <header class="bgimg-1 w3-display-container" id="home">
         <div class="w3-text-white centerincssisabitch" style="padding:48px">
@@ -189,7 +188,6 @@ if(isset($_POST['submit'])) {
 
       <script src="js/main.js"></script>
       <?php if (isset($scrollToContact)) {echo $scrollToContact;}?>
-    <!--</span>-->
     </div>
   </body>
 </html>
