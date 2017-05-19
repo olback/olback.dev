@@ -65,6 +65,13 @@ body, html {
   max-width: 800px;
 }
 
+form {
+  text-align: center !important;
+  align-content: center !important;
+  align-items: center !important;
+  align-self: center !important;
+}
+
 @-moz-keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     -moz-transform: translateY(0);
