@@ -159,19 +159,19 @@ if(isset($_POST['submit'])) {
         <h2 class="w3-center">Contact</h2>
         <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
         <?php if (isset($status)) {echo $status;}?>
-            <form method="POST" action="index.php">
-              <p><input class="w3-input w3-border mw800" type="text" placeholder="Name" required name="name"></p>
-              <p><input class="w3-input w3-border mw800" type="email" placeholder="Email" required name="email"></p>
-              <p><input class="w3-input w3-border mw800" type="text" placeholder="Subject" required name="subject"></p>
-              <p><textarea class="w3-input w3-border mw800" placeholder="Message" required name="message"></textarea></p>
-              <p>
-                <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
-                <br>
-                <button class="w3-button w3-black" type="submit" name="submit">
-                  <i class="fa fa-paper-plane"></i> Send message
-                </button>
-                <!-- SHOULD be a </p> tag here but W3 complains... -->
-            </form>
+          <form method="POST" action="index.php" class="w3-center">
+             <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="name"></p>
+             <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
+             <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
+             <p><textarea class="w3-input w3-border" placeholder="Message" required name="message"></textarea></p>
+             <p>
+               <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
+               <br>
+               <button class="w3-button w3-black" type="submit" name="submit">
+                 <i class="fa fa-paper-plane"></i> Send message
+               </button>
+             <!-- SHOULD be a </p> tag here but W3 complains... -->
+          </form>
       </div>
 
       <!-- Footer -->
