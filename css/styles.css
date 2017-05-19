@@ -65,11 +65,12 @@ body, html {
   max-width: 800px;
 }
 
-form {
-  text-align: center !important;
-  align-content: center !important;
-  align-items: center !important;
-  align-self: center !important;
+.center-captcha {
+  text-align: center;
+}
+
+.g-recaptcha {
+  display: inline-block;
 }
 
 @-moz-keyframes bounce {
