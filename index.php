@@ -155,7 +155,7 @@ if(isset($_POST['submit'])) {
       </div>
 
       <!-- Contact Section -->
-      <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+      <div class="w3-container w3-light-grey w3-center" style="padding:128px 16px" id="contact">
         <h2 class="w3-center">Contact</h2>
         <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
         <?php if (isset($status)) {echo $status;}?>
@@ -164,12 +164,13 @@ if(isset($_POST['submit'])) {
              <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
              <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
              <p><textarea class="w3-input w3-border" placeholder="Message" required name="message"></textarea></p>
+             <p>
                <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
                <br>
                <button class="w3-button w3-black" type="submit" name="submit">
                  <i class="fa fa-paper-plane"></i> Send message
                </button>
-             <!-- SHOULD be a </p> tag here but W3 complains... -->
+             </p><!-- SHOULD be a </p> tag here but W3 complains... -->
           </form>
       </div>
 
