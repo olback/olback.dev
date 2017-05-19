@@ -108,7 +108,7 @@ if(isset($_POST['submit'])) {
     </nav>
 
     <span id="close">
-      <!-- Header with full-height image -->
+      <!-- Header with full height image -->
       <header class="bgimg-1 w3-display-container" id="home">
         <div class="w3-text-white centerincssisabitch" style="padding:48px">
           <span class="w3-jumbo w3-hide-small"><img src="img/edwin.jpg" class="w3-circle x300" alt="Edwin - olback.net"></span><br>
