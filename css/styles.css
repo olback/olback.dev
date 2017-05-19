@@ -4,6 +4,7 @@ body, html {
     padding-top: 0px;
     height: 100%;
     line-height: 1.8;
+    scroll-behavior: smooth;
 }
 /* Full height image header */
 .bgimg-1 {
