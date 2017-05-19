@@ -107,7 +107,7 @@ if(isset($_POST['submit'])) {
       <hr>
     </nav>
 
-    <div class="ra">
+    <div>
     <!--<span id="close">-->
       <!-- Header with full height image -->
       <header class="bgimg-1 w3-display-container" id="home">

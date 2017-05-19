@@ -73,11 +73,6 @@ body, html {
   display: inline-block;
 }
 
-.ra {
-    all: initial;
-    all: unset;
-}
-
 @-moz-keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     -moz-transform: translateY(0);
