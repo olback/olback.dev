@@ -159,11 +159,11 @@ if(isset($_POST['submit'])) {
         <h2 class="w3-center">Contact</h2>
         <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
         <?php if (isset($status)) {echo $status;}?>
-          <form method="POST" action="index.php" class="contact-form">
-             <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="name"></p>
-             <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
-             <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
-             <p><textarea class="w3-input w3-border" placeholder="Message" required name="message"></textarea></p>
+          <form method="POST" action="index.php">
+             <p class="contact-form"><input class="w3-input w3-border" type="text" placeholder="Name" required name="name"></p>
+             <p class="contact-form"><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
+             <p class="contact-form"><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
+             <p class="contact-form"><textarea class="w3-input w3-border" placeholder="Message" required name="message"></textarea></p>
              <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
              <p>
                <button class="w3-button w3-black" type="submit" name="submit">
