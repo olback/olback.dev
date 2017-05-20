@@ -61,14 +61,6 @@ body, html {
     position: relative;
 }
 
-.mw800 {
-  max-width: 800px;
-}
-
-.center-captcha {
-  text-align: center;
-}
-
 .g-recaptcha {
   display: inline-block;
 }
