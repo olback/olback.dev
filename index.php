@@ -155,16 +155,16 @@ if(isset($_POST['submit'])) {
       </div>
 
       <!-- Contact Section -->
-      <div class="w3-container w3-light-grey w3-center" style="padding:128px 16px" id="contact">
+      <div class="w3-light-grey w3-center" style="padding:128px 16px" id="contact">
         <h2 class="w3-center">Contact</h2>
         <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
         <?php if (isset($status)) {echo $status;}?>
-          <form method="POST" action="index.php" class="w3-center">
+          <form method="POST" action="index.php" class="contact-form">
              <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="name"></p>
              <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
              <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
              <p><textarea class="w3-input w3-border" placeholder="Message" required name="message"></textarea></p>
-             <div class="center-captcha"><div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div></div>
+             <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
              <p>
                <br>
                <button class="w3-button w3-black" type="submit" name="submit">
