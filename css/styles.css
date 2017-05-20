@@ -75,6 +75,14 @@ body, html {
   transform: translate(-50%);
 }
 
+@media only screen and (max-width: 800px) {
+  .contact-form {
+    max-width: 800px;
+    margin-left: 0px;
+    transform: translate(0px,0px);
+  }
+}
+
 @-moz-keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     -moz-transform: translateY(0);
