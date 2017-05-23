@@ -42,26 +42,8 @@ function myFunction() {
 }
 
 // Smooth scrolling
-scrollHome = function() {
-    document.getElementById('home').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
-}
-
-scrollAbout = function() {
-    document.getElementById('about').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
-}
-
-scrollProjects = function() {
-    document.getElementById('projects').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
-}
-
-scrollContact = function() {
-    document.getElementById('contact').scrollIntoView({ 
+scrollTo = function(id) {
+    document.getElementById(id).scrollIntoView({ 
         behavior: 'smooth' 
     });
 }
