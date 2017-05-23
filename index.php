@@ -50,13 +50,13 @@ if(isset($_POST['submit'])) {
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
                 $status = '<p class="w3-center w3-large w3-text-green">Mail sent! I\'ll get back to you shortly!</p>';
-                $scrollToContact = '<script>document.getElementById("contact").scrollIntoView({behavior:"smooth"});;</script>';
+                $scrlToContact = '<script>document.getElementById("contact").scrollIntoView({behavior:"smooth"});;</script>';
             }
 
     } else {
         //False - What happens when user is not verified
         $status = '<p class="w3-center w3-large w3-text-red">Robot verification failed. :(</p>';
-        $scrollToContact = '<script>document.getElementById("contact").scrollIntoView({behavior:"smooth"});;</script>';
+        $scrlToContact = '<script>document.getElementById("contact").scrollIntoView({behavior:"smooth"});;</script>';
     }
 }
 ?>
@@ -77,12 +77,12 @@ if(isset($_POST['submit'])) {
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
       <div class="w3-bar w3-transparent w3-card-2 w3-text-white no-shadows" id="myNavbar">
-        <a onclick="scrollTo('home');" class="ch w3-bar-item w3-button w3-wide">olback.net</a>
+        <a onclick="scrlTo('home');" class="ch w3-bar-item w3-button w3-wide">olback.net</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
-          <a onclick="scrollTo('about');" class="ch w3-bar-item w3-button">About</a>
-          <a onclick="scrollTo('projects');" class="ch w3-bar-item w3-button">Projects</a>
-          <a onclick="scrollTo('contact');" class="ch w3-bar-item w3-button">Contact</a>
+          <a onclick="scrlTo('about');" class="ch w3-bar-item w3-button">About</a>
+          <a onclick="scrlTo('projects');" class="ch w3-bar-item w3-button">Projects</a>
+          <a onclick="scrlTo('contact');" class="ch w3-bar-item w3-button">Contact</a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -121,7 +121,7 @@ if(isset($_POST['submit'])) {
           <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/1edwinsvensson"></a>
           <a class="fa fa-github w3-hover-opacity" href="https://github.com/olback"></a>
         </div>
-        <p><a href="javascript:scrollTo('about');" class="arrow bottom-button bounce"></a></p>
+        <p><a href="javascript:scrlTo('about');" class="arrow bottom-button bounce"></a></p>
       </header>
 
       <!-- About Section -->
@@ -175,7 +175,7 @@ if(isset($_POST['submit'])) {
 
       <!-- Footer -->
       <footer class="w3-center w3-black w3-padding-64">
-        <a onclick="scrollTo('home');" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+        <a onclick="scrlTo('home');" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
         <div class="w3-xlarge w3-section">
           <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/mrolback"></a>
           <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/1edwinsvensson"></a>
@@ -186,7 +186,7 @@ if(isset($_POST['submit'])) {
       </footer>
 
       <script src="js/main.js"></script>
-      <?php if (isset($scrollToContact)) {echo $scrollToContact;}?>
+      <?php if (isset($scrlToContact)) {echo $scrlToContact;}?>
     </div>
   </body>
 </html>

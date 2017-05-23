@@ -42,7 +42,7 @@ function myFunction() {
 }
 
 // Smooth scrolling
-scrollTo = function(id) {
+scrlTo = function(id) {
     document.getElementById(id).scrollIntoView({ 
         behavior: 'smooth' 
     });
