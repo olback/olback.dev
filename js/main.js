@@ -53,3 +53,4 @@ scrlTo = function(id) {
 }
 
 console.log("'Main.js' loaded.");
+console.log('Found any problems or security flaws with this page? Report them to web-olback.net@olback.net.');
