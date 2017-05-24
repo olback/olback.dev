@@ -1,3 +1,7 @@
+/* JavaScript for olback.net */
+
+// Vars:
+var nav = 100; // Change nav-style after 100px scroll.
 
 // Toggle between showing and hiding the sidebar when clicking the menu icon
 var mySidebar = document.getElementById("mySidebar");
@@ -31,7 +35,7 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
 	var navbar = document.getElementById("myNavbar");
     
-	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+	if (document.body.scrollTop > nav || document.documentElement.scrollTop > nav) {
 		navbar.className = "w3-bar" + " w3-white" + " w3-card-2" + "w3-text-black";
 
     } else {
