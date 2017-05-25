@@ -1,6 +1,6 @@
 <?php
+include __DIR__ . '/config.php';
 if(isset($_POST['submit'])) {
-    $secretKey = '6Lfu0CEUAAAAAKqXhqoVtbuyKc6-hrdw38X99KOZ';
     $response = $_POST['g-recaptcha-response'];
     $remoteIp = $_SERVER['REMOTE_ADDR'];
 
@@ -24,7 +24,6 @@ if(isset($_POST['submit'])) {
                 <p><b>Message: </b>" . $message . "</p>
                     ";
 
-      include __DIR__ . '/config.php';
       require __DIR__ . '/mail/PHPMailerAutoload.php';
 
        $mail = new PHPMailer;
@@ -164,7 +163,7 @@ if(isset($_POST['submit'])) {
              <p class="contact-form"><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
              <p class="contact-form"><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
              <p class="contact-form"><textarea class="w3-input w3-border" placeholder="Message" required name="message"></textarea></p>
-             <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div>
+             <div class="g-recaptcha" data-sitekey="<?php echo $publicKey; ?>"></div>
              <p>
                <button class="w3-button w3-black" type="submit" name="submit">
                  <i class="fa fa-paper-plane"></i> Send message
