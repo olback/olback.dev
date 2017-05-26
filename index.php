@@ -173,7 +173,7 @@ if(isset($_POST['submit'])) {
       </div>
 
       <!-- Footer -->
-      <footer class="w3-center w3-black w3-padding-64">
+      <footer class="w3-center footer w3-padding-64">
         <a onclick="scrlTo('home');" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
         <div class="w3-xlarge w3-section">
           <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/mrolback"></a>
