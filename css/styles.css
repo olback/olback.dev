@@ -43,7 +43,7 @@ body, html {
 
 .ch:hover {
     background-color: rgba(0, 0, 0, 0.1) !important;
-    /*color: #000 !important;*/
+    color: inherit !important;
 }
 
 .fa {
