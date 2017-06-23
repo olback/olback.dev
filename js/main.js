@@ -36,7 +36,7 @@ function myFunction() {
 	var navbar = document.getElementById("myNavbar");
     
 	if (document.body.scrollTop > nav || document.documentElement.scrollTop > nav) {
-		navbar.className = "w3-bar" + " w3-white" + " w3-card-2" + "w3-text-black";
+		navbar.className = "w3-bar" + " w3-white" + " w3-card-2" + " w3-text-black";
 
     } else {
 
