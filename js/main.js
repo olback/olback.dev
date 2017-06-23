@@ -41,7 +41,7 @@ function myFunction() {
     } else {
 
 		navbar.className = navbar.className.replace("w3-white", "w3-transparent w3-text-white");
-	    	navbar.className = navbar.className.replace("w3-text-black", "w3-text-white");
+	    	navbar.className = navbar.className.replace("w3-text-black", "");
 
 		}
 }
