@@ -21,7 +21,7 @@ body, html {
 
 .bottom-button {
   position: absolute;
-  top: 93%;
+  bottom: 10px !important;
   left: 50%;
   transform: translate(-50%, -50%);
 }
