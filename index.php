@@ -122,7 +122,7 @@ if(isset($_POST['submit'])) {
           <a class="fa fa-twitter twitter-hover" href="https://twitter.com/mrolback"></a>
           <a class="fa fa-facebook-official fb-hover" href="https://www.facebook.com/1edwinsvensson"></a>
           <a class="fa fa-github gh-hover" href="https://github.com/olback"></a>
-          <a class="fa fa-instagram insta-hover" href="#"></a>
+          <a class="fa fa-instagram insta-hover" href="https://www.instagram.com/mredwinn/"></a>
           <a class="fa fa-snapchat snap-hover" href="https://www.snapchat.com/add/olbackxdd"></a>
         </div>
         <p><a href="javascript:scrlTo('about');" class="arrow bottom-button bounce"></a></p>
@@ -184,7 +184,7 @@ if(isset($_POST['submit'])) {
           <a class="fa fa-twitter twitter-hover" href="https://twitter.com/mrolback"></a>
           <a class="fa fa-facebook-official fb-hover" href="https://www.facebook.com/1edwinsvensson"></a>
           <a class="fa fa-github gh-hover" href="https://github.com/olback"></a>
-          <a class="fa fa-instagram insta-hover" href="#"></a>
+          <a class="fa fa-instagram insta-hover" href="https://www.instagram.com/mredwinn/"></a>
           <a class="fa fa-snapchat snap-hover" href="https://www.snapchat.com/add/olbackxdd"></a>
         </div>
         <p>CSS Framework by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a><br>
