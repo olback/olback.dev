@@ -73,23 +73,6 @@ if(isset($_POST['submit'])) {
     <link rel="shortcut icon" type="image/png" href="img/olback.jpg"/>
   </head>
   <body class="w3-light-grey">
-    <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-      <div class="w3-bar w3-transparent w3-card-2 w3-text-white no-shadows" id="myNavbar">
-        <a onclick="scrlTo('home');" class="ch w3-bar-item w3-button w3-wide">olback.net</a>
-        <!-- Right-sided navbar links -->
-        <div class="w3-right w3-hide-small">
-          <a onclick="scrlTo('about');" class="ch w3-bar-item w3-button">About</a>
-          <a onclick="scrlTo('projects');" class="ch w3-bar-item w3-button">Projects</a>
-          <a onclick="scrlTo('contact');" class="ch w3-bar-item w3-button">Contact</a>
-        </div>
-        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-
-        <a href="javascript:void(0)" class="ch w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-          <i class="fa fa-bars"></i>
-        </a>
-      </div>
-    </div>
 
     <!-- Sidebar on small screens when clicking the menu icon -->
     <nav class="w3-sidebar w3-bar-block w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" style="display:none; top: 0px;" id="mySidebar">
@@ -107,6 +90,24 @@ if(isset($_POST['submit'])) {
     </nav>
 
     <div class="span" id="close">
+      <!-- Navbar (sit on top) -->
+      <div class="w3-top">
+        <div class="w3-bar w3-transparent w3-card-2 w3-text-white no-shadows" id="myNavbar">
+          <a onclick="scrlTo('home');" class="ch w3-bar-item w3-button w3-wide">olback.net</a>
+          <!-- Right-sided navbar links -->
+          <div class="w3-right w3-hide-small">
+            <a onclick="scrlTo('about');" class="ch w3-bar-item w3-button">About</a>
+            <a onclick="scrlTo('projects');" class="ch w3-bar-item w3-button">Projects</a>
+            <a onclick="scrlTo('contact');" class="ch w3-bar-item w3-button">Contact</a>
+          </div>
+          <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+          <a href="javascript:void(0)" class="ch w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+      </div>
+
       <!-- Header with full height image -->
       <header class="bgimg-1 w3-display-container" id="home">
         <div class="w3-text-white centerincssisabitch" style="padding:48px">
@@ -114,11 +115,14 @@ if(isset($_POST['submit'])) {
           <span class="w3-xxlarge w3-hide-large w3-hide-medium"><img src="img/edwin.jpg" class="w3-circle p100" alt="Edwin - olback.net"></span><br>
           <span class="w3-large">Hey, I'm Edwin.</span>
         </div>
+
         <!-- Social media buttons -->
-        <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
-          <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/mrolback"></a>
-          <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/1edwinsvensson"></a>
-          <a class="fa fa-github w3-hover-opacity" href="https://github.com/olback"></a>
+        <div class="w3-display-bottomleft w3-text-grey w3-xlarge social-icons">
+          <a class="fa fa-twitter twitter-hover" href="https://twitter.com/mrolback"></a>
+          <a class="fa fa-facebook-official fb-hover" href="https://www.facebook.com/1edwinsvensson"></a>
+          <a class="fa fa-github gh-hover" href="https://github.com/olback"></a>
+          <a class="fa fa-instagram insta-hover" href="#"></a>
+          <a class="fa fa-snapchat snap-hover" href="https://www.snapchat.com/add/olbackxdd"></a>
         </div>
         <p><a href="javascript:scrlTo('about');" class="arrow bottom-button bounce"></a></p>
       </header>
@@ -173,12 +177,14 @@ if(isset($_POST['submit'])) {
       </div>
 
       <!-- Footer -->
-      <footer class="w3-center footer w3-padding-64">
+      <footer class="w3-center footer w3-padding-32">
         <a onclick="scrlTo('home');" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
         <div class="w3-xlarge w3-section">
-          <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/mrolback"></a>
-          <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/1edwinsvensson"></a>
-          <a class="fa fa-github w3-hover-opacity" href="https://github.com/olback"></a>
+          <a class="fa fa-twitter twitter-hover" href="https://twitter.com/mrolback"></a>
+          <a class="fa fa-facebook-official fb-hover" href="https://www.facebook.com/1edwinsvensson"></a>
+          <a class="fa fa-github gh-hover" href="https://github.com/olback"></a>
+          <a class="fa fa-instagram insta-hover" href="#"></a>
+          <a class="fa fa-snapchat snap-hover" href="https://www.snapchat.com/add/olbackxdd"></a>
         </div>
         <p>CSS Framework by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a><br>
           &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://olback.net">olback.net</a>.</p>
