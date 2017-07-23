@@ -34,14 +34,17 @@ window.addEventListener('load', function(){
 window.onscroll = function() {myFunction()};
 function myFunction() {
 	var navbar = document.getElementById("myNavbar");
+    var tc = document.querySelector("meta[name=theme-color]");
     
 	if (document.body.scrollTop > nav || document.documentElement.scrollTop > nav) {
 		navbar.className = "w3-bar" + " white-nav" + " w3-card-2" + " w3-text-black";
+        tc.setAttribute('content', 'white');
 
     } else {
 
 		navbar.className = navbar.className.replace("white-nav", "w3-transparent w3-text-white");
-	    	navbar.className = navbar.className.replace("w3-text-black", "");
+	    navbar.className = navbar.className.replace("w3-text-black", "");
+        tc.setAttribute('content', '#333');
 
 		}
 }

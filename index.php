@@ -65,6 +65,7 @@ if(isset($_POST['submit'])) {
     <title>Edwin - olback.net</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#333">
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
