@@ -135,7 +135,7 @@ if(isset($_POST['submit'])) {
       </div>
 
       <!-- Projects Section -->
-      <div class="w3-container w3-white w3-padding-64 sp-16 "id="projects">
+      <div class="w3-container w3-white w3-padding-64 sp-16" id="projects">
         <h2 class="w3-center">My projects</h2>
         <p class="w3-center w3-large">This is just a few of my projects, you can find most of them on <a href="https://github.com/olback">GitHub</a>.</p>
         <div class="w3-row-padding w3-center" style="margin-top:64px">
