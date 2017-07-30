@@ -129,19 +129,20 @@ if(isset($_POST['submit'])) {
       </header>
 
       <!-- About Section -->
-      <div class="w3-container w3-center w3-light-grey" style="padding:128px 16px" id="about">
+      <div class="w3-container w3-center w3-light-grey w3-padding-64 sp-16" id="about">
         <h2 class="w3-center">About me</h2>
         <p class="w3-center w3-large">I'm a student from Sweden and I study engineering/IT at the moment. I really like maths and physics, don't really know why. In my spare time I like to design and develop websites as well as photography. Can't really say I'm good at it but I'm learning and it's a whole lot of fun. </p>
       </div>
 
       <!-- Projects Section -->
-      <div class="w3-container w3-white" style="padding:128px 16px" id="projects">
+      <div class="w3-container w3-white w3-padding-64 sp-16"id="projects">
         <h2 class="w3-center">My projects</h2>
         <p class="w3-center w3-large">This is just a few of my projects, you can find most of them on <a href="https://github.com/olback">GitHub</a>.</p>
         <div class="w3-row-padding w3-center" style="margin-top:64px">
-          <div class="w3-quarter">
-            <p class="w3-large">olback.ninja</p>
-            <p><a href="https://olback.ninja">olback.ninja</a> is available on <a href="https://github.com/olback/olback.ninja">GitHub</a>.<br>100% pointless...</p>
+          
+          <div class="w3-quarter placeholder">
+            <p class="w3-large">[placeholder]</p>
+            <p>[placeholder]</p>
           </div>
           <div class="w3-quarter">
             <p class="w3-large">WHOIS Lookup</p>
@@ -151,15 +152,16 @@ if(isset($_POST['submit'])) {
             <p class="w3-large">EsyShop</p>
             <p>This is a dead school project, but you can still try it out. Read more on <a href="https://esyshop.se">esyshop.se</a> for more information.</p>
           </div>
-          <div class="w3-quarter">
-            <p class="w3-large">olback.net</p>
-            <p>You're here right now.<br>Source code is available on <a href="https://github.com/olback/olback.net">GitHub</a>.</p>
+          <div class="w3-quarter placeholder">
+            <p class="w3-large">[placeholder]</p>
+            <p>[placeholder]</p>
           </div>
+
         </div>
       </div>
 
       <!-- Contact Section -->
-      <div class="w3-light-grey w3-center" style="padding:128px 16px" id="contact">
+      <div class="w3-light-grey w3-center w3-padding-64 sp-16" id="contact">
         <h2 class="w3-center">Contact</h2>
         <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
         <?php if (isset($status)) {echo $status;}?>
@@ -187,7 +189,7 @@ if(isset($_POST['submit'])) {
           <a class="fa fa-instagram insta-hover" href="https://www.instagram.com/mredwinn/"></a>
           <a class="fa fa-snapchat snap-hover" href="https://www.snapchat.com/add/olbackxdd"></a>
         </div>
-        <p>CSS Framework by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a><br>
+        <p class="footer">CSS Framework by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a><br>
           &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://olback.net">olback.net</a>.</p>
       </footer>
 

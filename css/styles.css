@@ -81,9 +81,26 @@ body, html {
   color: #fff;
 }
 
+#about {
+  margin-top: -15px;
+}
+
+p.footer {
+  margin-bottom: 0px;
+}
+
+.sp-16 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .social-icons {
   font-size: 24px;
   padding: 24px 48px;
+}
+
+.placeholder, .placeholder p {
+  visibility: hidden;
 }
 
 @media only screen and (max-width: 800px) {
