@@ -140,21 +140,21 @@ if(isset($_POST['submit'])) {
         <p class="w3-center w3-large">This is just a few of my projects, you can find most of them on <a href="https://github.com/olback">GitHub</a>.</p>
         <div class="w3-row-padding w3-center" style="margin-top:64px">
           
-          <div class="w3-quarter placeholder">
-            <p class="w3-large">[placeholder]</p>
-            <p>[placeholder]</p>
+          <div class="w3-quarter">
+            <p class="w3-large">RaspberryPi Web Interface</p>
+            <p>A nice, clean web interface that let's you monitor CPU usage, memory usage and more. Check it out <a href="https://github.com/olback/rpi-webint">here</a>.</p>
           </div>
           <div class="w3-quarter">
             <p class="w3-large">WHOIS Lookup</p>
-            <p>Don't want to use someone else's WHOIS lookup service?<br>Just host your own.<br>Source code available on <a href="https://github.com/olback/simple-whois-lookup">GitHub</a>.</p>
+            <p>Don't want to use someone else's WHOIS lookup service? Just host your own.<br>Source code available on <a href="https://github.com/olback/simple-whois-lookup">GitHub</a>.</p>
           </div>
           <div class="w3-quarter">
             <p class="w3-large">EsyShop</p>
             <p>This is a dead school project, but you can still try it out. Read more on <a href="https://esyshop.se">esyshop.se</a> for more information.</p>
           </div>
-          <div class="w3-quarter placeholder">
-            <p class="w3-large">[placeholder]</p>
-            <p>[placeholder]</p>
+          <div class="w3-quarter">
+            <p class="w3-large">GTA Session Maker</p>
+            <p>Are you annoyed by hackers and/or griefers in GTA Online? Here's the soloution!<br><a href="https://github.com/olback/gta-session/releases/latest">Download</a> | <a href="https://github.com/olback/gta-session">Source</a></p>
           </div>
 
         </div>
