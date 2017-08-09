@@ -131,7 +131,10 @@ if(isset($_POST['submit'])) {
       <!-- About Section -->
       <div class="w3-container w3-center w3-light-grey w3-padding-64 sp-16" id="about">
         <h2 class="w3-center">About me</h2>
-        <p class="w3-center w3-large">I'm a student from Sweden and I study engineering/IT at the moment. I really like maths and physics, don't really know why. In my spare time I like to design and develop websites as well as photography. Can't really say I'm good at it but I'm learning and it's a whole lot of fun. </p>
+        <p class="w3-center w3-large about">
+          Hey, my name is Edwin and i study IT/engineering in Sweden at the moment. I am <span id="myAge"></span> years old. I really like maths and physics, don't really know why. In my spare time I like to design and develop websites. I also like photogrophy. I can't really say that I'm particulary good at any of the aformentioned things but it's a whole lot of fun. I'm also a fan of open source software and hardware. 
+          
+        </p>
       </div>
 
       <!-- Projects Section -->

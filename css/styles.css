@@ -120,6 +120,14 @@ p.footer {
     font-size: 18px !important;
     padding: 24px 24px;
   }
+
+  .about {
+    margin: 0 20px !important;
+  }
+}
+
+.about {
+    margin: 0 100px;
 }
 
 @-moz-keyframes bounce {
