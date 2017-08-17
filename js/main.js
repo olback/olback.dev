@@ -55,6 +55,7 @@ scrlTo = function(id) {
         behavior: 'smooth' 
     });
 }
+
 // Edit this
 var bYear = 2000;                        // The year you were born.
 var bMonth = 09;                         // The month you were born.
