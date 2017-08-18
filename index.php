@@ -78,7 +78,7 @@ if(isset($_POST['submit'])) {
         <div id="body">
             <header>
                 <div class="edwin">
-                    <img src="./assets/edwin.jpg"/><br>
+                    <img src="./assets/edwin.jpg" alt="Edwin"/><br>
                     <p>Hey, I'm Edwin.</p>
                 </div>
                 <div class="social-icons">
@@ -93,7 +93,7 @@ if(isset($_POST['submit'])) {
 
             <div class="text-container lgray" id="about">
                 <h2>About me</h2>
-                <p>Hey, my name is Edwin and i study IT/engineering in Sweden at the moment. I am <span id="myAge"></span><noscript>&nbsp|&nbsp&nbspEnable JavaScript to see my age 😂&nbsp&nbsp|&nbsp</noscript> years old. I really like maths and physics, don't really know why. In my spare time I like to design and develop websites. I also like photogrophy. I can't really say that I'm particulary good at any of the aformentioned things but it's a whole lot of fun. I'm also a fan of open source software and hardware. </p>
+                <p>Hey, my name is Edwin and i study IT/engineering in Sweden at the moment. I am <span id="myAge"></span><noscript>| Enable JavaScript to see my age 😂 |</noscript> years old. I really like maths and physics, don't really know why. In my spare time I like to design and develop websites. I also like photogrophy. I can't really say that I'm particulary good at any of the aformentioned things but it's a whole lot of fun. I'm also a fan of open source software and hardware. </p>
             </div> <!-- end of about -->
 
             <div class="text-container dib white" id="projects">
@@ -131,10 +131,10 @@ if(isset($_POST['submit'])) {
                 <div class="form">
                     <?php if (isset($status)) {echo $status;}?>
                     <form method="POST">
-                        <input class="input" type="name" name="name" id="name" placeholder="Your name" required />
+                        <input class="input" type="text" name="name" id="name" placeholder="Your name" required />
                         <input class="input" type="email" name="email" id="email" placeholder="Your email" required />
                         <input class="input" type="text" name="subject" id="subject" placeholder="Subject" required />
-                        <textarea class="input" type="text" name="message" id="message" placeholder="Message" required></textarea>
+                        <textarea class="input" name="message" id="message" placeholder="Message" required></textarea>
                         <div class="g-recaptcha" data-sitekey="<?php echo $publicKey; ?>"></div><br>
                         <button type="submit" name="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send message</button>
                     </form>
@@ -149,11 +149,10 @@ if(isset($_POST['submit'])) {
                     <a class="fa fa-instagram" href="https://www.instagram.com/mredwinn/"></a>
                     <a class="fa fa-snapchat" href="https://www.snapchat.com/add/olbackxdd"></a>
                 </div>
-                <p>&copy <span id="year"></span> olback</p>
+                <p>&copy; <span id="year"></span> olback</p>
             </div> <!-- end of footer -->
         </div>
-
-    </body>
     <script src="assets/main.js"></script>
     <?php if (isset($scrlToContact)) {echo $scrlToContact;}?>
+    </body>
 </html>
