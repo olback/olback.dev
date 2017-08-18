@@ -21,11 +21,14 @@ $RECYCLE.BIN/
 #Downloads folder
 /downloads/
 
-#README.md
+# Other
 README.md
 config.php
+/assets/config.php
 config-sample.php
+/assets/config-sample.php
 update.php
 /misc/links.html
+links.html
 
 keybase.txt
