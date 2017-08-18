@@ -181,6 +181,10 @@ button[name=submit]:active {
     margin: 10px 4px;
 }
 
+button[disabled=""] {
+    background-color: rgba(76, 175, 80, 0.5) !important;
+}
+
 .footer {
     background-color: rgb(51, 51, 51);
     color: white;

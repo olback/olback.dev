@@ -52,7 +52,10 @@ function myFunction() {
 		navbar.className = navbar.className.replace("white", "transparent");
         themecolor.setAttribute('content', '#333');
 
-		}
+	}
 }
+
+// Enable contact form send button
+document.getElementById("cformButton").disabled = false;
 
 console.log("Main.js loaded.")

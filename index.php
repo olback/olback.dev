@@ -54,6 +54,9 @@ if(isset($_POST['submit'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#333">
+        <meta name='robots' content='index,follow'>
+        <meta name='keywords' content='portfolio, olback, website, web'>
+        <meta name="author" content="olback">
         
         <!-- CSS -->
         <link href="assets/styles.css" rel="stylesheet">
@@ -135,8 +138,9 @@ if(isset($_POST['submit'])) {
                         <input class="input" type="email" name="email" id="email" placeholder="Your email" required />
                         <input class="input" type="text" name="subject" id="subject" placeholder="Subject" required />
                         <textarea class="input" name="message" id="message" placeholder="Message" required></textarea>
+                        <noscript><p style="color:red;">Please enable JavaScript if you'd like to contact me through this form.<br>This is due to Google's reCaptha requires JavaScript.</p></noscript>
                         <div class="g-recaptcha" data-sitekey="<?php echo $publicKey; ?>"></div><br>
-                        <button type="submit" name="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send message</button>
+                        <button type="button" name="submit" id="cformButton" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i> Send message</button>
                     </form>
                 </div>
             </div><!-- end of contact -->
