@@ -37,12 +37,12 @@ if(isset($_POST['submit'])) {
                 echo 'Message could not be sent.';
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
-                $status = '<p class="w3-center w3-large w3-text-green">Mail sent! I\'ll get back to you shortly!</p>';
+                $status = '<p style="color:green;">Mail sent! I\'ll get back to you shortly!</p>';
                 $scrlToContact = '<script>document.getElementById("contact").scrollIntoView({behavior:"smooth"});;</script>';
             }
     } else {
         //False - What happens when user is not verified
-        $status = '<p class="w3-center w3-large w3-text-red">Robot verification failed. :(</p>';
+        $status = '<p style="color:red;">Robot verification failed. :(</p>';
         $scrlToContact = '<script>document.getElementById("contact").scrollIntoView({behavior:"smooth"});;</script>';
     }
 }
@@ -129,12 +129,13 @@ if(isset($_POST['submit'])) {
                 <h2>Contact me</h2>
                 <p>Please feel free to contact me using the form below.</p>
                 <div class="form">
+                    <?php if (isset($status)) {echo $status;}?>
                     <form method="POST">
                         <input class="input" type="name" name="name" id="name" placeholder="Your name" required />
                         <input class="input" type="email" name="email" id="email" placeholder="Your email" required />
                         <input class="input" type="text" name="subject" id="subject" placeholder="Subject" required />
                         <textarea class="input" type="text" name="message" id="message" placeholder="Message" required></textarea>
-                        <div class="g-recaptcha" data-sitekey="6Lfu0CEUAAAAAG4MPS755iGX8NfsOhZD1HfL-_oT"></div><br>
+                        <div class="g-recaptcha" data-sitekey="<?php echo $publicKey; ?>"></div><br>
                         <button type="submit" name="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send message</button>
                     </form>
                 </div>
@@ -154,4 +155,5 @@ if(isset($_POST['submit'])) {
 
     </body>
     <script src="assets/main.js"></script>
+    <?php if (isset($scrlToContact)) {echo $scrlToContact;}?>
 </html>

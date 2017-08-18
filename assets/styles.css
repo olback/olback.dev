@@ -175,7 +175,7 @@ button[name=c-form]:hover {
     background-color: rgba(76, 175, 80, 0.9);
 }
 
-button[name=c-form]:active {
+button[name=submit]:active {
     background-color: rgba(76, 175, 80, 0.9);
     padding: 8px 21px;
     margin: 10px 4px;
