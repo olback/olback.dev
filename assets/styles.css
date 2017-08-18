@@ -161,7 +161,7 @@ header>.edwin {
     display: inline-block;
 }
 
-button[name=c-form] {
+button[name=submit] {
     font-size: 17px;
     line-height: 27px;
     margin: 8px 0;
@@ -171,7 +171,7 @@ button[name=c-form] {
     color: white;
 }
 
-button[name=c-form]:hover {
+button[name=submit]:hover {
     background-color: rgba(76, 175, 80, 0.9);
 }
 
