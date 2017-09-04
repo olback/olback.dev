@@ -156,13 +156,6 @@ if(isset($_POST['submit'])) {
                 <p>&copy; <span id="year"></span> olback</p>
             </div> <!-- end of footer -->
         </div>
-        <div id="updateBrowser" hidden>
-            <div class="modal">
-                <i class="fa fa-exclamation-circle"></i>
-                <p>Looks like you're using an old browser!<br>Please update to a newer version for the best experience.</p>
-                <a onclick="closeModalBU();" class="button">Close</a>
-            </div>
-        </div>
     <script src="assets/main.js"></script>
     <?php if (isset($scrlToContact)) {echo $scrlToContact;}?>
     </body>
