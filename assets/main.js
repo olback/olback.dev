@@ -3,29 +3,33 @@
  */
 
 
-var bYear = 2000;                        // The year you were born.
-var bMonth = 9;                         // The month you were born.
-var bDay = 10;                           // The day you were born.
+const year = 2000;                        // The year you were born.
+const bMonth = 9;                         // The month you were born.
+const day = 10;                           // The day you were born.
 
-/* ------------------------------------------------------------------------------------------------------ */
-bMonth = bMonth - 1;                     // JS starts counting from 0. January = 0, December = 11.
-var nDate = new Date();                  // Store new Date ()
-var cYear = nDate.getFullYear();         // Get current year
-var cMonth = nDate.getMonth();           // Get current month
-var cDay = nDate.getDate();              // Get current day of the month
-var age;
+/* ------------------------------------------------------------------------------ */
 
-if(cMonth >= bMonth && cDay >= bDay){
-    age = cYear - bYear;
+const date = new Date();                  // Store new Date ()
+const cYear = date.getFullYear();         // Get current year
+const cMonth = date.getMonth();           // Get current month
+const cDay = date.getDate();              // Get current day of the month
+const month = bMonth - 1;                 // JS starts counting from 0. January = 0, December = 11.
+let age;
+
+
+if(cMonth >= month && cDay >= day){
+  age = cYear - year;
+} else if(cMonth > month) {
+  age = cYear - year;
 } else {
-    age = cYear - bYear - 1;
+  age = cYear - year - 1
 }
 
-var myAge = document.getElementById('myAge');
+const myAge = document.getElementById('myAge');
 myAge.innerHTML = age;
 
 // Set year in footer
-var footerYear = document.getElementById('year');
+const footerYear = document.getElementById('year');
 footerYear.innerHTML = cYear;
 
 // Smooth scrolling
@@ -36,11 +40,11 @@ scrlTo = function(id) {
 }
 
 // Change nav on scroll
-var nav = 100; // Change nav-style after 100px scroll.
+const nav = 100; // Change nav-style after 100px scroll.
 window.onscroll = function() {myFunction()};
 function myFunction() {
-	var navbar = document.getElementById("nav");
-    var themecolor = document.querySelector("meta[name=theme-color]");
+	const navbar = document.getElementById("nav");
+    const themecolor = document.querySelector("meta[name=theme-color]");
     
 	if (document.body.scrollTop > nav || document.documentElement.scrollTop > nav) {
 		navbar.className = "white";
