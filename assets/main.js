@@ -40,13 +40,17 @@ scrlTo = function(id) {
 
 // Change nav on scroll
 const nav = 100; // Change nav-style after 100px scroll.
-const aboutPos = window.innerHeight - 64;
-const projectPos = aboutPos + 310;
-const contactPos = projectPos + 400;
-
 const aboutButton = document.getElementById('aboutButton');
 const projectsButton = document.getElementById('projectsButton');
 const contactButton = document.getElementById('contactButton');
+const aboutDom = document.getElementById('about');
+const projectsDom = document.getElementById('projects');
+const contactDom = document.getElementById('contact');
+
+const aboutPos = window.innerHeight - 64;
+const projectPos = aboutPos + aboutDom.scrollHeight;
+const contactPos = projectPos + projectsDom.scrollHeight;
+
 
 window.onscroll = function() {onScroll()};
 function onScroll() {
