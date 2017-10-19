@@ -72,9 +72,9 @@ if(isset($_POST['submit'])) {
         <nav class="transparent" id="nav">
             <a onclick="scrlTo('body');" class="item title">olback.net</a>
             <div>
-                <a onclick="scrlTo('contact');" class="item right">Contact</a>
-                <a onclick="scrlTo('projects');" class="item right">Projects</a>
-                <a onclick="scrlTo('about');" class="item right">About</a>
+                <a onclick="scrlTo('contact');" class="item right" id="contactButton">Contact</a>
+                <a onclick="scrlTo('projects');" class="item right" id="projectsButton">Projects</a>
+                <a onclick="scrlTo('about');" class="item right" id="aboutButton">About</a>
             </div>
         </nav>
 

@@ -2,7 +2,6 @@
  *   Javascript for olback.net
  */
 
-
 const year = 2000;                        // The year you were born.
 const bMonth = 9;                         // The month you were born.
 const day = 10;                           // The day you were born.
@@ -41,8 +40,16 @@ scrlTo = function(id) {
 
 // Change nav on scroll
 const nav = 100; // Change nav-style after 100px scroll.
-window.onscroll = function() {myFunction()};
-function myFunction() {
+const aboutPos = window.innerHeight - 64;
+const projectPos = aboutPos + 310;
+const contactPos = projectPos + 400;
+
+const aboutButton = document.getElementById('aboutButton');
+const projectsButton = document.getElementById('projectsButton');
+const contactButton = document.getElementById('contactButton');
+
+window.onscroll = function() {onScroll()};
+function onScroll() {
 	const navbar = document.getElementById("nav");
     const themecolor = document.querySelector("meta[name=theme-color]");
     
@@ -54,8 +61,27 @@ function myFunction() {
 
 		navbar.className = navbar.className.replace("white", "transparent");
         themecolor.setAttribute('content', '#333');
+    }
+    
+    if(document.documentElement.scrollTop > aboutPos && document.documentElement.scrollTop < projectPos) {
+        aboutButton.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    } else {
+        aboutButton.style.backgroundColor = "rgba(0,0,0,0)";
+    }
 
-	}
+    if(document.documentElement.scrollTop > projectPos && document.documentElement.scrollTop < contactPos) {
+        projectsButton.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    } else {
+        projectsButton.style.backgroundColor = "rgba(0,0,0,0)";
+    }
+
+    if(document.documentElement.scrollTop > contactPos) {
+        contactButton.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    } else {
+        contactButton.style.backgroundColor = "rgba(0,0,0,0)";
+    }
+
+
 }
 
 // Enable contact form send button
