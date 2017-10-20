@@ -47,7 +47,7 @@ const aboutDom = document.getElementById('about');
 const projectsDom = document.getElementById('projects');
 const contactDom = document.getElementById('contact');
 
-const aboutPos = window.innerHeight - 64;
+const aboutPos = window.innerHeight - 192;
 const projectPos = aboutPos + aboutDom.scrollHeight;
 const contactPos = projectPos + projectsDom.scrollHeight;
 
