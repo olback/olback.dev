@@ -11,7 +11,7 @@ html,body {
     background-color: white;
 }
 
-#body {
+main {
     display: inline;
 }
 
@@ -95,20 +95,27 @@ header>.edwin {
     font-weight: 0;
 }
 
-.text-container {
+section {
     padding: 64px;
     text-align: center;
 }
 
-.text-container.dib {
+footer {
+    background-color: rgb(51, 51, 51);
+    color: white;
+    padding: 64px;
+    text-align: center;
+}
+
+section.dib {
     display: inline-block;
 }
 
-.text-container.white {
+section.white {
     background-color: white !important;
 }
 
-.text-container.lgray {
+section.lgray {
     background-color: rgb(241, 241, 241) !important;
 }
 
@@ -117,11 +124,11 @@ header>.edwin {
     line-height: 32px;
 }
 
-.text-container>p>a {
+section>p>a {
     color: black;
 }
 
-.quarter {
+article {
     width: 24.9999%;
     float: left;
 }
@@ -185,11 +192,6 @@ button[disabled=""] {
     background-color: rgba(76, 175, 80, 0.5) !important;
 }
 
-.footer {
-    background-color: rgb(51, 51, 51);
-    color: white;
-}
-
 .social-icons {
     position: absolute;
     bottom: 0px;
@@ -199,7 +201,7 @@ button[disabled=""] {
     font-size: 24px;
 }
 
-.footer>.social-icons {
+footer>.social-icons {
     text-align: center;
     color: white !important;
     position: relative;
@@ -208,7 +210,7 @@ button[disabled=""] {
     padding: 0;
 }
 
-.footer>p {
+footer>p {
     margin-bottom: 0;
 }
 
@@ -321,7 +323,7 @@ button[disabled=""] {
         width: 100% !important;
     }
 
-    .text-container {
+    section, footer {
         padding: 16px;
     }
 
@@ -330,11 +332,11 @@ button[disabled=""] {
         font-size: 18px;
     }
 
-    .footer {
+    footer {
         padding-top: 24px !important;
     }
 
-    .footer>.social-icons {
+    footer>.social-icons {
         padding: 0 !important;
     }
 

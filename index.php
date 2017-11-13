@@ -78,7 +78,7 @@ if(isset($_POST['submit'])) {
             </div>
         </nav>
 
-        <div id="body">
+        <main>
             <header>
                 <div class="edwin">
                     <img src="./assets/edwin.jpg" alt="Edwin"/><br>
@@ -94,41 +94,41 @@ if(isset($_POST['submit'])) {
                 <span class="showArrow"><a href="javascript:scrlTo('about');" class="arrow bounce"></a></span>
             </header>
 
-            <div class="text-container lgray" id="about">
+            <section class="lgray" id="about">
                 <h2>About me</h2>
                 <p>Hey, my name is Edwin and i study IT/engineering in Sweden at the moment. I am <span id="myAge"></span><noscript>| Enable JavaScript to see my age 😂 |</noscript> years old. I really like maths and physics, don't really know why. In my spare time I like to design and develop websites. I also like photogrophy. I can't really say that I'm particulary good at any of the aformentioned things but it's a whole lot of fun. I'm also a fan of open source software and hardware. </p>
-            </div> <!-- end of about -->
+            </section> <!-- end of about -->
 
-            <div class="text-container dib white" id="projects">
+            <section class="dib white" id="projects">
                 <h2>Projects</h2>
                 <p>This is just a few of my projects, you can find most of them on <a href="https://github.com/olback">GitHub</a>.</p>
-                <div class="quarter">
+                <article>
                     <div class="padding">
                         <h3>RaspberryPi Web Interface</h3>
                         <p>A nice, clean web interface that let's you monitor CPU usage, memory usage and more. Check it out <a href="https://github.com/olback/rpi-webint">here</a>.</p>
                     </div>
-                </div>
-                <div class="quarter">
+                </article>
+                <article>
                     <div class="padding">
                         <h3>WHOIS Lookup</h3>
                         <p>Don't want to use someone else's WHOIS lookup service? Just host your own.<br>Source code available on <a href="https://github.com/olback/simple-whois-lookup">GitHub</a>.</p>
                     </div>
-                </div>
-                <div class="quarter">
+                </article>
+                <article>
                     <div class="padding">
                         <h3>EsyShop</h3>
                         <p>This is a dead school project, but you can still try it out. Read more on <a href="https://esyshop.se">esyshop.se</a> for more information.</p>
                     </div>
-                </div>
-                <div class="quarter">
+                </article>
+                <article>
                     <div class="padding">
                         <h3>GTA Session Maker</h3>
                         <p>Are you annoyed by hackers and/or griefers in GTA Online? Here's the soloution!<br><a href="https://github.com/olback/gta-session/releases/latest">Download</a> | <a href="https://github.com/olback/gta-session">Source</a></p>
                     </div>
-                </div>
-            </div><!-- end of projects -->
+                </article>
+            </section><!-- end of projects -->
 
-            <div class="text-container lgray" id="contact">
+            <section class="lgray" id="contact">
                 <h2>Contact me</h2>
                 <p>Please feel free to contact me using the form below.</p>
                 <div class="form">
@@ -143,9 +143,9 @@ if(isset($_POST['submit'])) {
                         <button type="button" name="submit" id="cformButton" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i> Send message</button>
                     </form>
                 </div>
-            </div><!-- end of contact -->
+            </section><!-- end of contact -->
 
-            <div class="text-container footer" id="footer">
+            <footer id="footer">
                 <div class="social-icons">
                     <a class="fa fa-twitter" href="https://twitter.com/mrolback"></a>
                     <a class="fa fa-facebook-official" href="https://www.facebook.com/1edwinsvensson"></a>
@@ -154,8 +154,8 @@ if(isset($_POST['submit'])) {
                     <a class="fa fa-snapchat" href="https://www.snapchat.com/add/olbackxdd"></a>
                 </div>
                 <p>&copy; <span id="year"></span> olback</p>
-            </div> <!-- end of footer -->
-        </div>
+            </footer> <!-- end of footer -->
+        </main>
     <script src="assets/main.js"></script>
     <?php if (isset($scrlToContact)) {echo $scrlToContact;}?>
     </body>
