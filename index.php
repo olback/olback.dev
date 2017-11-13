@@ -59,7 +59,7 @@ if(isset($_POST['submit'])) {
         <meta name="author" content="olback">
         
         <!-- CSS -->
-        <link href="assets/styles.css" rel="stylesheet">
+        <link href="assets/styles.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <!-- Google reCaptcha JS -->
