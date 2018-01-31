@@ -54,9 +54,10 @@ if(isset($_POST['submit'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#333">
-        <meta name='robots' content='index,follow'>
-        <meta name='keywords' content='portfolio, olback, website, web'>
+        <meta name="robots" content="index,follow">
+        <meta name="keywords" content="portfolio, olback, website, web">
         <meta name="author" content="olback">
+        <meta name="description" content="Edwin - olback.net">
         
         <!-- CSS -->
         <link href="assets/styles.min.css" rel="stylesheet">
@@ -104,26 +105,38 @@ if(isset($_POST['submit'])) {
                 <p>This is just a few of my projects, you can find most of them on <a href="https://github.com/olback">GitHub</a>.</p>
                 <article>
                     <div class="padding">
-                        <h3>RaspberryPi Web Interface</h3>
-                        <p>A nice, clean web interface that let's you monitor CPU usage, memory usage and more. Check it out <a href="https://github.com/olback/rpi-webint">here</a>.</p>
+                        <h3>JavaScript and CSS minifier</h3>
+                        <p>
+                            A nice and simple VS Code plugin that lets you minify JavaScript(ES5/ES6) and CSS.<br>
+                            <a href="https://github.com/olback/es6-css-minify" target="_blank">GitHub</a> | <a href="https://marketplace.visualstudio.com/items?itemName=olback.es6-css-minify" target="_blank">VS Code Marketplace</a>
+                        </p>
                     </div>
                 </article>
                 <article>
                     <div class="padding">
                         <h3>WHOIS Lookup</h3>
-                        <p>Don't want to use someone else's WHOIS lookup service? Just host your own.<br>Source code available on <a href="https://github.com/olback/simple-whois-lookup">GitHub</a>.</p>
+                        <p>
+                            Don't want to use someone else's WHOIS lookup service? Just host your own.<br>
+                            Source code available on <a href="https://github.com/olback/simple-whois-lookup">GitHub</a>.
+                        </p>
                     </div>
                 </article>
                 <article>
                     <div class="padding">
-                        <h3>EsyShop</h3>
-                        <p>This is a dead school project, but you can still try it out. Read more on <a href="https://esyshop.se">esyshop.se</a> for more information.</p>
+                        <h3>rDesktop GUI</h3>
+                        <p>
+                            rDesktop GUI is a simple front-end for the rdesktop command line utility.<br>
+                            <a href="https://github.com/olback/rdg-linux">Github</a>
+                        </p>
                     </div>
                 </article>
                 <article>
                     <div class="padding">
-                        <h3>GTA Session Maker</h3>
-                        <p>Are you annoyed by hackers and/or griefers in GTA Online? Here's the soloution!<br><a href="https://github.com/olback/gta-session/releases/latest">Download</a> | <a href="https://github.com/olback/gta-session">Source</a></p>
+                        <h3>o-todo</h3>
+                        <p>
+                            o-todo is a self-hosted progressive web app. The point with this application is to provide a simple to set up todo app. Create notes without sharing them with another company!<br>
+                            <a href="http://github.com/olback/o-todo">GitHub</a>
+                        </p>
                     </div>
                 </article>
             </section><!-- end of projects -->

@@ -131,6 +131,7 @@ section>p>a {
 article {
     width: 24.9999%;
     float: left;
+    line-height: 1.4em;
 }
 
 .padding {
