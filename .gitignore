@@ -29,3 +29,6 @@ update.php
 links.html
 
 keybase.txt
+
+/target
+**/*.rs.bk
