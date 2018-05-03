@@ -20,6 +20,9 @@ $RECYCLE.BIN/
 
 #Downloads folder
 /downloads/
+downloads/
+/download/
+download/
 
 # Other
 README.md
@@ -27,8 +30,6 @@ config.php
 /assets/config.php
 update.php
 links.html
-
 keybase.txt
-
 /target
 **/*.rs.bk
