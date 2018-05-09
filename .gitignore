@@ -31,5 +31,6 @@ config.php
 update.php
 links.html
 keybase.txt
+node_modules/
 /target
 **/*.rs.bk
