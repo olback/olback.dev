@@ -6,16 +6,23 @@
 #![plugin(rocket_codegen)]
 #![feature(custom_derive)] // Feature will be depricated?
 
+// Web server
 extern crate rocket;
 extern crate rocket_contrib;
+// Mail libs
+extern crate lettre;
+extern crate lettre_email;
+extern crate mime;
 
 use std::io;
 use std::path::{Path, PathBuf};
 use rocket::response::{NamedFile, Redirect};
 use rocket::request::{Form};
+use lettre::{Transport, SmtpClient};
+use lettre_email::Email;
 
 mod mail;
-use mail::Mail;
+// use mail::Mail;
 
 #[get("/")]
 fn index() -> io::Result<NamedFile> {
@@ -34,11 +41,11 @@ fn download(file: PathBuf) -> Option<NamedFile> {
 
 #[get("/mail")]
 fn mail() -> Redirect {
-    Redirect::to("/")
+    Redirect::to("/#contact")
 }
 
 #[post("/mail", data = "<_mail>")]
-fn send_mail(_mail: Form<Mail>) ->  String {
+fn send_mail(_mail: Form<mail::Mail>) ->  String {
     let mail_data = _mail.into_inner();
 
     if mail_data.name.is_empty() {
@@ -57,8 +64,7 @@ fn send_mail(_mail: Form<Mail>) ->  String {
         return format!("Mail body may not be empty");
     }
 
-
-    format!("{} :: {} :: {} :: {} :: {}", mail_data.name, mail_data.email, mail_data.subject, mail_data.body, mail_data.copy)
+    format!("Name: {} \n\nEmal: {} \n\nSubject: {} \n\nBody: {} \n\nCopy: {}", mail_data.name, mail_data.email, mail_data.subject, mail_data.body, mail_data.copy)
 }
 
 #[error(404)]

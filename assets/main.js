@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('scroll', function() {
 
-        console.log(document.documentElement.scrollTop);
-
-        if(document.documentElement.scrollTop > footer.scrollHeight) {
+        if(window.scrollY > footer.scrollHeight + 50 || document.documentElement.scrollTop > footer.scrollHeight + 50) {
             footer.style.visibility = 'visible';
         } else {
             footer.style.visibility = 'hidden';

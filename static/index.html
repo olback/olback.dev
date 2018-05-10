@@ -10,27 +10,90 @@
         <title>Edwin - olback.net</title>
     </head>
     <body>
+
         <header>
             <figure>
                 <img src="/assets/edwin.jpg" alt="Image not found." />
-                <figcaption>Hey, I'm Edwin</figcaption>
+                <figcaption>Hi, I'm Edwin</figcaption>
             </figure>
             <div class="sm">
+                <i class="fab fa-github"></i>
                 <i class="fab fa-twitter"></i>
                 <i class="fab fa-instagram"></i>
             </div>
         </header>
-        <section>
-            somebs
-        </section>
-        <section>
-            somebs
-        </section>
+
+        <main>
+
+            <section>
+                <h2 id="about">About</h2>
+                <p>
+                    About me... <br/>
+                    Yada yada yada...
+                </p>
+                <h2 id="projects">Recent projects</h2>
+                <div class="cols">
+                    <div class="col">
+                        <h3>es6-css-minify</h3>
+                        <p>
+                            <em>es6-css-minify</em> is a open-source VS Code extension that lets you minify JavaScript, CSS and generate source maps with a simple click.
+                            View source on <a href="http://github.com/olback/es6-css-minify" target="_blank">Github</a> or download from the <a href="https://marketplace.visualstudio.com/items?itemName=olback.es6-css-minify" target="_blank">VSC Marketplace</a>.
+                        </p>
+                    </div>
+                    <div class="col">
+                        <h3>rdg-linux</h3>
+                        <p>
+                            <em>rdg-linux</em> is a simple front-end application for the CLI tool rdesktop.
+                            This was created for people that don't like using the terminal for everything.
+                            View <a href="https://github.com/olback/rdg-linux" target="_blank">source</a> or <a href="https://github.com/olback/rdg-linux/releases/latest" target="_blank">download</a> on Github.
+                        </p>
+                    </div>
+                    <div class="col">
+                        <h3>Todo app</h3>
+                        <p>
+                            <em>o-todo</em> is a self-hosted progressive web application for security concerned people.
+                            It's written in PHP and uses MySQL to store data which means it's simple to set up yourself.
+                            <a href="https://github.com/olback/o-todo" target="_blank">Contribute</a> or check out the <a href="https://o-todo.olback.net" target="_blank">demo</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 id="contact">Contact</h2>
+                <form action="/mail" method="post">
+                    <div class="mfp">
+                        <label for="mf_n">Full name:</label>
+                        <input id="mf_n" name="name" autocomplete="name" type="text" class="inputText" />
+                    </div>
+                    <div class="mfp">
+                        <label for="mf_e">Your email:</label>
+                        <input id="mf_e" name="email" autocomplete="email" type="email" />
+                    </div>
+
+                    <label for="mf_s">Subject:</label>
+                    <input id="mf_s" name="subject" type="text" />
+
+                    <label for="mf_b">Message:</label>
+                    <!-- <input id="mf_b" name="body" type="text" /> -->
+                    <textarea name="body" id="mf_b"></textarea>
+
+                    <label for="mf_c">I want to receive a copy of this message:</label>
+                    <input id="mf_c" name="copy" type="checkbox" checked="checked" style="width: auto;" />
+
+                    <button type="submit">Send</button>
+                </form>
+
+            </section>
+
+            <div class="fs"></div>
+
+        </main>
+
         <footer>
             <p>
-                olback.net &copy; 2018
+                Edwin &copy; 2018
             </p>
         </footer>
+
         <!-- <form action="/mail" method="post">
             Name: <input name="name" autocomplete="name" type="text" /> <br/>
             Email: <input name="email" autocomplete="email" type="text" /> <br/>
@@ -39,5 +102,6 @@
             Copy: <input name="copy" type="checkbox" /> <br/>
             <button type="submit">Submit</button>
         </form> -->
+
     </body>
 </html>

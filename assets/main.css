@@ -2,80 +2,288 @@
  *  olback.net v3.0
  */
 
+/*
+ *  Purple: #252839
+ *  Gray: #67707
+ *  Light gray: #b5b5b7
+ *  Yellow: #f2b632
+ */
+
+ /*
+  *  TODO: Make elements more responsive.
+  */
+
 html,
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-header,
-section {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
+    font-family: 'Courier New', Courier, monospace !important;
+    /* overflow-x: hidden; */
 }
 
 header {
     position: fixed;
     z-index: 8;
-    background-color: #00b8e6;
+    background-color: #677077;
     text-align: center;
+    background-image: url('/assets/bg.svg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
 }
 
-header > figure {
+header>figure {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: block;
     margin: auto;
 }
 
-header > figure > img {
+header>figure>img {
     max-width: 300px;
     border-radius: 50%;
-    margin-top: 200px;
+    border: 3px solid transparent;
+    transition: transform 1s, border-color 1s;
 }
 
-header > figure > figcaption {
+img:hover {
+    transform: rotate(360deg);
+    border-color: #f2b632;
+}
+
+header>figure>figcaption {
     margin-top: 1em;
     font-size: 1.5em;
+    color: #b5b5b7;
 }
 
-header > div.sm {
+header>div.sm {
     font-size: 2em;
     position: fixed;
     bottom: 50px;
     left: 50px;
 }
 
-header > div.sm > i {
+header>div.sm>i {
     padding: 0.5em;
     display: block;
+    color: #b5b5b7;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-header > div.sm > i:hover {
-    background-color: #333;
-    transition: 0.3s;
+header>div.sm>i:hover {
+    background-color: #252839;
     cursor: pointer;
 }
 
-section {
-    background-color: #333;
-    margin-bottom: 146px;
+main {
     top: 100%;
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+}
+
+section {
+    background-color: #252839;
+    color: #b5b5b7;
+    display: block;
+    padding: 48px 0;
+}
+
+section>h2 {
+    font-size: 2em;
+    padding: 1em 0;
+    margin-bottom: 0;
+}
+
+section>div.cols {
+    display: inline-block;
+    max-width: 1300px;
+    margin: auto;
+}
+
+section>div.cols>div.col {
+    display: block;
+    float: left;
+    width: 28%;
+    min-width: 300px;
+    padding: 2em;
+    border-right: 1px solid #b5b5b7;
+    color: #b5b5b7;
+}
+
+section>div.cols>div.col:last-of-type {
+    border: none;
+}
+
+section>div.cols>div.col>h3 {
+    font-size: 1.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #f2b632;
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+div.footer-spacer {
+    display: none;
+    height: 120px;
+    position: absolute;
+    top: 200%;
+    width: 100%;
+}
+
+div.fs {
+    display: block;
+    width: 100%;
+    height: 120px;
+    background-color: transparent;
 }
 
 footer {
     width: 100%;
     padding: 3em 0;
     position: fixed;
+    display: block;
     bottom: 0;
-    background-color: #00b8e6;
+    background-color: #677077;
     text-align: center;
     z-index: 9;
     visibility: hidden;
+    color: #b5b5b7;
 }
 
-/* Scoial media hover colors */
+p {
+    line-height: 1.5em;
+    color: #b5b5b7;
+    max-width: 1300px;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+form {
+    display: block;
+    margin: auto;
+    max-width: 650px;
+}
+
+label {
+    width: 100%;
+    display: block;
+    text-align: left;
+}
+
+input, textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #b5b5b7;
+    padding: 0.5em;
+    font-size: 14pt;
+    outline: none;
+    color: #b5b5b7;
+    display: block;
+    margin-bottom: 30px;
+    transition: border-color 0.3s;
+}
+
+textarea {
+    resize: vertical;
+    height: 96px;
+}
+
+input[type="checkbox"] {
+    display: inline;
+}
+
+label[for="mf_b"] {
+    margin-bottom: 5px;
+}
+
+label[for="mf_c"] {
+    display: inline;
+}
+
+input:focus, textarea:focus {
+    border-color: #f2b632;
+}
+
+input:invalid {
+    outline: none !important;
+    border-color: red;
+}
+
+textarea {
+    border: 1px solid #b5b5b7;
+}
+
+.mfp {
+    display: block;
+    width: 45%;
+    float: left;
+    text-align: left;
+    /* margin-right: 1%; */
+}
+
+.mfp:nth-of-type(2) {
+    float: right;
+}
+
+button {
+    padding: 1em 2em;
+    border: 3px solid #f2b632;
+    color: #f2b632;
+    background-color: transparent;
+    font-size: 14pt;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #f2b632;
+    color: #252839;
+}
+
+button:active {
+    background-color: #ff8c00;
+    border-color: #ff8c00;
+    color: #252839;
+}
+
+a,
+a:visited {
+    color: #f2b632;
+    display: inline;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ff8c00;
+}
+
+a:active {
+    color: #ff6600;
+}
+
+.fa-github:hover {
+    color: #000;
+}
+
 .fa-twitter:hover {
     color: #1da1f2;
 }
@@ -85,7 +293,7 @@ footer {
 }
 
 @media all and (max-width: 500px) {
-    header > div.sm {
+    header>div.sm {
         font-size: 1.5em;
         left: 30px;
         bottom: 30px;
