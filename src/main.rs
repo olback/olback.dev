@@ -6,27 +6,24 @@
 #![plugin(rocket_codegen)]
 #![feature(custom_derive)] // Feature will be depricated?
 
-// Web server
-extern crate rocket;
 extern crate rocket_contrib;
-// Mail libs
+extern crate rocket;
 extern crate lettre;
 extern crate lettre_email;
-extern crate mime;
+#[macro_use] extern crate serde_derive;
 
-use std::io;
 use std::path::{Path, PathBuf};
 use rocket::response::{NamedFile, Redirect};
-use rocket::request::{Form};
-use lettre::{Transport, SmtpClient};
-use lettre_email::Email;
+use rocket::request::{Form, Request};
+use rocket_contrib::{Template};
 
 mod mail;
-// use mail::Mail;
+mod conf;
+mod site;
 
 #[get("/")]
-fn index() -> io::Result<NamedFile> {
-    NamedFile::open("static/index.html")
+fn index() -> Template {
+    Template::render("index", 0)
 }
 
 #[get("/assets/<file..>")]
@@ -44,37 +41,70 @@ fn mail() -> Redirect {
     Redirect::to("/#contact")
 }
 
-#[post("/mail", data = "<_mail>")]
-fn send_mail(_mail: Form<mail::Mail>) ->  String {
-    let mail_data = _mail.into_inner();
+#[get("/mail/success")]
+fn success() -> Template {
+    let context = site::IndexTC {
+        class: "success".to_string(),
+        message: "Message sent!".to_string()
+    };
 
-    if mail_data.name.is_empty() {
-        return format!("Name may not be empty");
-    }
-
-    if mail_data.email.is_empty() {
-        return format!("Email may not be empty");
-    }
-
-    if mail_data.subject.is_empty() {
-        return format!("Subject may not be empty");
-    }
-
-    if mail_data.body.is_empty() {
-        return format!("Mail body may not be empty");
-    }
-
-    format!("Name: {} \n\nEmal: {} \n\nSubject: {} \n\nBody: {} \n\nCopy: {}", mail_data.name, mail_data.email, mail_data.subject, mail_data.body, mail_data.copy)
+    Template::render("index", &context)
 }
 
+// TODO: Refill form on failure
+#[get("/mail/error")]
+fn error() -> Template {
+    let context = site::IndexTC {
+        class: "error".to_string(),
+        message: "Message could not be sent. Make sure all fields are filled in or try again. Please try again or send an email to contact@olback.net.".to_string()
+    };
+
+    Template::render("index", &context)
+}
+
+// TODO: recaptcha!
+#[post("/mail", data = "<mail>")]
+fn send_mail(mail: Form<mail::Mail>) -> Redirect {
+    let mail_data = mail.into_inner();
+
+    if !site::check_form_data(&mail_data) {
+        return Redirect::to("/mail/error#contact");
+    }
+
+    if mail::send(mail_data) {
+        return Redirect::to("/mail/success#contact");
+    }
+
+    return Redirect::to("/mail/error#contact");
+}
+
+// TODO: Make a 404 page...
 #[error(404)]
-fn not_found() -> io::Result<NamedFile> {
-    NamedFile::open("static/404.html")
+fn not_found(req: &Request) -> Template {
+    let context = site::ErrorTemplate {
+        code: 404,
+        error: "Page not found".to_string(),
+        message: format!("The path {} could not be found.", req.uri())
+    };
+
+    Template::render("error", &context)
+}
+
+#[error(500)]
+fn internal_server_error() -> Template {
+    let context = site::ErrorTemplate {
+        code: 500,
+        error: "Internal server error".to_string(),
+        message: "The server encountered an internal error while processing this request.".to_string()
+    };
+
+    Template::render("error", &context)
 }
 
 fn main() {
     rocket::ignite()
-    .mount("/", routes![index, assets, download, mail, send_mail])
-    .catch(errors![not_found])
+    .mount("/", routes![index, assets, download, mail, success, error, send_mail])
+    .attach(Template::fairing())
+    .catch(errors![not_found, internal_server_error])
     .launch();
 }

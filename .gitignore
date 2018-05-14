@@ -34,3 +34,4 @@ keybase.txt
 node_modules/
 /target
 **/*.rs.bk
+src/conf.rs

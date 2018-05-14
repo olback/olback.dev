@@ -9,9 +9,9 @@
  *  Yellow: #f2b632
  */
 
- /*
-  *  TODO: Make elements more responsive.
-  */
+/*
+ *  TODO: Make elements more responsive.
+ */
 
 html,
 body {
@@ -184,7 +184,8 @@ label {
     text-align: left;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     background-color: transparent;
     border: none;
@@ -215,7 +216,8 @@ label[for="mf_c"] {
     display: inline;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     border-color: #f2b632;
 }
 
@@ -262,6 +264,26 @@ button:active {
     background-color: #ff8c00;
     border-color: #ff8c00;
     color: #252839;
+}
+
+.m-status {
+    display: none;
+    max-width: 590px;
+    width: 100%;
+    margin: auto;
+    padding: 2em;
+    margin-bottom: 2em;
+    border-radius: 3px;
+}
+
+.m-status.success {
+    background-color: #28a745;
+    display: block;
+}
+
+.m-status.error {
+    background-color: #dc3545;
+    display: block;
 }
 
 a,
