@@ -2,9 +2,8 @@
  *  olback.net web server
  */
 
-#![feature(plugin)]
+#![feature(plugin, custom_derive)]
 #![plugin(rocket_codegen)]
-#![feature(custom_derive)] // Feature will be depricated?
 
 extern crate rocket_contrib;
 extern crate rocket;
@@ -83,30 +82,21 @@ fn send_mail(mail: Form<mail::Mail>) -> Redirect {
 fn not_found(req: &Request) -> Template {
     let context = site::ErrorTemplate {
         code: 404,
-        error: "Page not found".to_string(),
         message: format!("The path {} could not be found.", req.uri())
     };
 
-    Template::render("error_hfjhgdhf", &context) // This trows an internal server error, as expected.
-    // Template::render("error", &context) // This works. Shows the 404 page as intended
+    Template::render("error", &context)
 }
 
 #[error(500)]
 fn internal_server_error() -> Template {
     let context = site::ErrorTemplate {
         code: 500,
-        error: "Internal server error".to_string(),
         message: "The server encountered an internal error while processing this request.".to_string()
     };
 
     Template::render("error", &context)
 }
-
-// This as shown in an example does not work either.
-// #[error(500)]
-// fn internal_server_error() -> &'static str {
-//     "server error"
-// }
 
 fn main() {
     rocket::ignite()

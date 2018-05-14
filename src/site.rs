@@ -13,7 +13,6 @@ pub struct IndexTC {
 #[derive(Serialize)]
 pub struct ErrorTemplate {
     pub code: i16,
-    pub error: String,
     pub message: String
 }
 

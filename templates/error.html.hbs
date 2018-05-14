@@ -4,10 +4,19 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="/assets/css/error.min.css">
         <title>{{ code }} - olback.net</title>
     </head>
     <body>
-        <h1>{{ code }} - {{ error }}</h1>
-        <p>{{ message }}</p>
+        <main>
+            <h1>{{ code }}</h1>
+            <p>{{ message }}</p>
+            <a id="back">Go back</a>
+        </main>
+        <script>
+            document.getElementById('back').addEventListener('click', function() {
+                window.history.back();
+            }, { passive: true });
+        </script>
     </body>
 </html>
