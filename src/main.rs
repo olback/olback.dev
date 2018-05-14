@@ -75,10 +75,10 @@ fn send_mail(mail: Form<mail::Mail>) -> Redirect {
         return Redirect::to("/mail/success#contact");
     }
 
-    return Redirect::to("/mail/error#contact");
+    return Redirect::to("/mail/error#contact")
 }
 
-// TODO: Make a 404 page...
+// TODO: Make a 404 page
 #[error(404)]
 fn not_found(req: &Request) -> Template {
     let context = site::ErrorTemplate {
@@ -87,7 +87,8 @@ fn not_found(req: &Request) -> Template {
         message: format!("The path {} could not be found.", req.uri())
     };
 
-    Template::render("error", &context)
+    Template::render("error_hfjhgdhf", &context) // This trows an internal server error, as expected.
+    // Template::render("error", &context) // This works. Shows the 404 page as intended
 }
 
 #[error(500)]
@@ -100,6 +101,12 @@ fn internal_server_error() -> Template {
 
     Template::render("error", &context)
 }
+
+// This as shown in an example does not work either.
+// #[error(500)]
+// fn internal_server_error() -> &'static str {
+//     "server error"
+// }
 
 fn main() {
     rocket::ignite()
