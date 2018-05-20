@@ -22,7 +22,7 @@ jobs:
           command: cp src/sample.conf.rs src/conf.rs
       - run:
           name: Build
-          command: cargo build --verbose --release
+          command: cargo build --release
       - save_cache:
           key: project-cache
           paths:
