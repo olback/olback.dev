@@ -9,10 +9,6 @@
  *  Yellow: #f2b632
  */
 
-/*
- *  TODO: Make elements more responsive.
- */
-
 html,
 body {
     margin: 0;
@@ -226,10 +222,10 @@ textarea:focus {
     border-color: #f2b632;
 }
 
-input:invalid {
+/* input:invalid {
     outline: none !important;
     border-color: red;
-}
+} */
 
 textarea {
     border: 1px solid #b5b5b7;
@@ -332,6 +328,11 @@ a:active {
 
 .fa-instagram:hover {
     color: #fff;
+}
+
+.g-recaptcha {
+    display: inline-block;
+    margin-bottom: 2em;
 }
 
 @media all and (max-width: 1250px) {

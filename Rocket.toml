@@ -7,9 +7,9 @@ limits = { forms = 32768 }
 
 [staging]
 address = "0.0.0.0"
-port = 3000
+port = 5000
 workers = 2
-log = "critical"
+log = "normal"
 limits = { forms = 32768 }
 
 [production]

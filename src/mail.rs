@@ -55,6 +55,6 @@ pub fn send(mail_data: Mail) -> bool {
 
     mailer.close();
 
-    return result.is_ok()
+    result.is_ok()
 
 }

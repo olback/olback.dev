@@ -3,6 +3,7 @@
  */
 
 use mail::Mail;
+use mailchecker;
 
 #[derive(Serialize)]
 pub struct IndexTC {
@@ -18,23 +19,19 @@ pub struct ErrorTemplate {
 
 pub fn check_form_data(mail_data: &Mail) -> bool {
 
-    if mail_data.name.is_empty() {
-        // return format!("Name may not be empty");
+    if !mailchecker::is_valid(mail_data.email.as_str()) {
         return false;
     }
 
-    if mail_data.email.is_empty() {
-        // return format!("Email may not be empty");
+    if mail_data.name.is_empty() {
         return false;
     }
 
     if mail_data.subject.is_empty() {
-        // return format!("Subject may not be empty");
         return false;
     }
 
     if mail_data.body.is_empty() {
-        // return format!("Mail body may not be empty");
         return false;
     }
 

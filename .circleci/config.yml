@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Install rustup
+          command: apt update; apt install rustup -y
+      - run:
+          name: Switch to rust nightly
+          command: rustup override set nightly
+      - run:
+          name: Install packages
+          command: cargo update
+      - run:
+          name: Build binary
+          command: cargo build --release

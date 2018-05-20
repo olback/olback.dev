@@ -9,6 +9,7 @@
         <meta name="copyright" content="Edwin Svensson" />
         <meta name="keywords" content="freelance, web design, web, programmer, web development, web dev, dev, developer" />
         <meta name="description" content="Hello, I'm Edwin and I'm a developer." />
+        <meta name="theme-color" content="#677077" />
         <script src="/assets/main.min.js"></script>
         <link rel="stylesheet" href="/assets/css/main.min.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous" />
@@ -18,7 +19,7 @@
 
         <header>
             <figure>
-                <img src="/assets/edwin.jpg" alt="Image not found." />
+                <img src="/assets/edwin.jpg" alt="Hey, I'm Edwin." title="Hey, I'm Edwin." />
                 <figcaption>Hi, I'm Edwin</figcaption>
             </figure>
             <div class="sm">
@@ -70,19 +71,19 @@
                     <div>
                         <div class="mfp">
                             <label for="mf_n">Full name:</label>
-                            <input id="mf_n" name="name" autocomplete="name" type="text" class="inputText" />
+                            <input id="mf_n" name="name" autocomplete="name" type="text" class="inputText" required="required" />
                         </div>
                         <div class="mfp">
                             <label for="mf_e">Your email:</label>
-                            <input id="mf_e" name="email" autocomplete="email" type="email" />
+                            <input id="mf_e" name="email" autocomplete="email" type="email" required="required" />
                         </div>
                     </div>
 
                     <label for="mf_s">Subject:</label>
-                    <input id="mf_s" name="subject" type="text" />
+                    <input id="mf_s" name="subject" type="text" required="required" />
 
                     <label for="mf_b">Message:</label>
-                    <textarea name="body" id="mf_b"></textarea>
+                    <textarea name="body" id="mf_b" required="required"></textarea>
 
                     <div class="copy">
                         <label for="mf_c">I want to receive a copy of this message:</label>
