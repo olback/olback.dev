@@ -108,7 +108,7 @@ section>div.cols {
 section>div.cols>div.col {
     display: block;
     float: left;
-    width: 28%;
+    width: calc(33% - 4em);
     min-width: 300px;
     padding: 2em;
     border-right: 1px solid #b5b5b7;
