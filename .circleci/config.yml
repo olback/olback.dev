@@ -1,19 +1,27 @@
 version: 2
+
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: abronan/rust-circleci:latest
     steps:
       - checkout
+      - restore_cache:
+          key: project-cache
       - run:
-          name: Install rustup
-          command: apt update; apt install rustup -y
-      - run:
-          name: Switch to rust nightly
+          name: Set rustup toolchain
           command: rustup override set nightly
       - run:
-          name: Install packages
+          name: Rustup update
+          command: rustup update
+      - run:
+          name: Cargo update
           command: cargo update
       - run:
-          name: Build binary
-          command: cargo build --release
+          name: Build
+          command: cargo build --verbose --release
+      - save_cache:
+          key: project-cache
+          paths:
+            - "~/.cargo"
+            - "./target"
