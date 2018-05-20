@@ -19,7 +19,7 @@ jobs:
           command: cargo update
       - run:
           name: Copy config
-          command: cp sample.conf.rs conf.rs
+          command: cp src/sample.conf.rs src/conf.rs
       - run:
           name: Build
           command: cargo build --verbose --release
