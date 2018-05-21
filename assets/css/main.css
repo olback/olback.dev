@@ -116,7 +116,7 @@ section>div.cols>div.col {
 }
 
 section>div.cols>div.col:last-of-type {
-    border: none;
+    border-right: none;
 }
 
 section>div.cols>div.col>h3 {
@@ -340,7 +340,7 @@ a:active {
         display: block;
         margin: auto !important;
         width: 80% !important;
-        border-right: none !important;
+        border: none !important;
         float: none !important;
         padding: 2em 0 !important;
     }
@@ -367,6 +367,17 @@ a:active {
 }
 
 @media all and (max-width: 500px) {
+    header>div.sm {
+        font-size: 1.5em;
+        left: 30px;
+        bottom: 30px;
+    }
+}
+
+@media all and (max-height: 500px) {
+    img {
+        height: 200px;
+    }
     header>div.sm {
         font-size: 1.5em;
         left: 30px;
