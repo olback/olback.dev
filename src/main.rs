@@ -82,7 +82,7 @@ fn send_mail(mail: Form<mail::Mail>) -> Redirect {
 fn not_found(req: &Request) -> Template {
     let context = site::ErrorTemplate {
         code: 404,
-        message: format!("The path {} could not be found.", req.uri())
+        message: format!("The path {} {} could not be found.", req.method(), req.uri())
     };
 
     Template::render("error", &context)
