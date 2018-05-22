@@ -297,6 +297,10 @@ button:active {
     display: block;
 }
 
+.m-status>p {
+    color: #fff;
+}
+
 .copy {
     display: inline-block;
     margin: 2em auto;
