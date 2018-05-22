@@ -206,7 +206,8 @@ textarea {
 }
 
 input[type="checkbox"] {
-    display: inline;
+    display: inline-block;
+    width: auto;
 }
 
 label[for="mf_b"] {
