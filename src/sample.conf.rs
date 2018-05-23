@@ -1,3 +1,5 @@
+use colored::*;
+
 pub const HOST: &str = ""; // Mail server hostname
 pub const USER: &str = ""; // Mail user name
 pub const PASS: &str = ""; // Mail password
