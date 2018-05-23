@@ -10,6 +10,7 @@ extern crate rocket;
 extern crate lettre;
 extern crate lettre_email;
 extern crate mailchecker;
+extern crate colored;
 #[macro_use] extern crate serde_derive;
 
 mod mail;
@@ -17,9 +18,11 @@ mod conf;
 mod site;
 
 use std::path::{Path, PathBuf};
+use std::process;
 use rocket::response::{NamedFile, Redirect};
 use rocket::request::{Form, Request};
-use rocket_contrib::{Template};
+use rocket_contrib::Template;
+use colored::*;
 
 #[get("/")]
 fn index() -> Template {
@@ -109,6 +112,12 @@ fn internal_server_error() -> Template {
 }
 
 fn main() {
+
+    if !conf::check() {
+        println!("{}", "Aborting, config not valid!".bold().red());
+        process::exit(-1);
+    }
+
     rocket::ignite()
     .mount("/", routes![index, assets, download, mail, success, error, send_mail])
     .attach(Template::fairing())
