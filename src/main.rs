@@ -65,7 +65,7 @@ fn error() -> Template {
     Template::render("index", &context)
 }
 
-// TODO: recaptcha!
+// TODO: recaptcha? Check referer header?
 #[post("/mail", data = "<mail>")]
 fn send_mail(mail: Form<mail::Mail>) -> Redirect {
     let mail_data = mail.into_inner();

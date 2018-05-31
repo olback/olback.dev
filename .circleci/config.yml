@@ -3,7 +3,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: abronan/rust-circleci:latest
+     # - image: abronan/rust-circleci:latest
+      - image: liuchong/rustup:stable
     steps:
       - checkout
       - restore_cache:
