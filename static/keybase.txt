@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/olback
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://olback.net
+  * I am olback (https://keybase.io/olback) on keybase.
+  * I have a public key ASAD_knVRTb7noJn-iWJqJHgN5qEakJn5nlw1IyBqZN0rwo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "012003fe49d54536fb9e8267fa2589a891e0379a846a4267e67970d48c81a99374af0a",
+            "host": "keybase.io",
+            "kid": "012003fe49d54536fb9e8267fa2589a891e0379a846a4267e67970d48c81a99374af0a",
+            "uid": "101317d2059ee0891f40fca704535c19",
+            "username": "olback"
+        },
+        "service": {
+            "hostname": "olback.net",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.18"
+    },
+    "ctime": 1486587403,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1486587391,
+        "hash": "db9729d76b893a954d7bfb033eca2316d717b32a5858b67665ec8763841848f48d4686524d695405ec8f36f7f98a787d2d04975f33972e406d265df67985e098",
+        "seqno": 846086
+    },
+    "prev": "c7ad9439c4c1cdf9f493d6ba1e95a371e5cfa0f70c7e7d74dd880a491c5cb91b",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgA/5J1UU2+56CZ/oliaiR4DeahGpCZ+Z5cNSMgamTdK8Kp3BheWxvYWTFAvB7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwMDNmZTQ5ZDU0NTM2ZmI5ZTgyNjdmYTI1ODlhODkxZTAzNzlhODQ2YTQyNjdlNjc5NzBkNDhjODFhOTkzNzRhZjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwMDNmZTQ5ZDU0NTM2ZmI5ZTgyNjdmYTI1ODlhODkxZTAzNzlhODQ2YTQyNjdlNjc5NzBkNDhjODFhOTkzNzRhZjBhIiwidWlkIjoiMTAxMzE3ZDIwNTllZTA4OTFmNDBmY2E3MDQ1MzVjMTkiLCJ1c2VybmFtZSI6Im9sYmFjayJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoib2xiYWNrLm5ldCIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjE4In0sImN0aW1lIjoxNDg2NTg3NDAzLCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0ODY1ODczOTEsImhhc2giOiJkYjk3MjlkNzZiODkzYTk1NGQ3YmZiMDMzZWNhMjMxNmQ3MTdiMzJhNTg1OGI2NzY2NWVjODc2Mzg0MTg0OGY0OGQ0Njg2NTI0ZDY5NTQwNWVjOGYzNmY3Zjk4YTc4N2QyZDA0OTc1ZjMzOTcyZTQwNmQyNjVkZjY3OTg1ZTA5OCIsInNlcW5vIjo4NDYwODZ9LCJwcmV2IjoiYzdhZDk0MzljNGMxY2RmOWY0OTNkNmJhMWU5NWEzNzFlNWNmYTBmNzBjN2U3ZDc0ZGQ4ODBhNDkxYzVjYjkxYiIsInNlcW5vIjo4LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQFmhBr1xFqqdgB5MkLdd9UrmejKtnV6YAQ/xyqL7KdmKIwjzxeVH6xo0BnwNmq5s6zFDHIQp7IybmoprIrck/gOoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCD4X9rylYFPM5isU42Vv81G2BdLgL8u/HR9QgiXXbgN5qN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/olback
+
+==================================================================

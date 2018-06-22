@@ -26,7 +26,6 @@ download/
 
 # Other
 links.html
-keybase.txt
 /target
 **/*.rs.bk
 src/conf.rs

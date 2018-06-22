@@ -39,6 +39,11 @@ fn download(file: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("download/").join(file)).ok()
 }
 
+#[get("/<file..>", rank = 3)]
+fn static_files(file: PathBuf) -> Option<NamedFile> {
+    NamedFile::open(Path::new("static/").join(file)).ok()
+}
+
 #[get("/mail")]
 fn mail() -> Redirect {
     Redirect::to("/#contact")
@@ -119,7 +124,7 @@ fn main() {
     }
 
     rocket::ignite()
-    .mount("/", routes![index, assets, download, mail, success, error, send_mail])
+    .mount("/", routes![index, assets, download, static_files, mail, success, error, send_mail])
     .attach(Template::fairing())
     .catch(errors![not_found, unprocessable_entity, internal_server_error])
     .launch();
