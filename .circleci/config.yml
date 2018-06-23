@@ -78,6 +78,4 @@ workflows:
   build_and_test:
     jobs:
       - lint
-      - build_binary:
-          requires:
-            - lint
+      - build_binary
