@@ -29,3 +29,5 @@ links.html
 /target
 **/*.rs.bk
 src/conf.rs
+
+node_modules/
