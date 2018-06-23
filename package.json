@@ -1,0 +1,24 @@
+{
+  "name": "olback.net",
+  "version": "3.0.0",
+  "description": "Website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olback/olback.net.git"
+  },
+  "author": "Edwin Svensson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/olback/olback.net/issues"
+  },
+  "homepage": "https://olback.net",
+  "devDependencies": {
+    "csslint": "^1.0.5",
+    "ember-template-lint": "^0.8.20",
+    "eslint": "^5.0.0",
+    "htmllint-cli": "0.0.7"
+  }
+}
