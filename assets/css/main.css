@@ -335,11 +335,6 @@ a:active {
     color: #fff;
 }
 
-.g-recaptcha {
-    display: inline-block;
-    margin-bottom: 2em;
-}
-
 @media all and (max-width: 1250px) {
     .cols>.col {
         display: block;
