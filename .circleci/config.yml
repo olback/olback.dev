@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build_binary:
+  build:
     docker:
      # - image: abronan/rust-circleci:latest
       - image: liuchong/rustup:stable
