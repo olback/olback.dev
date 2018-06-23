@@ -1,48 +1,16 @@
 version: 2
 
 jobs:
-  build:
+  build_binary:
     docker:
      # - image: abronan/rust-circleci:latest
       - image: liuchong/rustup:stable
-      - image: circleci/node:8.9.0
 
     steps:
       - checkout
 
       - restore_cache:
-          name: Restore npm cache
-          key: npm-cache-{{ checksum "package.json" }}
-
-      - run:
-          name: Install node packages
-          command: npm install
-
-      - save_cache:
-          name: Save npm cache
-          paths:
-            - node_modules
-          key: npm-cache-{{ checksum "package.json" }}
-
-      - run:
-          name: CSS Linting
-          command: ./node_modules/.bin/csslint assets/css/main.css assets/css/error.css
-
-      - run:
-          name: Javascript Linting
-          command: ./node_modules/.bin/eslint assets/main.js
-
-      - run:
-          name: HTML Linting
-          command: ./node_modules/.bin/htmllint templates/*.hbs
-
-      - run:
-          name: Handlebars Linting
-          command: ./node_modules/.bin/ember-template-lint templates/*.hbs
-
-      - restore_cache:
-          name: Restore rustup cache
-          key: rustup-cache
+          key: project-cache
 
       - run:
           name: Set rustup toolchain
@@ -65,8 +33,51 @@ jobs:
           command: cargo build --release
 
       - save_cache:
-          name: Save rustup cache
-          key: rustup-cache
+          key: project-cache
           paths:
             - "~/.cargo"
             - "./target"
+
+  lint:
+    docker:
+      - image: circleci/node:8.9.0
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: npm-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: Install node packages
+          command: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: npm-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: CSS Linting
+          command: ./node_modules/.bin/csslint assets/css/main.css assets/css/error.css
+
+      - run:
+          name: Javascript Linting
+          command: ./node_modules/.bin/eslint assets/main.js
+
+      - run:
+          name: HTML Linting
+          command: ./node_modules/.bin/htmllint templates/*.hbs
+
+      - run:
+          name: Handlebars Linting
+          command: ./node_modules/.bin/ember-template-lint templates/*.hbs
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - lint
+      - build_binary:
+          requires:
+            - lint
