@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Links - olback.net</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/links.min.css" />
+    <link rel="shortcut icon" type="image/png" href="/assets/edwin.jpg"/>
+    <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: #677077;
+    }
+    nav>a {
+        display: block;
+        padding: 2em;
+        font-family: 'Courier New', Courier, monospace;
+        text-decoration: none;
+        letter-spacing: 0.2em;
+        float: left;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        color: #fff;
+    }
+    nav>a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ddd;
+    }
+    main {
+        display: block;
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+    }
+    main {
+        font-size: 14pt;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    main>p {
+        color: #252839;
+    }
+    main>a {
+        display: block;
+        color: #f2b632;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+    main>a:hover {
+        text-decoration: underline;
+        color: #ff8c00;
+    }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="https://olback.net">olback.net</a>
+    </nav>
+    <main>
+        <p>Time and date: <span id="date-time"></span></p>
+        <a href="https://google.com/">Google</a>
+        <a href="https://translate.google.com/"> Google Translate</a>
+        <a href="https://www.youtube.com/feed/subscriptions">Youtube</a>
+        <a href="https://steamstat.us/">Steam Status</a>
+        <a href="https://steamcommunity.com/market">Steam: Community Market</a>
+        <a href="https://steamcommunity.com/id/olback/">Steam: olback</a>
+        <a href="https://steamcommunity.com/id/something_creative_goes_here">Steam: Smurf</a>
+        <a href="https://lastpass.com/">Lastpass</a>
+    </main>
+    <script>
+    	setInterval(function () {
+            document.getElementById ('date-time').innerHTML = new Date().toLocaleString()
+        }, 50);
+  </script>
+  </body>
+</html>
