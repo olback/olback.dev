@@ -25,7 +25,6 @@ downloads/
 download/
 
 # Other
-links.html
 /target
 **/*.rs.bk
 src/conf.rs
