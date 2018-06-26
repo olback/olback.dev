@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var footer = document.getElementsByTagName('footer')[0];
     var tc = document.querySelector('meta[name=theme-color]');
+    var fp = document.querySelector('footer p');
 
     document.addEventListener('scroll', function() {
 
@@ -24,5 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
     }, { passive: true });
+
+    /* Replace year in template with current one */
+    fp.innerHTML = fp.innerHTML.replace(/\d{4}/, new Date().getFullYear());
 
 }, { passive: true });

@@ -37,13 +37,8 @@ main {
     left: 50%;
     position: fixed;
     transform: translate(-50%, -50%);
-}
-main {
     font-size: 14pt;
     font-family: 'Courier New', Courier, monospace;
-}
-main>p {
-    color: #252839;
 }
 main>a {
     display: block;
