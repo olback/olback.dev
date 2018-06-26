@@ -59,11 +59,11 @@ jobs:
 
       - run:
           name: CSS Linting
-          command: ./node_modules/.bin/csslint assets/css/main.css assets/css/error.css
+          command: ./node_modules/.bin/csslint assets/css/main.css assets/css/error.css assets/css/links.css
 
       - run:
           name: Javascript Linting
-          command: ./node_modules/.bin/eslint assets/main.js
+          command: ./node_modules/.bin/eslint assets/js/main.js
 
       - run:
           name: HTML Linting
