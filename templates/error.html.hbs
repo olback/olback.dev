@@ -15,7 +15,7 @@
             <p>{{ message }}</p>
             <a id="back">Go back</a>
         </main>
-        {{!-- This should not work with the current CSP settings! --}}
+        <!-- This should not work with the current CSP settings! --->
         <script>
             document.getElementById('back').addEventListener('click', function() {
                 window.history.back();
