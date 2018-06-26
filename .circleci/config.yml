@@ -67,7 +67,7 @@ jobs:
 
       - run:
           name: HTML Linting
-          command: ./node_modules/.bin/htmllint templates/*.hbs
+          command: ./node_modules/.bin/htmllint templates/*.hbs static/links.html
 
       - run:
           name: Handlebars Linting
