@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build_binary:
+  binary:
     docker:
      # - image: abronan/rust-circleci:latest
      # - image: liuchong/rustup:stable
@@ -11,7 +11,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: project-cache
+          key: cargo-cache-{{ checksum "Cargo.toml" }}
 
       - run:
           name: Set rustup toolchain
@@ -34,7 +34,7 @@ jobs:
           command: cargo build --release
 
       - save_cache:
-          key: project-cache
+          key: cargo-cache-{{ checksum "Cargo.toml" }}
           paths:
             - "~/.cargo/"
             - "~/.rustup/"
@@ -80,4 +80,4 @@ workflows:
   lint_build:
     jobs:
       - lint
-      - build_binary
+      - binary
