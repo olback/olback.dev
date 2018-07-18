@@ -86,7 +86,7 @@ fn send_mail(mail: Form<mail::Mail>) -> Redirect {
     Redirect::to("/mail/error#contact")
 }
 
-#[error(404)]
+#[catch(404)]
 fn not_found(req: &Request) -> Template {
     let context = site::ErrorTemplate {
         code: 404,
@@ -96,7 +96,7 @@ fn not_found(req: &Request) -> Template {
     Template::render("error", &context)
 }
 
-#[error(422)]
+#[catch(422)]
 fn unprocessable_entity() -> Template {
     let context = site::ErrorTemplate {
         code: 422,
@@ -106,7 +106,7 @@ fn unprocessable_entity() -> Template {
     Template::render("error", &context)
 }
 
-#[error(500)]
+#[catch(500)]
 fn internal_server_error() -> Template {
     let context = site::ErrorTemplate {
         code: 500,
@@ -126,6 +126,6 @@ fn main() {
     rocket::ignite()
     .mount("/", routes![index, assets, download, static_files, mail, success, error, send_mail])
     .attach(Template::fairing())
-    .catch(errors![not_found, unprocessable_entity, internal_server_error])
+    .catch(catchers![not_found, unprocessable_entity, internal_server_error])
     .launch();
 }
