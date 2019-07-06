@@ -36,7 +36,11 @@ jobs:
           paths:
             - "~/.cargo/"
             - "~/.rustup/"
-            - "./target/"
+            - "./target/release"
+
+      - store_artifacts:
+          name: Store Server Build
+          path: "./target/release/olback_net"
 
   lint:
     docker:
