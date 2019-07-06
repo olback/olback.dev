@@ -3,38 +3,36 @@ version: 2
 jobs:
   binary:
     docker:
-     # - image: abronan/rust-circleci:latest
-     # - image: liuchong/rustup:stable
-      - image: liuchong/rustup:nightly
+      - image: circleci/rust:latest
 
     steps:
       - checkout
 
       - restore_cache:
-          key: cargo-cache-{{ checksum "Cargo.toml" }}
+          key: cargo-cache-{{ checksum "Cargo.lock" }}
 
       - run:
-          name: Set rustup toolchain
+          name: Use a Nightly Build
           command: rustup override set nightly
 
-      - run:
-          name: Rustup update
-          command: rustup update
+      # - run:
+      #     name: Rustup update
+      #     command: rustup update
+
+      # - run:
+      #     name: Cargo update
+      #     command: cargo update
 
       - run:
-          name: Cargo update
-          command: cargo update
-
-      - run:
-          name: Copy config
+          name: Copy Config
           command: cp src/sample.conf.rs src/conf.rs
 
       - run:
-          name: Build binary
+          name: Build Server Binary
           command: cargo build --release
 
       - save_cache:
-          key: cargo-cache-{{ checksum "Cargo.toml" }}
+          key: cargo-cache-{{ checksum "Cargo.lock" }}
           paths:
             - "~/.cargo/"
             - "~/.rustup/"
@@ -42,22 +40,22 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:8.9.0
+      - image: circleci/node:10-stretch
 
     steps:
       - checkout
 
       - restore_cache:
-          key: npm-cache-{{ checksum "package.json" }}
+          key: npm-cache-{{ checksum "package-lock.json" }}
 
       - run:
-          name: Install node packages
+          name: Install Node Packages
           command: npm install
 
       - save_cache:
           paths:
             - node_modules
-          key: npm-cache-{{ checksum "package.json" }}
+          key: npm-cache-{{ checksum "package-lock.json" }}
 
       - run:
           name: CSS Linting

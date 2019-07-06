@@ -3,7 +3,7 @@
  */
 
 use lettre::smtp::authentication::{Credentials, Mechanism};
-use lettre::{EmailTransport, SmtpTransport};
+use lettre::{SmtpClient, Transport};
 use lettre::smtp::extension::ClientId;
 use lettre::smtp::ConnectionReuseParameters;
 use lettre_email::EmailBuilder;
@@ -46,14 +46,16 @@ pub fn send(mail_data: Mail) -> bool {
     }
 
     // Connect to a remote server on a custom port
-    let mut mailer = SmtpTransport::simple_builder(HOST).unwrap()
+    // let mut mailer = SmtpClient::simple_builder(HOST).unwrap()
+    let mut mailer = SmtpClient::new_simple(HOST).unwrap()
     .hello_name(ClientId::Domain(HOST.to_string()))
     .credentials(Credentials::new(USER.to_string(), PASS.to_string()))
     .smtp_utf8(true)
     .authentication_mechanism(Mechanism::Login)
-    .connection_reuse(ConnectionReuseParameters::ReuseUnlimited).build();
+    // .connection_reuse(ConnectionReuseParameters::ReuseUnlimited).build();
+    .connection_reuse(ConnectionReuseParameters::ReuseUnlimited).transport();
 
-    let result = mailer.send(&email);
+    let result = mailer.send(email.into());
 
     mailer.close();
 

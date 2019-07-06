@@ -2,11 +2,10 @@
  *  olback.net web server
  */
 
-#![feature(plugin, custom_derive)]
-#![plugin(rocket_codegen)]
+#![feature(proc_macro_hygiene, decl_macro)]
 
 extern crate rocket_contrib;
-extern crate rocket;
+#[macro_use] extern crate rocket;
 extern crate lettre;
 extern crate lettre_email;
 extern crate mailchecker;
@@ -16,13 +15,16 @@ extern crate colored;
 mod mail;
 mod conf;
 mod site;
+mod raw_redirect;
 
 use std::path::{Path, PathBuf};
 use std::process;
 use rocket::response::{NamedFile, Redirect};
 use rocket::request::{Form, Request};
-use rocket_contrib::Template;
+use rocket::http::hyper::header::Location;
+use rocket_contrib::templates::Template;
 use colored::*;
+use raw_redirect::RawRedirect;
 
 #[get("/")]
 fn index() -> Template {
@@ -44,9 +46,10 @@ fn static_files(file: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("static/").join(file)).ok()
 }
 
-#[get("/mail")]
-fn mail() -> Redirect {
-    Redirect::to("/#contact")
+#[get("/contact")]
+fn contact() -> RawRedirect {
+    // Redirect::to("/#contact")
+    RawRedirect((), Location(String::from("/#contact")))
 }
 
 #[get("/mail/success")]
@@ -124,8 +127,8 @@ fn main() {
     }
 
     rocket::ignite()
-    .mount("/", routes![index, assets, download, static_files, mail, success, error, send_mail])
+    .mount("/", routes![index, assets, download, static_files, contact, success, error, send_mail])
     .attach(Template::fairing())
-    .catch(catchers![not_found, unprocessable_entity, internal_server_error])
+    .register(catchers![not_found, unprocessable_entity, internal_server_error])
     .launch();
 }
