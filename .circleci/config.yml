@@ -9,7 +9,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: cargo-cache-{{ checksum "Cargo.lock" }}
+          key: cargo-cache-{{ checksum "Cargo.lock" }}-{{ checksum "Cargo.toml" }}
 
       - run:
           name: Use a Nightly Build
@@ -24,7 +24,7 @@ jobs:
           command: cargo build --release
 
       - save_cache:
-          key: cargo-cache-{{ checksum "Cargo.lock" }}
+          key: cargo-cache-{{ checksum "Cargo.lock" }}-{{ checksum "Cargo.toml" }}
           paths:
             - "~/.cargo/"
             - "~/.rustup/"
