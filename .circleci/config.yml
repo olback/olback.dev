@@ -15,14 +15,6 @@ jobs:
           name: Use a Nightly Build
           command: rustup override set nightly
 
-      # - run:
-      #     name: Rustup update
-      #     command: rustup update
-
-      # - run:
-      #     name: Cargo update
-      #     command: cargo update
-
       - run:
           name: Copy Config
           command: cp src/sample.conf.rs src/conf.rs
@@ -36,7 +28,8 @@ jobs:
           paths:
             - "~/.cargo/"
             - "~/.rustup/"
-            - "./target/release"
+            - "./target"
+            - "/usr/local/cargo"
 
       - store_artifacts:
           name: Store Server Build
