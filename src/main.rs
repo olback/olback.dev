@@ -6,20 +6,19 @@
 
 extern crate rocket_contrib;
 #[macro_use] extern crate rocket;
-extern crate lettre;
-extern crate lettre_email;
-extern crate mailchecker;
 extern crate colored;
+extern crate serde;
 #[macro_use] extern crate serde_derive;
 
 mod mail;
 mod conf;
-mod site;
+mod form;
+mod templates;
 mod raw_redirect;
 
 use std::path::{Path, PathBuf};
 use std::process;
-use rocket::response::{NamedFile, Redirect};
+use rocket::response::{NamedFile/*, Redirect*/};
 use rocket::request::{Form, Request};
 use rocket::http::hyper::header::Location;
 use rocket_contrib::templates::Template;
@@ -54,7 +53,7 @@ fn contact() -> RawRedirect {
 
 #[get("/mail/success")]
 fn success() -> Template {
-    let context = site::IndexTC {
+    let context = templates::IndexTC {
         class: "success".to_string(),
         message: "Message sent!".to_string()
     };
@@ -65,7 +64,7 @@ fn success() -> Template {
 // TODO: Refill form on failure
 #[get("/mail/error")]
 fn error() -> Template {
-    let context = site::IndexTC {
+    let context = templates::IndexTC {
         class: "error".to_string(),
         message: "Message could not be sent. Make sure all fields are filled in or try again. Please try again or send an email to contact@olback.net.".to_string()
     };
@@ -75,23 +74,26 @@ fn error() -> Template {
 
 // TODO: recaptcha? Check referer header?
 #[post("/mail", data = "<mail>")]
-fn send_mail(mail: Form<mail::Mail>) -> Redirect {
+fn send_mail(mail: Form<mail::Mail>) -> RawRedirect {
     let mail_data = mail.into_inner();
 
-    if !site::check_form_data(&mail_data) {
-        return Redirect::to("/mail/error#contact");
+    if !form::check_form_data(&mail_data) {
+        // return Redirect::to("/mail/error#contact");
+        return RawRedirect((), Location(String::from("/mail/error#contact")));
     }
 
     if mail::send(mail_data) {
-        return Redirect::to("/mail/success#contact");
+        // return Redirect::to("/mail/success#contact");
+        return RawRedirect((), Location(String::from("/mail/success#contact")));
     }
 
-    Redirect::to("/mail/error#contact")
+    // Redirect::to("/mail/error#contact")
+    RawRedirect((), Location(String::from("/mail/error#contact")))
 }
 
 #[catch(404)]
 fn not_found(req: &Request) -> Template {
-    let context = site::ErrorTemplate {
+    let context = templates::ErrorTemplate {
         code: 404,
         message: format!("The path {} {} could not be found.", req.method(), req.uri())
     };
@@ -101,7 +103,7 @@ fn not_found(req: &Request) -> Template {
 
 #[catch(422)]
 fn unprocessable_entity() -> Template {
-    let context = site::ErrorTemplate {
+    let context = templates::ErrorTemplate {
         code: 422,
         message: "Unprocessable Entity. The request was well-formed but was unable to be followed due to semantic errors.".to_string()
     };
@@ -111,7 +113,7 @@ fn unprocessable_entity() -> Template {
 
 #[catch(500)]
 fn internal_server_error() -> Template {
-    let context = site::ErrorTemplate {
+    let context = templates::ErrorTemplate {
         code: 500,
         message: "The server encountered an internal error while processing this request.".to_string()
     };
@@ -121,14 +123,25 @@ fn internal_server_error() -> Template {
 
 fn main() {
 
-    if !conf::check() {
-        println!("{}", "Aborting, config not valid!".bold().red());
+    if !conf::check_mail_config() {
+        println!("{}", "Aborting, mail config not valid!".bold().red());
         process::exit(-1);
     }
 
-    rocket::ignite()
-    .mount("/", routes![index, assets, download, static_files, contact, success, error, send_mail])
-    .attach(Template::fairing())
-    .register(catchers![not_found, unprocessable_entity, internal_server_error])
-    .launch();
+    let sent = mail::send(mail::Mail {
+        name: String::from("Edwin"),
+        email: String::from("ee@olback.net"),
+        subject: String::from("Test email"),
+        body: String::from("asdf"),
+        copy: false
+    });
+
+    println!("Mail sent: {}", sent);
+
+    // rocket::ignite()
+    // .mount("/", routes![index, assets, download, static_files, contact, success, error, send_mail])
+    // .attach(Template::fairing())
+    // .register(catchers![not_found, unprocessable_entity, internal_server_error])
+    // .launch();
+
 }

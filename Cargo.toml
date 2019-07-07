@@ -9,7 +9,9 @@ rocket_codegen = "0.4.2"
 rocket_contrib = { version = "0.4.2", default-features = false, features = ["handlebars_templates"] }
 lettre = "0.9.2"
 lettre_email = "0.9.2"
-serde = "1.0.94"
+serde = { version = "1.0.94", features = ["derive"] }
 serde_derive = "1.0.94"
 mailchecker = "3.2.34"
 colored = "1.6"
+toml = "0.5.1"
+native-tls = "0.2.3"

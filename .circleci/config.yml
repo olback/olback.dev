@@ -16,10 +16,6 @@ jobs:
           command: rustup override set nightly
 
       - run:
-          name: Copy Config
-          command: cp src/sample.conf.rs src/conf.rs
-
-      - run:
           name: Build Server Binary
           command: cargo build --release
 

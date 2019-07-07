@@ -1,0 +1,7 @@
+host = "" # Mail server hostname
+port = 587 # SMPT Port
+user = "" # Mail user name
+pass = "" # Mail password
+from = "" # From address
+name = "" # From name
+site = "" # Domain
