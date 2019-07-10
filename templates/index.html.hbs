@@ -1,108 +1,190 @@
+<!-- olback.net v4.0 -->
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="author" content="Edwin Svensson" />
-        <meta name="owner" content="Edwin Svensson" />
-        <meta name="copyright" content="Edwin Svensson" />
-        <meta name="keywords" content="freelance, web design, web, programmer, web development, web dev, dev, developer" />
-        <meta name="description" content="Hello, I'm Edwin and I'm a developer." />
-        <meta name="theme-color" content="#677077" />
-        <script src="/assets/js/main.min.js"></script>
-        <link rel="stylesheet" href="/assets/css/main.min.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous" />
-        <link rel="shortcut icon" href="/assets/edwin.jpg" />
-        <title>Edwin - olback.net</title>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#ff570c">
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+    <link rel="shortcut icon" href="/assets/img/edwin.jpg">
+    <title>Edwin - olback.net</title>
+</head>
+<body>
 
-        <header>
-            <figure>
-                <img src="/assets/edwin.jpg" alt="Hey, I'm Edwin." title="Hey, I'm Edwin." />
-                <figcaption>Hi, I'm Edwin</figcaption>
-            </figure>
-            <div class="sm">
-                <a href="https://github.com/olback" aria-hidden="true" rel="noopener" target="_blank" class="fab fa-github"></a>
-                <a href="https://twitter.com/mrolback" aria-hidden="true" rel="noopener" target="_blank" class="fab fa-twitter"></a>
-                <a href="https://www.instagram.com/mredwinn/" aria-hidden="true" rel="noopener" target="_blank" class="fab fa-instagram"></a>
+    <header>
+
+        <section class="arrow">
+            <div id="arrow">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="point"></span>
             </div>
-        </header>
+        </section>
 
-        <main>
+        <section class="social">
+            <a href="https://github.com/olback" aria-hidden="true" class="fab fa-github" rel="noopener" target="_blank"><span>olback</span></a>
+            <a href="https://twitter.com/mrolback" aria-hidden="true" class="fab fa-twitter" rel="noopener" target="_blank"><span>MrOlback</span></a>
+            <a href="https://www.linkedin.com/in/olback/" aria-hidden="true" class="fab fa-linkedin" rel="noopener" target="_blank"><span>olback</span></a>
+        </section>
 
-            <section>
-                <h2 id="about">About</h2>
+        <section class="left">
+            <picture>
+                <source srcset="/assets/img/edwin.webp">
+                <img src="/assets/img/edwin.jpg" alt="Picture">
+            </picture>
+        </section>
+
+        <section class="right">
+            <h1>
+                Hi<span class="accent">,</span> I<span class="accent">'</span>m Edwin<span class="accent">.</span>
+            </h1>
+            <h2>
+                <span id="profession">Webdeveloper<span class="accent">.</span></span><span id="underscore" class="blink">_</span>
+            </h2>
+        </section>
+
+    </header>
+
+    <main>
+
+        <section id="oss">
+
+            <h2>Open Source Projects</h2>
+
+            <div class="items">
+
+                <article>
+                    <h3>es6-css-minify</h3>
+                    <p>
+                        <em>es6-css-minify</em> is a open-source VS Code extension that lets you minify JavaScript,
+                        CSS and generate source maps with a simple click.
+                        View source on <a href="http://github.com/olback/es6-css-minify" rel="noopener" target="_blank">Github</a>
+                        or download from the
+                        <a href="https://marketplace.visualstudio.com/items?itemName=olback.es6-css-minify" rel="noopener" target="_blank">VSC Marketplace</a>.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Chickens Attack Helicopters</h3>
+                    <p>
+                        <em>Chickens Attack Helicopters</em> is an online implementation of the popular table top party game
+                        <a href="https://cardsagainsthumanity.com/" rel="noopener" target="_blank">Cards Against Humanity</a>.
+                        It's a game for truly horrible people. Play it on <a href="https://cah.ninja?utm_source=olback.net" rel="noopener" target="_blank">cah.ninja</a>
+                        or contribute to the game <a href="https://github.com/olback/cah" rel="noopener" target="_blank">here</a>.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>rdg-linux</h3>
+                    <p>
+                        <em>rdg-linux</em> is a simple front-end application for the CLI tool rdesktop.
+                        This was created for people that don't like using the terminal for everything.
+                        View <a href="https://github.com/olback/rdg-linux" rel="noopener" target="_blank">source</a> or <a href="https://github.com/olback/rdg-linux/releases/latest" rel="noopener" target="_blank">download</a> on Github.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="about">
+
+            <h2>About</h2>
+
+            <div class="body">
+
+                <h4>Introduction</h4>
                 <p>
-                    Hey, my name is Edwin and i study IT/engineering in Sweden at the moment. I am 17 years old. I really like maths and physics, don't really know why. In my spare time I like to design and develop websites. I also like photogrophy. I can't really say that I'm particulary good at any of the aformentioned things but it's a whole lot of fun. I'm also a fan of open source software and hardware.
+                    Hey, my name is Edwin and i study IT/engineering in Sweden.
+                    I am {{ age }} years old and I really enjoy maths, physics and chemistry.
+                    In my spare time I usually work on one of my many side-projects.
+                    I'm also a fan of open source software and hardware.
                 </p>
-                <h2 id="projects">Featured projects</h2>
-                <div class="cols">
-                    <div class="col">
-                        <h3>es6-css-minify</h3>
-                        <p>
-                            <em>es6-css-minify</em> is a open-source VS Code extension that lets you minify JavaScript, CSS and generate source maps with a simple click.
-                            View source on <a href="http://github.com/olback/es6-css-minify" rel="noopener" target="_blank">Github</a> or download from the <a href="https://marketplace.visualstudio.com/items?itemName=olback.es6-css-minify" rel="noopener" target="_blank">VSC Marketplace</a>.
-                        </p>
-                    </div>
-                    <div class="col">
-                        <h3>rdg-linux</h3>
-                        <p>
-                            <em>rdg-linux</em> is a simple front-end application for the CLI tool rdesktop.
-                            This was created for people that don't like using the terminal for everything.
-                            View <a href="https://github.com/olback/rdg-linux" rel="noopener" target="_blank">source</a> or <a href="https://github.com/olback/rdg-linux/releases/latest" rel="noopener" target="_blank">download</a> on Github.
-                        </p>
-                    </div>
-                    <div class="col">
-                        <h3>Todo app</h3>
-                        <p>
-                            <em>o-todo</em> is a self-hosted progressive web application for security concerned people.
-                            It's written in PHP and uses MySQL to store data which means it's simple to set up yourself.
-                            <a href="https://github.com/olback/o-todo" rel="noopener" target="_blank">Contribute</a> or check out the <a href="https://o-todo.olback.net" rel="noopener" target="_blank">demo</a>.
-                        </p>
-                    </div>
+
+                <h4>Favourite programming language?</h4>
+                <p>TypeScript.</p>
+
+                <h4>Education: (ISCED)</h4>
+                <ul>
+                    <li><b>3-5</b> Information and Media Technology 3 years</li>
+                    <li><b>6</b> University (Computer Engineer) 3 years</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <section id="contact">
+
+            <h2>Contact</h2>
+
+            <div class="wrapper">
+
+                <div class="m-status {{ class }}">
+                    {{ message }}
                 </div>
 
-                <h2 id="contact">Contact</h2>
+                <form action="/mail" method="POST">
 
-                <div class="m-status {{ class }}"><p>{{ message }}</p></div>
+                    <div class="name-email">
 
-                <form action="/mail" method="post">
-                    <div>
-                        <div class="mfp">
-                            <label for="mf_n">Full name:</label>
-                            <input id="mf_n" name="name" autocomplete="name" type="text" class="inputText" required="required" />
+                        <div class="input-group">
+                            <label for="name">Full name:</label>
+                            <input required name="name" id="name" type="text" value="{{ mail.name }}">
                         </div>
-                        <div class="mfp">
-                            <label for="mf_e">Your email:</label>
-                            <input id="mf_e" name="email" autocomplete="email" type="email" required="required" />
+
+                        <div class="input-group">
+                            <label for="email">Your Email:</label>
+                            <input required name="email" id="email" type="email" value="{{ mail.email }}">
                         </div>
+
                     </div>
 
-                    <label for="mf_s">Subject:</label>
-                    <input id="mf_s" name="subject" type="text" required="required" />
-
-                    <label for="mf_b">Message:</label>
-                    <textarea name="body" id="mf_b" required="required"></textarea>
-
-                    <div class="copy">
-                        <label for="mf_c">I want to receive a copy of this message:</label>
-                        <input id="mf_c" name="copy" type="checkbox" checked="checked" />
+                    <div class="input-group">
+                        <label for="subject">Subject:</label>
+                        <input required name="subject" id="subject" type="text" value="{{ mail.subject }}">
                     </div>
 
-                    <button type="submit">Send</button>
+                    <div class="input-group">
+                        <label for="body">Message:</label>
+                        <textarea required name="body" id="body">{{ mail.body }}</textarea>
+                    </div>
+
+                    <div class="input-group checkbox">
+                        <span>I want to receive a copy of this message:</span>
+                        <input id="copy" type="checkbox" checked>
+                        <label for="copy"></label>
+                    </div>
+
+                    <input type="hidden" name="_csrf" value="{{ csrf }}">
+                    <input type="checkbox" name="_interactive">
+
+                    <button type="submit" disabled>Send</button>
+
                 </form>
 
-            </section>
+            </div>
 
-            <div class="fs"></div>
+        </section>
 
-        </main>
+    </main>
 
-        <footer>
-            <p>Edwin &copy; 2018</p>
-        </footer>
+    <div id="cookie">
+        <p>This site uses cookies.</p> <button id="cookie-ok">OK</button>
+    </div>
 
-    </body>
+    <footer>
+        <!-- <p>Edwin &copy; olback.net {{ year }} <a href="/sv">🇸🇪</a></p> -->
+        <!-- <p>Edwin &copy; olback.net {{ year }} <a href="/en">🇬🇧</a></p> -->
+        <!-- <p>Edwin &copy; olback.net {{ year }} <a href="/{{ i18n.code }}">{{ i18n.flag }}</a></p> -->
+        <p>Edwin &copy; olback.net {{ year }}</p>
+    </footer>
+
+    <div id="scroll-top" class="fas fa-chevron-up"></div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+</body>
 </html>

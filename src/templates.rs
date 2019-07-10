@@ -2,10 +2,16 @@
  *  olback.net web server
  */
 
+extern crate chrono;
+use self::chrono::{Utc, Datelike};
+use mail;
+
 #[derive(Serialize)]
 pub struct IndexTemplate {
     pub class: String,
-    pub message: String
+    pub message: String,
+    pub year: i32,
+    pub mail: Option<mail::Mail>
 }
 
 impl Default for IndexTemplate {
@@ -13,6 +19,8 @@ impl Default for IndexTemplate {
         IndexTemplate {
             class: String::from(""),
             message: String::from(""),
+            year: Utc::now().year(),
+            mail: None
         }
     }
 }

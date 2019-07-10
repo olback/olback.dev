@@ -1,0 +1,115 @@
+/*
+ *  olback.net v4.0
+ */
+
+div#cookie {
+
+    position: fixed;
+    right: -20rem;
+    bottom: 10vh;
+    border: 3px solid $accent;
+    border-right: none;
+    padding: 1.5rem;
+    background-color: $white;
+    color: $darkGray;
+    transition: right ease-in-out .15s;
+
+    p, button {
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+    }
+
+    button {
+        background-color: $accent;
+        border: none;
+        padding: .75rem 1.5rem;
+        border-radius: .5rem;
+        margin-left: 1rem;
+        outline: none;
+        color: $darkGray;
+        transition: color ease-in-out 1s;
+        cursor: pointer;
+
+        &:hover {
+            color: $lightGray;
+        }
+
+    }
+    $cornerSize: 2rem;
+
+    &::before {
+        position:absolute;
+        left: -1px;
+        bottom: -1px;
+        content: '';
+        border-bottom: $cornerSize solid $accent;
+        border-right: $cornerSize solid transparent;
+    }
+
+    &::after {
+        position: absolute;
+        left: -3px;
+        bottom: -3px;
+        content: '';
+        border-bottom: $cornerSize solid $white;
+        border-right: $cornerSize solid transparent;
+    }
+
+    &.show {
+        right: 0;
+    }
+
+}
+
+div#scroll-top {
+    position: fixed;
+    bottom: 3rem;
+    right: -5rem;
+    background-color: $accent;
+    border-radius: 50%;
+    color: $darkGray;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: bottom ease-in-out .15s, right ease-in-out .15s;
+
+    &:hover {
+        bottom: 3.5rem;
+    }
+
+    &.show {
+        right: 3rem;
+    }
+
+}
+
+footer {
+    background-color: $darkGray;
+    color: $white;
+
+    p {
+        text-align: center;
+        margin: 0;
+        padding: 3rem;
+
+        a {
+            color: $white;
+            text-decoration: none;
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    div#scroll-top {
+        bottom: 2rem;
+        padding: 1rem;
+        &.show {
+            right: 2rem;
+        }
+    }
+
+}

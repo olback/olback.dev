@@ -12,18 +12,23 @@ use self::lettre::smtp::ConnectionReuseParameters;
 use self::lettre::smtp::extension::ClientId;
 use self::native_tls::{Protocol, TlsConnector};
 use self::lettre_email::EmailBuilder;
+use std::time::Duration;
 use conf;
 
-#[derive(FromForm)]
+#[derive(FromForm, Serialize, Debug)]
 pub struct Mail {
     pub name: String,
     pub email: String,
     pub subject: String,
     pub body: String,
-    pub copy: bool
+    pub copy: bool,
+    pub _csrf: String,
+    pub _interactive: bool,
 }
 
 pub fn send(mail_data: Mail) -> bool {
+
+    println!("{:#?}", &mail_data);
 
     let mail_config = conf::read_mail_config();
     let body: String = format!("Name: {}\nEmail: {}\n\n{}",
@@ -51,10 +56,34 @@ pub fn send(mail_data: Mail) -> bool {
         tls_builder.build().unwrap()
     );
 
-    let mut mailer = SmtpClient::new(
+    // let mut mailer = SmtpClient::new(
+    //     (mail_config.host.clone().as_str(), mail_config.port),
+    //     ClientSecurity::Required(tls_parameters)
+    // ).unwrap()
+    // .hello_name(ClientId::Domain(mail_config.host.clone()))
+    // .smtp_utf8(true)
+    // .credentials(Credentials::new(
+    //     mail_config.username,
+    //     mail_config.password
+    // ))
+    // .authentication_mechanism(Mechanism::Plain)
+    // .connection_reuse(ConnectionReuseParameters::ReuseUnlimited)
+    // .timeout(Some(Duration::new(5, 0)))
+    // .transport();
+
+
+    let smtp_client = SmtpClient::new(
         (mail_config.host.clone().as_str(), mail_config.port),
         ClientSecurity::Required(tls_parameters)
-    ).unwrap()
+    );
+
+    let mut mailer = match smtp_client {
+        Ok(v) => v,
+        Err(_) => {
+            return false;
+        }
+    }
+
     .hello_name(ClientId::Domain(mail_config.host.clone()))
     .smtp_utf8(true)
     .credentials(Credentials::new(
@@ -63,6 +92,7 @@ pub fn send(mail_data: Mail) -> bool {
     ))
     .authentication_mechanism(Mechanism::Plain)
     .connection_reuse(ConnectionReuseParameters::ReuseUnlimited)
+    .timeout(Some(Duration::new(5, 0)))
     .transport();
 
     let result = mailer.send(email.build().unwrap().into());

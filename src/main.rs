@@ -18,16 +18,53 @@ mod raw_redirect;
 
 use std::path::{Path, PathBuf};
 use std::process;
-use rocket::response::{NamedFile/*, Redirect*/};
-use rocket::request::{Form, Request};
+use rocket::response::{NamedFile, Flash/*, Redirect*/};
+use rocket::request::{Form, Request, FlashMessage};
 use rocket::http::hyper::header::Location;
+// use rocket::http::{Cookie, Cookies};
 use rocket_contrib::templates::Template;
 use colored::*;
 use raw_redirect::RawRedirect;
 
+struct FlashRes {
+    name: String,
+    msg: String
+}
+
 #[get("/")]
-fn index() -> Template {
-    Template::render("index", templates::IndexTemplate::default())
+fn index(flash: Option<FlashMessage>/*, mut cookies: Cookies*/) -> Template {
+
+    // Make sure the CSRF private cookie is set.
+
+    // let csrf = match cookies.get_private(".csrf") {
+    //     Some(v) => v.value().to_string(),
+    //     None => "".to_string()
+    // };
+
+    // println!(".csrf: {}", csrf);
+
+    // if csrf.is_empty() {
+    //     cookies.add_private(Cookie::new(".csrf", "test value"));
+    // }
+
+    if flash.is_some() {
+
+        let flash_res = flash.map(|msg| FlashRes {
+                name: msg.name().to_string(),
+                msg: msg.msg().to_string()
+        }).unwrap();
+
+        Template::render("index", templates::IndexTemplate {
+            class: flash_res.name,
+            message: flash_res.msg,
+            ..Default::default()
+        })
+
+    } else {
+
+        Template::render("index", templates::IndexTemplate::default())
+
+    }
 }
 
 #[get("/assets/<file..>")]
@@ -51,44 +88,30 @@ fn contact() -> RawRedirect {
     RawRedirect((), Location(String::from("/#contact")))
 }
 
-#[get("/mail/success")]
-fn success() -> Template {
-    let context = templates::IndexTemplate {
-        class: "success".to_string(),
-        message: "Message sent!".to_string()
-    };
-
-    Template::render("index", &context)
-}
-
-// TODO: Refill form on failure
-#[get("/mail/error")]
-fn error() -> Template {
-    let context = templates::IndexTemplate {
-        class: "error".to_string(),
-        message: "Message could not be sent. Make sure all fields are filled in or try again. Please try again or send an email to contact@olback.net.".to_string()
-    };
-
-    Template::render("index", &context)
-}
-
-// TODO: recaptcha? Check referer header?
 #[post("/mail", data = "<mail>")]
-fn send_mail(mail: Form<mail::Mail>) -> RawRedirect {
+fn send_mail(mail: Form<mail::Mail>) -> Flash<RawRedirect> {
+
     let mail_data = mail.into_inner();
+
+    if !mail_data._interactive {
+        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form not activated, bot?")
+    }
+
+    // TODO: CSRF
 
     if !form::check_form_data(&mail_data) {
         // return Redirect::to("/mail/error#contact");
-        return RawRedirect((), Location(String::from("/mail/error#contact")));
+        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form data invalid.")
     }
 
     if mail::send(mail_data) {
         // return Redirect::to("/mail/success#contact");
-        return RawRedirect((), Location(String::from("/mail/success#contact")));
+        return Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
     }
 
     // Redirect::to("/mail/error#contact")
-    RawRedirect((), Location(String::from("/mail/error#contact")))
+    Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to send email.")
+
 }
 
 #[catch(404)]
@@ -129,7 +152,7 @@ fn main() {
     }
 
     rocket::ignite()
-    .mount("/", routes![index, assets, download, static_files, contact, success, error, send_mail])
+    .mount("/", routes![index, assets, download, static_files, contact, send_mail])
     .attach(Template::fairing())
     .register(catchers![not_found, unprocessable_entity, internal_server_error])
     .launch();
