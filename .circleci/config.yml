@@ -19,6 +19,13 @@ jobs:
           name: Build Server Binary
           command: cargo build --release
 
+      - run:
+          name: Change permissions
+          command: |
+                    if [ -d "/usr/local/cargo" ]; then
+                      chown circleci:circleci /usr/local/cargo
+                    fi
+
       - save_cache:
           key: cargo-cache-{{ checksum "Cargo.lock" }}-{{ checksum "Cargo.toml" }}
           paths:
