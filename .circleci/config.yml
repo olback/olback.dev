@@ -12,7 +12,7 @@ jobs:
           name: Change Permissions for Cargo Cache
           command: |
                     if [ -d "/usr/local/cargo" ]; then
-                      sudo chown circleci:circleci /usr/local/cargo
+                      sudo chown -R circleci:circleci /usr/local/cargo
                     fi
 
       - restore_cache:
