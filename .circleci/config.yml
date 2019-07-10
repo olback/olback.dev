@@ -8,6 +8,13 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Change Permissions for Cargo Cache
+          command: |
+                    if [ -d "/usr/local/cargo" ]; then
+                      sudo chown circleci:circleci /usr/local/cargo
+                    fi
+
       - restore_cache:
           key: cargo-cache-{{ checksum "Cargo.lock" }}-{{ checksum "Cargo.toml" }}
 
@@ -18,13 +25,6 @@ jobs:
       - run:
           name: Build Server Binary
           command: cargo build --release
-
-      - run:
-          name: Change permissions
-          command: |
-                    if [ -d "/usr/local/cargo" ]; then
-                      chown circleci:circleci /usr/local/cargo
-                    fi
 
       - save_cache:
           key: cargo-cache-{{ checksum "Cargo.lock" }}-{{ checksum "Cargo.toml" }}
