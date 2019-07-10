@@ -10,9 +10,10 @@ use serde::Deserialize;
 pub struct MailConfig {
     pub host: String,
     pub port: u16,
-    pub user: String,
-    pub pass: String,
+    pub username: String,
+    pub password: String,
     pub from: String,
+    pub to: String,
     pub name: String,
     pub site: String
 }
@@ -41,18 +42,28 @@ pub fn check_mail_config() -> bool {
         pass = false;
     }
 
-    if mail_conf.user.is_empty() {
+    if mail_conf.port == 0 {
+        println!("{}", "Field 'port' is 0 (zero)!".bold().yellow());
+        pass = false;
+    }
+
+    if mail_conf.username.is_empty() {
         println!("{}", "Field 'user' is empty!".bold().yellow());
         pass = false;
     }
 
-    if mail_conf.pass.is_empty() {
+    if mail_conf.password.is_empty() {
         println!("{}", "Field 'pass' is empty!".bold().yellow());
         pass = false;
     }
 
     if mail_conf.from.is_empty() {
         println!("{}", "Field 'from' is empty!".bold().yellow());
+        pass = false;
+    }
+
+    if mail_conf.to.is_empty() {
+        println!("{}", "Field 'to' is empty!".bold().yellow());
         pass = false;
     }
 

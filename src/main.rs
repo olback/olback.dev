@@ -27,7 +27,7 @@ use raw_redirect::RawRedirect;
 
 #[get("/")]
 fn index() -> Template {
-    Template::render("index", 0)
+    Template::render("index", templates::IndexTemplate::default())
 }
 
 #[get("/assets/<file..>")]
@@ -53,7 +53,7 @@ fn contact() -> RawRedirect {
 
 #[get("/mail/success")]
 fn success() -> Template {
-    let context = templates::IndexTC {
+    let context = templates::IndexTemplate {
         class: "success".to_string(),
         message: "Message sent!".to_string()
     };
@@ -64,7 +64,7 @@ fn success() -> Template {
 // TODO: Refill form on failure
 #[get("/mail/error")]
 fn error() -> Template {
-    let context = templates::IndexTC {
+    let context = templates::IndexTemplate {
         class: "error".to_string(),
         message: "Message could not be sent. Make sure all fields are filled in or try again. Please try again or send an email to contact@olback.net.".to_string()
     };
@@ -128,20 +128,10 @@ fn main() {
         process::exit(-1);
     }
 
-    let sent = mail::send(mail::Mail {
-        name: String::from("Edwin"),
-        email: String::from("ee@olback.net"),
-        subject: String::from("Test email"),
-        body: String::from("asdf"),
-        copy: false
-    });
-
-    println!("Mail sent: {}", sent);
-
-    // rocket::ignite()
-    // .mount("/", routes![index, assets, download, static_files, contact, success, error, send_mail])
-    // .attach(Template::fairing())
-    // .register(catchers![not_found, unprocessable_entity, internal_server_error])
-    // .launch();
+    rocket::ignite()
+    .mount("/", routes![index, assets, download, static_files, contact, success, error, send_mail])
+    .attach(Template::fairing())
+    .register(catchers![not_found, unprocessable_entity, internal_server_error])
+    .launch();
 
 }

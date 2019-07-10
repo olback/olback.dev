@@ -26,72 +26,51 @@ pub struct Mail {
 pub fn send(mail_data: Mail) -> bool {
 
     let mail_config = conf::read_mail_config();
-    let body: String = format!("Name: {}\nEmail: {}\n\n{}", &mail_data.name, &mail_data.email, &mail_data.body);
-    let email;
+    let body: String = format!("Name: {}\nEmail: {}\n\n{}",
+        &mail_data.name,
+        &mail_data.email,
+        &mail_data.body
+    );
+
+    let mut email = EmailBuilder::new()
+    .to((mail_config.to.clone(), mail_config.name))
+    .from((mail_config.from.clone(), mail_config.site.clone()))
+    .subject(mail_data.subject)
+    .reply_to("contact@olback.net")
+    .text(body);
 
     if mail_data.copy {
-        email = EmailBuilder::new()
-        .to((mail_config.from.clone(), mail_config.name))
-        .bcc((format!("{}", &mail_data.email), format!("{}", &mail_data.name)))
-        .from((mail_config.from.clone(), mail_config.site.clone()))
-        .subject(mail_data.subject)
-        .text(body)
-        .build()
-        .unwrap();
-    } else {
-        email = EmailBuilder::new()
-        .to((mail_config.from.clone(), mail_config.name))
-        // .bcc((format!("{}", &mail_data.email), format!("{}", &mail_data.name)))
-        .from((mail_config.from.clone(), mail_config.site.clone()))
-        .subject(mail_data.subject)
-        .text(body)
-        .build()
-        .unwrap();
+        email = email.bcc((mail_data.email, format!("{}", &mail_data.name)));
     }
 
     let mut tls_builder = TlsConnector::builder();
-    // Disable as many security features as possible ( no luck :( )
-    tls_builder.min_protocol_version(Some(Protocol::Sslv3));
-    tls_builder.use_sni(false);
-    tls_builder.danger_accept_invalid_certs(true);
-    tls_builder.danger_accept_invalid_hostnames(true);
-    let tls_parameters =
-        ClientTlsParameters::new(
-            "mail.olback.net".to_string(),
-            tls_builder.build().unwrap()
-        );
+    tls_builder.min_protocol_version(Some(Protocol::Tlsv12));
+
+    let tls_parameters = ClientTlsParameters::new(
+        mail_config.host.clone(),
+        tls_builder.build().unwrap()
+    );
 
     let mut mailer = SmtpClient::new(
-        ("mail.olback.net", 587), ClientSecurity::Wrapper(tls_parameters)
+        (mail_config.host.clone().as_str(), mail_config.port),
+        ClientSecurity::Required(tls_parameters)
     ).unwrap()
-        .authentication_mechanism(Mechanism::Plain) // Mechanism::Login does not work either
-        .hello_name(ClientId::Domain("mail.olback.net".to_string()))
-        .credentials(Credentials::new(
-            "user@example.com".to_string(), "<passwd>".to_string()
-        ))
-        .connection_reuse(ConnectionReuseParameters::ReuseUnlimited)
-        .transport();
+    .hello_name(ClientId::Domain(mail_config.host.clone()))
+    .smtp_utf8(true)
+    .credentials(Credentials::new(
+        mail_config.username,
+        mail_config.password
+    ))
+    .authentication_mechanism(Mechanism::Plain)
+    .connection_reuse(ConnectionReuseParameters::ReuseUnlimited)
+    .transport();
 
-    let result = mailer.send(email.into());
+    let result = mailer.send(email.build().unwrap().into());
 
-    println!("Result: {:?}", result);
+    // println!("Result: {:#?}", result);
 
     mailer.close();
 
     result.is_ok() // false
 
 }
-
-// fn main() {
-
-//     let sent = send(Mail {
-//         name: String::from("Edwin"),
-//         email: String::from("ee@olback.net"),
-//         subject: String::from("Test email"),
-//         body: String::from("asdf"),
-//         copy: false
-//     });
-
-//     println!("Mail sent: {}", sent);
-
-// }
