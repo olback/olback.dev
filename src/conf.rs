@@ -2,9 +2,12 @@
  *  olback.net web server
  */
 
+extern crate rand;
+
 use colored::*;
 use std::fs;
 use serde::Deserialize;
+use self::rand::Rng;
 
 #[derive(Deserialize)]
 pub struct MailConfig {
@@ -81,14 +84,26 @@ pub fn check_mail_config() -> bool {
 
 }
 
-//////////
-extern crate rand;
-use self::rand::Rng;
+/*
+ *  AES key for csrf protection
+ */
+static mut AES_KEY: Option<[u8; 32]> = None;
 
-pub fn aes_key() -> [u8; 32] {
-    let key: [u8; 32] = rand::thread_rng().gen::<[u8; 32]>();
-    // static mut ke2: [u8; 32] = *b"00000000000000000000000000000000";
-    // key.clone_into(&mut ke2);
-    println!("{:#?}", key);
-    key
+pub fn get_aes_key() -> [u8; 32] {
+
+    unsafe {
+
+        return match AES_KEY {
+            Some(v) => v,
+            None => {
+                let key: [u8; 32] = rand::thread_rng().gen::<[u8; 32]>();
+                println!("Generating new AES_KEY: {:?}", key);
+                AES_KEY = Some(key);
+                AES_KEY.unwrap()
+            }
+
+        }
+
+    }
+
 }

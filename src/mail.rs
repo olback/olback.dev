@@ -56,22 +56,6 @@ pub fn send(mail_data: Mail) -> bool {
         tls_builder.build().unwrap()
     );
 
-    // let mut mailer = SmtpClient::new(
-    //     (mail_config.host.clone().as_str(), mail_config.port),
-    //     ClientSecurity::Required(tls_parameters)
-    // ).unwrap()
-    // .hello_name(ClientId::Domain(mail_config.host.clone()))
-    // .smtp_utf8(true)
-    // .credentials(Credentials::new(
-    //     mail_config.username,
-    //     mail_config.password
-    // ))
-    // .authentication_mechanism(Mechanism::Plain)
-    // .connection_reuse(ConnectionReuseParameters::ReuseUnlimited)
-    // .timeout(Some(Duration::new(5, 0)))
-    // .transport();
-
-
     let smtp_client = SmtpClient::new(
         (mail_config.host.clone().as_str(), mail_config.port),
         ClientSecurity::Required(tls_parameters)

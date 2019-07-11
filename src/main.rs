@@ -37,8 +37,7 @@ use data_encoding::BASE64;
 #[get("/")]
 fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
 
-    // FIXME:
-    let protect = AesGcmCsrfProtection::from_key(*b"01234567012345670123456701234567");
+    let protect = AesGcmCsrfProtection::from_key(conf::get_aes_key());
 
     // Generate token/cookie pair
     let (csrf_token, csrf_cookie) = protect.generate_token_pair(None, 18000)
@@ -111,11 +110,7 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
         None => "".to_string()
     };
 
-    println!("csrf token b64: {}", mail_data._csrf);
-    println!("csrf cookie b64: {}", csrf_cookie);
-
-    // FIXME:
-    let protect = AesGcmCsrfProtection::from_key(*b"01234567012345670123456701234567");
+    let protect = AesGcmCsrfProtection::from_key(conf::get_aes_key());
 
     let token_bytes = match BASE64.decode(mail_data._csrf.as_bytes()) {
         Ok(v) => v,
