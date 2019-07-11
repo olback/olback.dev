@@ -18,4 +18,4 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [ ] robots.txt
 * [ ] opg
 * [ ] Generate random AES token
-* [ ] Fix Multiple \`Cookies\` instances
+* [x] Fix Multiple \`Cookies\` instances

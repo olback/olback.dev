@@ -3,6 +3,7 @@
  */
 
 #![feature(proc_macro_hygiene, decl_macro)]
+#![feature(toowned_clone_into)]
 
 extern crate rocket_contrib;
 #[macro_use] extern crate rocket;
@@ -46,6 +47,7 @@ fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
     // Set cookie
     cookies.add_private(Cookie::new(".csrf", csrf_cookie.b64_string()));
 
+    // Construct context
     let mut context = templates::IndexTemplate {
         csrf: csrf_token.b64_string(),
         ..Default::default()
@@ -53,7 +55,10 @@ fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
 
     if flash.is_some() {
 
-        println!("Flash response");
+        // Drop cookies to prevent errors.
+        drop(cookies);
+
+        // println!("Flash response");
 
         let flash_res = flash.map(|msg| FlashRes {
                 name: msg.name().to_string(),
@@ -63,11 +68,11 @@ fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
         context.class = flash_res.name;
         context.message = flash_res.msg;
 
-        Template::render("index", &context)
+        return Template::render("index", &context)
 
     } else {
 
-        Template::render("index", &context)
+        return Template::render("index", &context)
 
     }
 }
@@ -115,7 +120,7 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     let token_bytes = match BASE64.decode(mail_data._csrf.as_bytes()) {
         Ok(v) => v,
         Err(_) => {
-            println!("Failed to parse csrf token. Token not Base64.");
+            // eprintln!("Failed to parse csrf token. Token not Base64.");
             return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to parse csrf token. Please try again.");
         }
     };
@@ -123,7 +128,7 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     let parsed_token = match protect.parse_token(&token_bytes) {
         Ok(v) => v,
         Err(_) => {
-            println!("Failed to parse csrf token.");
+            // eprintln!("Failed to parse csrf token bytes.");
             return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to parse csrf token. Please try again.");
         }
     };
@@ -131,7 +136,7 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     let cookie_bytes = match BASE64.decode(csrf_cookie.as_bytes()) {
         Ok(v) => v,
         Err(_) => {
-            println!("Failed to parse csrf cookie. Cookie has been tamperd with.");
+            // eprintln!("Failed to parse csrf cookie. Cookie not Base64.");
             return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Invalid csrf cookie. Please try again.");
         }
     };
@@ -139,7 +144,7 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     let parsed_cookie = match protect.parse_cookie(&cookie_bytes) {
         Ok(v) => v,
         Err(_) => {
-            eprintln!();
+            // eprintln!("Failed to parse csrf cookie bytes.");
             return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Invalid csrf cookie. Please try again.");
         }
     };
@@ -203,13 +208,14 @@ fn internal_server_error() -> Template {
         message: "The server encountered an internal error while processing this request.".to_string()
     };
 
+    eprintln!("Internal Server Error (500)");
     Template::render("error", &context)
 }
 
 fn main() {
 
     if !conf::check_mail_config() {
-        println!("{}", "Aborting, mail config not valid!".bold().red());
+        eprintln!("{}", "Aborting, mail config not valid!".bold().red());
         process::exit(-1);
     }
 

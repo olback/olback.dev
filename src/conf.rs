@@ -82,11 +82,13 @@ pub fn check_mail_config() -> bool {
 }
 
 //////////
-// extern crate rand;
-// use self::rand::Rng;
+extern crate rand;
+use self::rand::Rng;
 
-// pub fn aes_key() -> [u8; 32] {
-//     let key = rand::thread_rng().gen::<[u8; 32]>();
-//     println!("{:#?}", key);
-//     key
-// }
+pub fn aes_key() -> [u8; 32] {
+    let key: [u8; 32] = rand::thread_rng().gen::<[u8; 32]>();
+    // static mut ke2: [u8; 32] = *b"00000000000000000000000000000000";
+    // key.clone_into(&mut ke2);
+    println!("{:#?}", key);
+    key
+}
