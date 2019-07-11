@@ -1,0 +1,6 @@
+{
+  "files": {
+    "include": "assets/css/*.scss",
+    "ignore": []
+  }
+}

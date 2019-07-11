@@ -21,6 +21,6 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [x] Generate random AES token
 * [x] Fix Multiple \`Cookies\` instances
 * [x] `/steam.html`
-* [ ] Fix linting errors
+* [x] Fix linting errors
 * [ ] Automatically update age
 * [ ] Automatic delivery/deploy

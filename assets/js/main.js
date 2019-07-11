@@ -5,10 +5,10 @@
 // @ts-check
 
 const professions = [
-    // 'web developer',
+    'web developer',
     'back-end developer',
-    // 'DevOps',
-    // 'sys admin'
+    'DevOps',
+    'sys admin'
 ];
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     })();
 
-    // Make sure the mouse was moved before form submission. This is to prevent bots. TODO: CSRF
+    // Make sure the mouse was moved before form submission. This is to prevent bots.
     (() => {
 
         function onMove() {
@@ -185,7 +185,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     // Cookie stuff
     (async function () {
 
-        const itemKey = 'cookie-accepted'
+        const itemKey = 'cookie-accepted';
 
         if (localStorage.getItem(itemKey) !== 'true') {
 
