@@ -9,60 +9,65 @@ extern crate rocket_contrib;
 extern crate colored;
 extern crate serde;
 #[macro_use] extern crate serde_derive;
+extern crate csrf;
+extern crate data_encoding;
 
 mod mail;
 mod conf;
 mod form;
 mod templates;
 mod raw_redirect;
+mod flash_res;
 
 use std::path::{Path, PathBuf};
 use std::process;
 use rocket::response::{NamedFile, Flash/*, Redirect*/};
 use rocket::request::{Form, Request, FlashMessage};
 use rocket::http::hyper::header::Location;
-// use rocket::http::{Cookie, Cookies};
+use rocket::http::{Cookie, Cookies};
 use rocket_contrib::templates::Template;
 use colored::*;
+use flash_res::FlashRes;
 use raw_redirect::RawRedirect;
+use csrf::{AesGcmCsrfProtection, CsrfProtection};
+use data_encoding::BASE64;
 
-struct FlashRes {
-    name: String,
-    msg: String
-}
 
 #[get("/")]
-fn index(flash: Option<FlashMessage>/*, mut cookies: Cookies*/) -> Template {
+fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
 
-    // Make sure the CSRF private cookie is set.
+    // FIXME:
+    let protect = AesGcmCsrfProtection::from_key(*b"01234567012345670123456701234567");
 
-    // let csrf = match cookies.get_private(".csrf") {
-    //     Some(v) => v.value().to_string(),
-    //     None => "".to_string()
-    // };
+    // Generate token/cookie pair
+    let (csrf_token, csrf_cookie) = protect.generate_token_pair(None, 18000)
+        .expect("couldn't generate token/cookie pair");
 
-    // println!(".csrf: {}", csrf);
+    // Set cookie
+    cookies.add_private(Cookie::new(".csrf", csrf_cookie.b64_string()));
 
-    // if csrf.is_empty() {
-    //     cookies.add_private(Cookie::new(".csrf", "test value"));
-    // }
+    let mut context = templates::IndexTemplate {
+        csrf: csrf_token.b64_string(),
+        ..Default::default()
+    };
 
     if flash.is_some() {
+
+        println!("Flash response");
 
         let flash_res = flash.map(|msg| FlashRes {
                 name: msg.name().to_string(),
                 msg: msg.msg().to_string()
         }).unwrap();
 
-        Template::render("index", templates::IndexTemplate {
-            class: flash_res.name,
-            message: flash_res.msg,
-            ..Default::default()
-        })
+        context.class = flash_res.name;
+        context.message = flash_res.msg;
+
+        Template::render("index", &context)
 
     } else {
 
-        Template::render("index", templates::IndexTemplate::default())
+        Template::render("index", &context)
 
     }
 }
@@ -89,25 +94,82 @@ fn contact() -> RawRedirect {
 }
 
 #[post("/mail", data = "<mail>")]
-fn send_mail(mail: Form<mail::Mail>) -> Flash<RawRedirect> {
+fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect> {
 
     let mail_data = mail.into_inner();
 
+    /*
+     *  csrf check
+     */
+    let csrf_cookie = match cookies.get_private(".csrf") {
+        Some(v) => v.value().to_string(),
+        None => "".to_string()
+    };
+
+    println!("csrf token b64: {}", mail_data._csrf);
+    println!("csrf cookie b64: {}", csrf_cookie);
+
+    // FIXME:
+    let protect = AesGcmCsrfProtection::from_key(*b"01234567012345670123456701234567");
+
+    let token_bytes = match BASE64.decode(mail_data._csrf.as_bytes()) {
+        Ok(v) => v,
+        Err(_) => {
+            println!("Failed to parse csrf token. Token not Base64.");
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to parse csrf token. Please try again.");
+        }
+    };
+
+    let parsed_token = match protect.parse_token(&token_bytes) {
+        Ok(v) => v,
+        Err(_) => {
+            println!("Failed to parse csrf token.");
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to parse csrf token. Please try again.");
+        }
+    };
+
+    let cookie_bytes = match BASE64.decode(csrf_cookie.as_bytes()) {
+        Ok(v) => v,
+        Err(_) => {
+            println!("Failed to parse csrf cookie. Cookie has been tamperd with.");
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Invalid csrf cookie. Please try again.");
+        }
+    };
+
+    let parsed_cookie = match protect.parse_cookie(&cookie_bytes) {
+        Ok(v) => v,
+        Err(_) => {
+            eprintln!();
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Invalid csrf cookie. Please try again.");
+        }
+    };
+
+    if !protect.verify_token_pair(&parsed_token, &parsed_cookie) {
+        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "csrf verification failed. Try again!")
+    }
+
+    /*
+     *  Form interactive?
+     */
     if !mail_data._interactive {
         return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form not activated, bot?")
     }
 
-    // TODO: CSRF
-
+    /*
+     *  Validate form data.
+     */
     if !form::check_form_data(&mail_data) {
         // return Redirect::to("/mail/error#contact");
         return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form data invalid.")
     }
 
-    if mail::send(mail_data) {
-        // return Redirect::to("/mail/success#contact");
-        return Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
-    }
+    /*
+     *  Send the email.
+     */
+    // if mail::send(mail_data) {
+    //     // return Redirect::to("/mail/success#contact");
+    //     return Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
+    // }
 
     // Redirect::to("/mail/error#contact")
     Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to send email.")

@@ -10,6 +10,7 @@ use mail;
 pub struct IndexTemplate {
     pub class: String,
     pub message: String,
+    pub csrf: String,
     pub year: i32,
     pub mail: Option<mail::Mail>
 }
@@ -19,6 +20,7 @@ impl Default for IndexTemplate {
         IndexTemplate {
             class: String::from(""),
             message: String::from(""),
+            csrf: String::from(""),
             year: Utc::now().year(),
             mail: None
         }

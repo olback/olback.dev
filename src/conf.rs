@@ -80,3 +80,13 @@ pub fn check_mail_config() -> bool {
     pass
 
 }
+
+//////////
+// extern crate rand;
+// use self::rand::Rng;
+
+// pub fn aes_key() -> [u8; 32] {
+//     let key = rand::thread_rng().gen::<[u8; 32]>();
+//     println!("{:#?}", key);
+//     key
+// }
