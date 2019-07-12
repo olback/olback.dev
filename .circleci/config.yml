@@ -9,6 +9,13 @@ jobs:
       - checkout
 
       - run:
+          name: Print verions
+          command: |
+                    rustc --version --verbose
+                    rustup --version
+                    cargo --version --verbose
+
+      - run:
           name: Change Permissions for Cargo Cache
           command: |
                     if [ -d "/usr/local/cargo" ]; then
