@@ -166,10 +166,10 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     /*
      *  Send the email.
      */
-    // if mail::send(mail_data) {
-    //     // return Redirect::to("/mail/success#contact");
-    //     return Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
-    // }
+    if mail::send(mail_data) {
+        // return Redirect::to("/mail/success#contact");
+        return Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
+    }
 
     // Redirect::to("/mail/error#contact")
     Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to send email.")
