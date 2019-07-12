@@ -8,6 +8,13 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Change Permissions for Cargo Cache
+          command: |
+                    if [ -d "/usr/local/cargo" ]; then
+                      sudo chown -R circleci:circleci /usr/local/cargo
+                    fi
+
       - restore_cache:
           key: cargo-cache-{{ checksum "Cargo.lock" }}-{{ checksum "Cargo.toml" }}
 
@@ -16,8 +23,11 @@ jobs:
           command: rustup override set nightly
 
       - run:
-          name: Copy Config
-          command: cp src/sample.conf.rs src/conf.rs
+          name: Show Version
+          command: |
+                    rustc --version --verbose
+                    rustup --version
+                    cargo --version --verbose
 
       - run:
           name: Build Server Binary
@@ -42,6 +52,10 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Show Version
+          command: node --version
+
       - restore_cache:
           key: npm-cache-{{ checksum "package-lock.json" }}
 
@@ -56,19 +70,19 @@ jobs:
 
       - run:
           name: CSS Linting
-          command: ./node_modules/.bin/csslint assets/css/main.css assets/css/error.css assets/css/links.css
+          command: npm run lint:scss
 
       - run:
           name: Javascript Linting
-          command: ./node_modules/.bin/eslint assets/js/main.js
+          command: npm run lint:js
 
       - run:
           name: HTML Linting
-          command: ./node_modules/.bin/htmllint templates/*.hbs static/links.html
+          command: npm run lint:html
 
       - run:
           name: Handlebars Linting
-          command: ./node_modules/.bin/ember-template-lint templates/*.hbs
+          command: npm run lint:hbs
 
 workflows:
   version: 2

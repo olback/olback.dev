@@ -2,63 +2,89 @@
  *  olback.net web server
  */
 
-use lettre::smtp::authentication::{Credentials, Mechanism};
-use lettre::{SmtpClient, Transport};
-use lettre::smtp::extension::ClientId;
-use lettre::smtp::ConnectionReuseParameters;
-use lettre_email::EmailBuilder;
+extern crate lettre;
+extern crate lettre_email;
+extern crate native_tls;
 
-use conf::{HOST, USER, PASS, FROM, NAME, SITE};
+use self::lettre::{ClientSecurity, ClientTlsParameters, SmtpClient, Transport};
+use self::lettre::smtp::authentication::{Credentials, Mechanism};
+use self::lettre::smtp::ConnectionReuseParameters;
+use self::lettre::smtp::extension::ClientId;
+use self::native_tls::{Protocol, TlsConnector};
+use self::lettre_email::EmailBuilder;
+use std::time::Duration;
+use conf;
 
-#[derive(FromForm)]
+#[derive(FromForm, Serialize, Debug)]
 pub struct Mail {
     pub name: String,
     pub email: String,
     pub subject: String,
     pub body: String,
-    pub copy: bool
+    pub copy: bool,
+    pub _csrf: String,
+    pub _interactive: bool,
 }
 
 pub fn send(mail_data: Mail) -> bool {
 
-    let email;
+    println!("{:#?}", &mail_data);
 
-    let body: String = format!("Name: {}\nEmail: {}\n\n{}", &mail_data.name, &mail_data.email, &mail_data.body);
+    let mail_config = conf::read_mail_config();
+    let body: String = format!("Name: {}\nEmail: {}\n\n{}",
+        &mail_data.name,
+        &mail_data.email,
+        &mail_data.body
+    );
+
+    let mut email = EmailBuilder::new()
+    .to((mail_config.to.clone(), mail_config.name))
+    .from((mail_config.from.clone(), mail_config.site.clone()))
+    .subject(mail_data.subject)
+    .reply_to("contact@olback.net")
+    .text(body);
 
     if mail_data.copy {
-        email = EmailBuilder::new()
-        .to((FROM.to_string(), NAME.to_string()))
-        .bcc((format!("{}", &mail_data.email), format!("{}", &mail_data.name)))
-        .from((FROM.to_string(), SITE.to_string()))
-        .subject(mail_data.subject)
-        .text(body)
-        .build()
-        .unwrap();
-    } else {
-        email = EmailBuilder::new()
-        .to((FROM.to_string(), NAME.to_string()))
-        // .bcc((format!("{}", &mail_data.email), format!("{}", &mail_data.name)))
-        .from((FROM.to_string(), SITE.to_string()))
-        .subject(mail_data.subject)
-        .text(body)
-        .build()
-        .unwrap();
+        email = email.bcc((mail_data.email, format!("{}", &mail_data.name)));
     }
 
-    // Connect to a remote server on a custom port
-    // let mut mailer = SmtpClient::simple_builder(HOST).unwrap()
-    let mut mailer = SmtpClient::new_simple(HOST).unwrap()
-    .hello_name(ClientId::Domain(HOST.to_string()))
-    .credentials(Credentials::new(USER.to_string(), PASS.to_string()))
-    .smtp_utf8(true)
-    .authentication_mechanism(Mechanism::Login)
-    // .connection_reuse(ConnectionReuseParameters::ReuseUnlimited).build();
-    .connection_reuse(ConnectionReuseParameters::ReuseUnlimited).transport();
+    let mut tls_builder = TlsConnector::builder();
+    tls_builder.min_protocol_version(Some(Protocol::Tlsv12));
 
-    let result = mailer.send(email.into());
+    let tls_parameters = ClientTlsParameters::new(
+        mail_config.host.clone(),
+        tls_builder.build().unwrap()
+    );
+
+    let smtp_client = SmtpClient::new(
+        (mail_config.host.clone().as_str(), mail_config.port),
+        ClientSecurity::Required(tls_parameters)
+    );
+
+    let mut mailer = match smtp_client {
+        Ok(v) => v,
+        Err(_) => {
+            return false;
+        }
+    }
+
+    .hello_name(ClientId::Domain(mail_config.host.clone()))
+    .smtp_utf8(true)
+    .credentials(Credentials::new(
+        mail_config.username,
+        mail_config.password
+    ))
+    .authentication_mechanism(Mechanism::Plain)
+    .connection_reuse(ConnectionReuseParameters::ReuseUnlimited)
+    .timeout(Some(Duration::new(5, 0)))
+    .transport();
+
+    let result = mailer.send(email.build().unwrap().into());
+
+    // println!("Result: {:#?}", result);
 
     mailer.close();
 
-    result.is_ok()
+    result.is_ok() // false
 
 }

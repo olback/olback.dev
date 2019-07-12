@@ -1,3 +1,7 @@
+/*
+ *  olback.net web server
+ */
+
 use rocket::http::hyper::header::Location;
 
 // https://github.com/SergioBenitez/Rocket/issues/842

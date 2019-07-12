@@ -27,6 +27,5 @@ download/
 # Other
 /target
 **/*.rs.bk
-src/conf.rs
-
 node_modules/
+MailConfig.toml

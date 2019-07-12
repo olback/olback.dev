@@ -2,20 +2,8 @@
  *  olback.net web server
  */
 
+extern crate mailchecker;
 use mail::Mail;
-use mailchecker;
-
-#[derive(Serialize)]
-pub struct IndexTC {
-    pub class: String,
-    pub message: String
-}
-
-#[derive(Serialize)]
-pub struct ErrorTemplate {
-    pub code: i16,
-    pub message: String
-}
 
 pub fn check_form_data(mail_data: &Mail) -> bool {
 

@@ -1,0 +1,300 @@
+/*
+ *  olback.net v4.0
+ */
+
+header {
+
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 15vw 35vw 35vw 15vw;
+    grid-template-rows: 30vh 40vh 30vh;
+    background-color: $white;
+
+    background-image: url('/assets/img/bg.svg');
+    background-position: center;
+    background-size: cover;
+
+    section {
+
+        &.arrow {
+
+            display: grid;
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row-start: 3;
+            align-items: end;
+            justify-self: center;
+
+            div#arrow {
+                display: inline-block;
+                width: fit-content;
+                cursor: pointer;
+                transition: margin-bottom ease-in-out .3s;
+                margin-bottom: 2rem;
+
+                &:hover {
+                    margin-bottom: 3rem;
+                }
+
+                .dot {
+                    margin: 1rem auto -.3rem auto;
+                    display: block;
+                    width: .5rem;
+                    height: .5rem;
+                    background-color: $accent;
+                    border-radius: 50%;
+                    position: relative;
+                    z-index: 10;
+                }
+
+                .point {
+
+                    &::before, &::after {
+                        transform: rotate(45deg);
+                        width: 2rem;
+                        height: 2rem;
+                        display: block;
+                        content: '';
+                        position: relative;
+                        border-radius: .1rem;
+                    }
+
+                    &::before {
+                        background-color: $accent;
+                    }
+
+                    &::after {
+                        margin-top: -2.3rem;
+                        background-color: $white;
+                    }
+
+                }
+
+            }
+
+        }
+
+        &.social {
+
+            grid-column: 1;
+            grid-row: 3;
+            justify-self: start;
+            align-self: end;
+            padding: 0 0 4rem 4rem;
+
+            a {
+
+                display: block;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                text-decoration: none;
+                color: $darkGray;
+                transition: color ease-in-out .15s;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                &:hover {
+
+                    &.fa-github {
+                        $github: #000;
+                        color: $github;
+                    }
+
+                    &.fa-twitter {
+                        $twitter: #1da1f2;
+                        color: $twitter;
+                    }
+
+                    &.fa-linkedin {
+                        $linkedin: #2a66c2;
+                        color: $linkedin;
+                    }
+
+                }
+
+                span {
+
+                    opacity: 0;
+                    transition: opacity ease-in-out .15s;
+                    color: $darkGray;
+                    margin-left: .75rem;
+
+                }
+
+                &:hover span {
+                    opacity: 1;
+                }
+
+            }
+
+        }
+
+        &.left {
+
+            grid-column: 2;
+            grid-row: 2;
+            justify-self: center;
+            align-self: center;
+
+            picture {
+
+                img {
+
+                    border-radius: 50%;
+                    max-height: calc(40vh - 10px);
+                    border: 5px solid transparent;
+                    transition: border-color ease-in-out 1s, transform ease-in-out 1s;
+
+                    &:hover {
+                        border-color: $accent;
+                        transform: rotate(360deg);
+                    }
+
+                }
+
+            }
+
+        }
+
+        &.right {
+
+            grid-column: 3;
+            grid-row: 2;
+            justify-self: start;
+            align-self: center;
+
+            h1,
+            h2 {
+                font-weight: lighter;
+                color: $darkGray;
+            }
+
+            h1 {
+                font-size: 5rem;
+                text-shadow: 0 0 10px $lightGray;
+            }
+
+            h2 {
+                font-size: 3rem;
+                min-height: 3rem;
+                text-shadow: 0 0 5px $lightGray;
+                text-transform: capitalize;
+
+                #underscore {
+                    min-height: inherit;
+                }
+
+            }
+
+            span {
+
+                display: inline-block;
+
+                &.accent {
+                    color: $accent;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+.blink {
+    animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+
+    header {
+        grid-template-columns: 0 50vw 50vw 0;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+
+    header {
+
+        grid-template-columns: 100vw;
+        grid-template-rows: 10vh 40vh 5vh 25vh 20vh;
+
+        section.left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        section.right {
+            grid-column: 1;
+            grid-row: 4;
+            justify-self: center;
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+        }
+
+        section.arrow {
+            display: none;
+        }
+
+        section.social {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+
+    header {
+
+        section.social {
+
+            a {
+                display: block;
+                float: left;
+                margin-right: 1rem;
+
+                span {
+                    display: none;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 420px), (max-height: 600px) {
+
+    header {
+
+        section.social {
+            padding: 0 0 2rem 2rem;
+        }
+
+    }
+
+}
