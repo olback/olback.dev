@@ -9,13 +9,6 @@ jobs:
       - checkout
 
       - run:
-          name: Print verions
-          command: |
-                    rustc --version --verbose
-                    rustup --version
-                    cargo --version --verbose
-
-      - run:
           name: Change Permissions for Cargo Cache
           command: |
                     if [ -d "/usr/local/cargo" ]; then
@@ -28,6 +21,13 @@ jobs:
       - run:
           name: Use a Nightly Build
           command: rustup override set nightly
+
+      - run:
+          name: Show Version
+          command: |
+                    rustc --version --verbose
+                    rustup --version
+                    cargo --version --verbose
 
       - run:
           name: Build Server Binary
@@ -51,6 +51,10 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Show Version
+          command: node --version
 
       - restore_cache:
           key: npm-cache-{{ checksum "package-lock.json" }}
