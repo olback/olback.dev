@@ -97,7 +97,7 @@ pub fn get_aes_key() -> [u8; 32] {
             Some(v) => v,
             None => {
                 let key: [u8; 32] = rand::thread_rng().gen::<[u8; 32]>();
-                println!("Generating new AES_KEY: {:?}", key);
+                // println!("Generating new AES_KEY: {:?}", key);
                 AES_KEY = Some(key);
                 AES_KEY.unwrap()
             }
