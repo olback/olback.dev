@@ -3,7 +3,6 @@
  */
 
 #![feature(proc_macro_hygiene, decl_macro)]
-#![feature(toowned_clone_into)]
 
 extern crate rocket_contrib;
 #[macro_use] extern crate rocket;
