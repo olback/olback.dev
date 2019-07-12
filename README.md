@@ -16,7 +16,7 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [x] SEO https://support.google.com/webmasters/answer/79812?hl=en author/owner/description/keywords
 * [ ] i18n
 * [ ] Last modified header/meta data
-* [ ] robots.txt
+* [x] robots.txt
 * [x] ogp
 * [x] Generate random AES token
 * [x] Fix Multiple \`Cookies\` instances
@@ -24,3 +24,4 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [x] Fix linting errors
 * [ ] Automatically update age
 * [ ] Automatic delivery/deploy
+* [ ] Dark mode?

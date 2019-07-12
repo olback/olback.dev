@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /download/
-Allow: /*.css$
-Allow: /*.js$
+Disallow: /keybase.txt$
+Disallow: /steam.html$
