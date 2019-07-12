@@ -20,9 +20,9 @@
   },
   "homepage": "https://olback.net",
   "devDependencies": {
-    "ember-template-lint": "^0.8.20",
-    "eslint": "^5.0.0",
-    "htmllint-cli": "0.0.7",
+    "ember-template-lint": "^1.3.0",
+    "eslint": "^6.0.1",
+    "htmllint-cli": "^0.0.7",
     "sass-lint": "^1.13.1"
   }
 }
