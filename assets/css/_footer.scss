@@ -6,18 +6,19 @@ div#cookie {
 
     position: fixed;
     right: -20rem;
-    bottom: 10vh;
+    top: 10vh;
     border: 3px solid $accent;
     border-right: none;
     padding: 1.5rem;
-    background-color: $white;
-    color: $darkGray;
+    background-color: inherit;
+    color: inherit;
     transition: right ease-in-out .15s;
 
     p, button {
         padding: 0;
         margin: 0;
         display: inline-block;
+        color: inherit;
     }
 
     button {
@@ -54,6 +55,11 @@ div#cookie {
         content: '';
         border-bottom: $cornerSize solid $white;
         border-right: $cornerSize solid transparent;
+
+        .dark > & {
+            border-bottom: $cornerSize solid $darkGray;
+        }
+
     }
 
     &.show {
@@ -72,10 +78,10 @@ div#scroll-top {
     padding: 1.5rem;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: bottom ease-in-out .15s, right ease-in-out .15s;
+    transition: box-shadow ease-in-out .15s, right ease-in-out .15s;
 
     &:hover {
-        bottom: 3.5rem;
+        box-shadow: 0 0 10px $accent;
     }
 
     &.show {
@@ -87,15 +93,34 @@ div#scroll-top {
 footer {
     background-color: $darkGray;
     color: $white;
+    text-align: center;
+    border-top: 3px solid $lightGray;
 
     p {
+        display: inline-block;
         text-align: center;
         margin: 0;
-        padding: 3rem;
+        padding: 3rem 0;
 
         a {
             color: $white;
             text-decoration: none;
+        }
+
+    }
+
+    #darkmode-toggle {
+        display: inline-block;
+        padding: 1rem;
+        background-color: $white;
+        border-radius: 50%;
+        color: $darkGray;
+        margin-left: 2rem;
+        transition: box-shadow ease-in-out .15s;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 0 3px $white;
         }
 
     }

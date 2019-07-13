@@ -9,13 +9,14 @@ header {
     display: grid;
     grid-template-columns: 15vw 35vw 35vw 15vw;
     grid-template-rows: 30vh 40vh 30vh;
-    background-color: $white;
 
     background-image: url('/assets/img/bg.svg');
     background-position: center;
     background-size: cover;
 
     section {
+
+        color: inherit;
 
         &.arrow {
 
@@ -67,6 +68,9 @@ header {
                     &::after {
                         margin-top: -2.3rem;
                         background-color: $white;
+                        .dark > & {
+                            background-color: $darkGray;
+                        }
                     }
 
                 }
@@ -89,7 +93,7 @@ header {
                 font-size: 2rem;
                 margin-bottom: 1rem;
                 text-decoration: none;
-                color: $darkGray;
+                color: inherit;
                 transition: color ease-in-out .15s;
 
                 &:last-of-type {
@@ -121,6 +125,10 @@ header {
                     transition: opacity ease-in-out .15s;
                     color: $darkGray;
                     margin-left: .75rem;
+
+                    .dark > & {
+                        color: $white;
+                    }
 
                 }
 
@@ -169,7 +177,7 @@ header {
             h1,
             h2 {
                 font-weight: lighter;
-                color: $darkGray;
+                color: inherit;
             }
 
             h1 {
