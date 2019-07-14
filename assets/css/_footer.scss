@@ -119,6 +119,7 @@ footer {
         margin-left: 2rem;
         transition: box-shadow ease-in-out .15s;
         cursor: pointer;
+        user-select: none;
 
         &:hover {
             box-shadow: 0 0 3px $white;
