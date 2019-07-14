@@ -6,13 +6,14 @@ div#cookie {
 
     position: fixed;
     right: -20rem;
-    top: 10vh;
+    bottom: 3rem;
     border: 3px solid $accent;
     border-right: none;
     padding: 1.5rem;
     background-color: inherit;
     color: inherit;
     transition: right ease-in-out .15s;
+    z-index: 1000;
 
     p, button {
         padding: 0;
