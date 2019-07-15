@@ -14,21 +14,9 @@ use self::native_tls::{Protocol, TlsConnector};
 use self::lettre_email::EmailBuilder;
 use std::time::Duration;
 use conf;
+use form;
 
-#[derive(FromForm, Serialize, Debug)]
-pub struct Mail {
-    pub name: String,
-    pub email: String,
-    pub subject: String,
-    pub body: String,
-    pub copy: bool,
-    pub _csrf: String,
-    pub _interactive: bool,
-}
-
-pub fn send(mail_data: Mail) -> bool {
-
-    println!("{:#?}", &mail_data);
+pub fn send(mail_data: form::Mail) -> bool {
 
     let mail_config = conf::read_mail_config();
     let body: String = format!("Name: {}\nEmail: {}\n\n{}",

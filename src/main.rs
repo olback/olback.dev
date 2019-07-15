@@ -12,7 +12,7 @@ extern crate serde;
 extern crate csrf;
 extern crate data_encoding;
 
-mod mail;
+mod mailer;
 mod conf;
 mod form;
 mod templates;
@@ -31,6 +31,8 @@ use flash_res::FlashRes;
 use raw_redirect::RawRedirect;
 use csrf::{AesGcmCsrfProtection, CsrfProtection};
 use data_encoding::BASE64;
+use form::Validate as FormValidate;
+use conf::Validate as ConfValidate;
 
 
 #[get("/")]
@@ -97,7 +99,7 @@ fn contact() -> RawRedirect {
 }
 
 #[post("/mail", data = "<mail>")]
-fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect> {
+fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Flash<RawRedirect> {
 
     let mail_data = mail.into_inner();
 
@@ -157,7 +159,7 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     /*
      *  Validate form data.
      */
-    if !form::check_form_data(&mail_data) {
+    if !mail_data.validate() {
         // return Redirect::to("/mail/error#contact");
         return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form data invalid.")
     }
@@ -165,7 +167,7 @@ fn send_mail(mail: Form<mail::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     /*
      *  Send the email.
      */
-    if mail::send(mail_data) {
+    if mailer::send(mail_data) {
         // return Redirect::to("/mail/success#contact");
         return Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
     }
@@ -208,7 +210,7 @@ fn internal_server_error() -> Template {
 
 fn main() {
 
-    if !conf::check_mail_config() {
+    if !conf::read_mail_config().validate() {
         eprintln!("{}", "Aborting, mail config not valid!".bold().red());
         process::exit(-1);
     }
