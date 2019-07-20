@@ -25,3 +25,4 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [x] Automatically update age
 * [ ] Automatic delivery/deploy
 * [x] Dark mode
+* [ ] Refill form on failure
