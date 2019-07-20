@@ -18,6 +18,7 @@ mod form;
 mod templates;
 mod raw_redirect;
 mod flash_res;
+mod birthday;
 
 use std::path::{Path, PathBuf};
 use std::process;
@@ -210,7 +211,7 @@ fn internal_server_error() -> Template {
 
 fn main() {
 
-    if !conf::read_mail_config().validate() {
+    if !conf::read_config().mail.validate() {
         eprintln!("{}", "Aborting, mail config not valid!".bold().red());
         process::exit(-1);
     }

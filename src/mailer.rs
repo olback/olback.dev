@@ -18,7 +18,7 @@ use form;
 
 pub fn send(mail_data: form::Mail) -> bool {
 
-    let mail_config = conf::read_mail_config();
+    let mail_config = conf::read_config().mail;
     let body: String = format!("Name: {}\nEmail: {}\n\n{}",
         &mail_data.name,
         &mail_data.email,

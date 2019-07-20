@@ -22,6 +22,6 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [x] Fix Multiple \`Cookies\` instances
 * [x] `/steam.html`
 * [x] Fix linting errors
-* [ ] Automatically update age
+* [x] Automatically update age
 * [ ] Automatic delivery/deploy
 * [x] Dark mode

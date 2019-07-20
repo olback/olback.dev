@@ -9,8 +9,17 @@ use std::fs;
 use serde::Deserialize;
 use self::rand::Rng;
 
-pub trait Validate {
-    fn validate(&self) -> bool;
+#[derive(Deserialize)]
+pub struct Config {
+    pub birthday: BirthdayConfig,
+    pub mail: MailConfig,
+}
+
+#[derive(Deserialize, Clone, Copy)]
+pub struct BirthdayConfig {
+    pub year: u16,
+    pub month: u8,
+    pub day: u8
 }
 
 #[derive(Deserialize)]
@@ -23,6 +32,10 @@ pub struct MailConfig {
     pub to: String,
     pub name: String,
     pub site: String
+}
+
+pub trait Validate {
+    fn validate(&self) -> bool;
 }
 
 impl Validate for MailConfig {
@@ -73,14 +86,14 @@ impl Validate for MailConfig {
     }
 }
 
-pub fn read_mail_config() -> MailConfig {
+pub fn read_config() -> Config {
 
-    let conf_str = fs::read_to_string("MailConfig.toml").unwrap_or_else(|e| {
+    let conf_str = fs::read_to_string("Config.toml").unwrap_or_else(|e| {
         eprintln!("{} {}", "MailConfig.toml not found.".bold().red(), e);
         format!("MailConfig.toml not found. {}", e)
     });
 
-    let config: MailConfig = toml::from_str(conf_str.as_str()).unwrap();
+    let config: Config = toml::from_str(conf_str.as_str()).unwrap();
 
     config
 
