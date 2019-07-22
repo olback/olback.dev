@@ -16,7 +16,7 @@ use std::time::Duration;
 use conf;
 use form;
 
-pub fn send(mail_data: form::Mail) -> bool {
+pub fn send(mail_data: &form::Mail) -> bool {
 
     let mail_config = conf::read_config().mail;
     let body: String = format!("Name: {}\nEmail: {}\n\n{}",
@@ -28,12 +28,12 @@ pub fn send(mail_data: form::Mail) -> bool {
     let mut email = EmailBuilder::new()
     .to((mail_config.to.clone(), mail_config.name))
     .from((mail_config.from.clone(), mail_config.site.clone()))
-    .subject(mail_data.subject)
+    .subject(&mail_data.subject)
     .reply_to("contact@olback.net")
     .text(body);
 
     if mail_data.copy {
-        email = email.bcc((mail_data.email, format!("{}", &mail_data.name)));
+        email = email.bcc((&mail_data.email, format!("{}", &mail_data.name)));
     }
 
     let mut tls_builder = TlsConnector::builder();

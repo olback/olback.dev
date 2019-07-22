@@ -32,7 +32,7 @@ use flash_res::FlashRes;
 use raw_redirect::RawRedirect;
 use csrf::{AesGcmCsrfProtection, CsrfProtection};
 use data_encoding::BASE64;
-use form::Validate as FormValidate;
+use form::{Validate as FormValidate, Refill};
 use conf::Validate as ConfValidate;
 
 
@@ -56,15 +56,51 @@ fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
 
     if flash.is_some() {
 
+        let flash_res = flash.map(|msg| FlashRes {
+            name: msg.name().to_string(),
+            msg: msg.msg().to_string()
+        }).unwrap();
+
+        if flash_res.name == "error".to_string() {
+
+            match cookies.get_private(".form-data") {
+                Some(form_data_cookie) => {
+
+                    let decoded = match BASE64.decode(form_data_cookie.value().as_bytes()) {
+                        Ok(v) => v,
+                        Err(_) => {
+                            cookies.remove_private(form_data_cookie);
+                            drop(cookies);
+                            context.class = "error".to_string();
+                            context.message = "Form refill decoding failed.".to_string();
+                            return Template::render("index", &context);
+                        }
+                    };
+
+                    let deserialized: form::Mail = match bincode::deserialize(&decoded) {
+                        Ok(v) => v,
+                        Err(_) => {
+                            cookies.remove_private(form_data_cookie);
+                            drop(cookies);
+                            context.class = "error".to_string();
+                            context.message = "Form refill deserialization failed.".to_string();
+                            return Template::render("index", &context);
+                        }
+                    };
+
+                    cookies.remove_private(form_data_cookie);
+                    context.mail = Some(deserialized);
+
+                },
+                None => ()
+            };
+
+        }
+
         // Drop cookies to prevent errors.
         drop(cookies);
 
         // println!("Flash response");
-
-        let flash_res = flash.map(|msg| FlashRes {
-                name: msg.name().to_string(),
-                msg: msg.msg().to_string()
-        }).unwrap();
 
         context.class = flash_res.name;
         context.message = flash_res.msg;
@@ -117,43 +153,50 @@ fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
     let token_bytes = match BASE64.decode(mail_data._csrf.as_bytes()) {
         Ok(v) => v,
         Err(_) => {
-            // eprintln!("Failed to parse csrf token. Token not Base64.");
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to parse csrf token. Please try again.");
+            eprintln!("Failed to parse csrf token. Token not Base64.");
+            mail_data.refill(cookies);
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
         }
     };
 
     let parsed_token = match protect.parse_token(&token_bytes) {
         Ok(v) => v,
         Err(_) => {
-            // eprintln!("Failed to parse csrf token bytes.");
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to parse csrf token. Please try again.");
+            eprintln!("Failed to parse csrf token bytes.");
+            mail_data.refill(cookies);
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
         }
     };
 
     let cookie_bytes = match BASE64.decode(csrf_cookie.as_bytes()) {
         Ok(v) => v,
         Err(_) => {
-            // eprintln!("Failed to parse csrf cookie. Cookie not Base64.");
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Invalid csrf cookie. Please try again.");
+            eprintln!("Failed to parse csrf cookie. Cookie not Base64.");
+            mail_data.refill(cookies);
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
         }
     };
 
     let parsed_cookie = match protect.parse_cookie(&cookie_bytes) {
         Ok(v) => v,
         Err(_) => {
-            // eprintln!("Failed to parse csrf cookie bytes.");
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Invalid csrf cookie. Please try again.");
+            eprintln!("Failed to parse csrf cookie bytes.");
+            mail_data.refill(cookies);
+            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
         }
     };
 
     if !protect.verify_token_pair(&parsed_token, &parsed_cookie) {
-        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "csrf verification failed. Try again!")
+        eprintln!("Failed to verify csrf token pair.");
+        mail_data.refill(cookies);
+        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
     }
 
     /*
      *  Form interactive?
      */
     if !mail_data._interactive {
+        mail_data.refill(cookies);
         return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form not activated, bot?")
     }
 
@@ -162,19 +205,21 @@ fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
      */
     if !mail_data.validate() {
         // return Redirect::to("/mail/error#contact");
+        mail_data.refill(cookies);
         return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form data invalid.")
     }
 
     /*
      *  Send the email.
      */
-    if mailer::send(mail_data) {
-        // return Redirect::to("/mail/success#contact");
-        return Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
+    if !mailer::send(&mail_data) {
+        // Redirect::to("/mail/error#contact")
+        mail_data.refill(cookies);
+        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to send email.");
     }
 
-    // Redirect::to("/mail/error#contact")
-    Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to send email.")
+    // return Redirect::to("/mail/success#contact");
+    Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
 
 }
 
