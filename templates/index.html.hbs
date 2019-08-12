@@ -171,11 +171,12 @@
 
                     <div class="input-group checkbox">
                         <span>I want to receive a copy of this message:</span>
-                        {{#if mail.copy}}
+                        {{!-- {{#if mail.copy}}
                             <input id="copy" name="copy" type="checkbox" checked />
                         {{else}}
                             <input id="copy" name="copy" type="checkbox" />
-                        {{/if}}
+                        {{/if}} --}}
+                        <input id="copy" name="copy" type="checkbox" {{#if mail.copy }} checked {{/if}} />
                         <label for="copy"></label>
                     </div>
 
