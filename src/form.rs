@@ -3,7 +3,7 @@
  */
 
 extern crate mailchecker;
-use rocket::http::{Cookie, Cookies};
+use rocket::http::Cookie;
 use data_encoding::BASE64;
 
 pub trait Validate {
@@ -11,7 +11,7 @@ pub trait Validate {
 }
 
 pub trait Refill {
-    fn refill(&self, cookies: Cookies) -> bool;
+    fn refill(&self) -> (bool, Cookie<'static>);
 }
 
 #[derive(FromForm, Serialize, Deserialize)]
@@ -48,18 +48,18 @@ impl Validate for Mail {
 }
 
 impl Refill for Mail {
-    fn refill(&self, mut cookies: Cookies) -> bool {
+    fn refill(&self) -> (bool, Cookie<'static>) {
         let serialized = match bincode::serialize(self) {
             Ok(v) => v,
             Err(e) => {
                 eprintln!("{}", e);
-                return false
+                return (false, Cookie::new(".form-data", ""))
             }
         };
 
         let encoded = BASE64.encode(&serialized);
-        cookies.add_private(Cookie::new(".form-data", encoded));
+        let cookie = Cookie::new(".form-data", encoded);
 
-        true
+        (true, cookie)
     }
 }
