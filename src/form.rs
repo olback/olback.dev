@@ -24,16 +24,16 @@ impl Validate for Mail {
 
         let mut v: Vec<String> = Vec::new();
 
-        if !mailchecker::is_valid(self.email.as_str()) {
-            v.push(String::from("Email is invalid"));
-        }
-
         if self.name.is_empty() {
             v.push(String::from("Name is empty"));
         }
 
+        if !mailchecker::is_valid(self.email.as_str()) {
+            v.push(String::from("Email is invalid"));
+        }
+
         if self.subject.is_empty() {
-            v.push(String::from("Email is empty"));
+            v.push(String::from("Subject is empty"));
         }
 
         if self.body.is_empty() {

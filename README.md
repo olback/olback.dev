@@ -26,5 +26,5 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [ ] Automatic delivery/deploy
 * [x] Dark mode
 * [x] Refill form on failure
-* [ ] Split routes to diffrent files
-* [ ] Refactor imports
+* [x] Split routes to diffrent files
+* [x] Refactor imports
