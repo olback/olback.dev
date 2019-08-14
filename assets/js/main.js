@@ -13,6 +13,11 @@ const professions = [
 
 window.addEventListener('DOMContentLoaded', async () => {
 
+    // If the pathname is /mail, scroll to the contact form real quick
+    if (location.pathname === '/mail') {
+        document.getElementById('contact').scrollIntoView();
+    }
+
     const timeout = {
 
         /**

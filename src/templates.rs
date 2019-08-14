@@ -11,6 +11,7 @@ use birthday;
 pub struct IndexTemplate {
     pub class: String,
     pub message: String,
+    pub alerts: Vec<String>,
     pub csrf: String,
     pub year: i32,
     pub age: u8,
@@ -22,6 +23,7 @@ impl Default for IndexTemplate {
         IndexTemplate {
             class: String::from(""),
             message: String::from(""),
+            alerts: Vec::new(),
             csrf: String::from(""),
             year: Utc::now().year(),
             age: birthday::get_age(),

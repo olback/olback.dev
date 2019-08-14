@@ -137,6 +137,16 @@ main {
                 margin-bottom: 1rem;
                 display: none;
 
+                ul {
+                    width: fit-content;
+                    margin: 0 auto;
+                    padding: 0;
+                    list-style: none;
+                    li {
+                        font-family: 'Courier New', Courier, monospace;
+                    }
+                }
+
                 &.success {
                     background-color: #28a745;
                     color: $white;

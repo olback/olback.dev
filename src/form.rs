@@ -3,18 +3,12 @@
  */
 
 extern crate mailchecker;
-use rocket::http::Cookie;
-use data_encoding::BASE64;
 
 pub trait Validate {
-    fn validate(&self) -> bool;
+    fn validate(&self) -> (bool, Vec<String>);
 }
 
-pub trait Refill {
-    fn refill(&self) -> (bool, Cookie<'static>);
-}
-
-#[derive(FromForm, Serialize, Deserialize)]
+#[derive(FromForm, Clone, Serialize, Deserialize)]
 pub struct Mail {
     pub name: String,
     pub email: String,
@@ -26,40 +20,31 @@ pub struct Mail {
 }
 
 impl Validate for Mail {
-    fn validate(&self) -> bool {
+    fn validate(&self) -> (bool, Vec<String>) {
+
+        let mut v: Vec<String> = Vec::new();
+
         if !mailchecker::is_valid(self.email.as_str()) {
-            return false;
+            v.push(String::from("Email is invalid"));
         }
 
         if self.name.is_empty() {
-            return false;
+            v.push(String::from("Name is empty"));
         }
 
         if self.subject.is_empty() {
-            return false;
+            v.push(String::from("Email is empty"));
         }
 
         if self.body.is_empty() {
-            return false;
+            v.push(String::from("Email body is empty"));
         }
 
-        true
+        if v.len() == 0 {
+            return (true, v)
+        }
+
+        (false, v)
     }
 }
 
-impl Refill for Mail {
-    fn refill(&self) -> (bool, Cookie<'static>) {
-        let serialized = match bincode::serialize(self) {
-            Ok(v) => v,
-            Err(e) => {
-                eprintln!("{}", e);
-                return (false, Cookie::new(".form-data", ""))
-            }
-        };
-
-        let encoded = BASE64.encode(&serialized);
-        let cookie = Cookie::new(".form-data", encoded);
-
-        (true, cookie)
-    }
-}

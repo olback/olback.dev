@@ -32,11 +32,12 @@ use flash_res::FlashRes;
 use raw_redirect::RawRedirect;
 use csrf::{AesGcmCsrfProtection, CsrfProtection};
 use data_encoding::BASE64;
-use form::{Validate as FormValidate, Refill};
+use form::{Validate as FormValidate};
 use conf::Validate as ConfValidate;
 
 
 #[get("/")]
+// fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
 fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
 
     let protect = AesGcmCsrfProtection::from_key(conf::get_aes_key());
@@ -47,6 +48,7 @@ fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
 
     // Set cookie
     cookies.add_private(Cookie::new(".csrf", csrf_cookie.b64_string()));
+    // cookies.remove(Cookie::named("_flash"));
 
     // Construct context
     let mut context = templates::IndexTemplate {
@@ -54,171 +56,26 @@ fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {
         ..Default::default()
     };
 
-    // let f = flash.map(|msg| (msg.name().to_string(), msg.msg().to_string()))
-    // .unwrap_or_else(|| ("".to_string(), "".to_string()));
+    // let f = flash.map(|msg| (format!("{}", msg.name()), format!("{}", msg.msg())))
+    // .unwrap_or_else(|| (String::from(""), String::from("")));
 
-    // if f.0 == "success" || f.0 == "warning" {
-
-    //     context.class = f.0;
-    //     context.message = f.1;
-
-    // } else if f.0 == "error" {
-
-    //     match cookies.get_private(".form-data") {
-    //         Some(form_data_cookie) => {
-
-    //             let decoded = match BASE64.decode(form_data_cookie.value().as_bytes()) {
-    //                 Ok(v) => v,
-    //                 Err(_) => {
-    //                     cookies.remove_private(form_data_cookie);
-    //                     drop(cookies);
-    //                     context.class = "error".to_string();
-    //                     context.message = "Form refill decoding failed.".to_string();
-    //                     return Template::render("index", &context);
-    //                 }
-    //             };
-
-    //             let deserialized: form::Mail = match bincode::deserialize(&decoded) {
-    //                 Ok(v) => v,
-    //                 Err(_) => {
-    //                     cookies.remove_private(form_data_cookie);
-    //                     drop(cookies);
-    //                     context.class = "error".to_string();
-    //                     context.message = "Form refill deserialization failed.".to_string();
-    //                     return Template::render("index", &context);
-    //                 }
-    //             };
-
-    //             cookies.remove_private(form_data_cookie);
-    //             context.mail = Some(deserialized);
-
-    //         },
-    //         None => ()
-    //     };
-
-    // }
-
-    // Template::render("index", &context)
-
-    ///////////////////////////////////////////
-
-    // match &flash {
-    //     Some(_) => {
-
-    //         let flash_res = &flash.map(|msg| FlashRes {
-    //             name: msg.name().to_string(),
-    //             msg: msg.msg().to_string()
-    //         }).unwrap();
-
-    //         if flash_res.name.as_str() == "error" {
-
-    //             match cookies.get_private(".form-data") {
-    //                 Some(form_data_cookie) => {
-
-    //                     let decoded = match BASE64.decode(form_data_cookie.value().as_bytes()) {
-    //                         Ok(v) => v,
-    //                         Err(_) => {
-    //                             cookies.remove_private(form_data_cookie);
-    //                             drop(cookies);
-    //                             context.class = "error".to_string();
-    //                             context.message = "Form refill decoding failed.".to_string();
-    //                             return Template::render("index", &context);
-    //                         }
-    //                     };
-
-    //                     let deserialized: form::Mail = match bincode::deserialize(&decoded) {
-    //                         Ok(v) => v,
-    //                         Err(_) => {
-    //                             cookies.remove_private(form_data_cookie);
-    //                             drop(cookies);
-    //                             context.class = "error".to_string();
-    //                             context.message = "Form refill deserialization failed.".to_string();
-    //                             return Template::render("index", &context);
-    //                         }
-    //                     };
-
-    //                     cookies.remove_private(form_data_cookie);
-    //                     context.mail = Some(deserialized);
-
-    //                 },
-    //                 None => ()
-    //             };
-
-    //         }
-
-    //         drop(cookies);
-
-    //         context.class = flash_res.name.clone();
-    //         context.message = flash_res.msg.clone();
-
-    //         return Template::render("index", &context)
-
-    //     },
-    //     None => {
-    //         return Template::render("index", &context)
-    //     }
-    // };
-
-    ///////////////////////////////////////////
-
+    // Works?
     if flash.is_some() {
 
-        let flash_res = flash.map(|msg| FlashRes {
-            name: msg.name().to_string(),
-            msg: msg.msg().to_string()
-        }).unwrap();
+        // let flash_res = flash.map(|msg| FlashRes {
+        //     name: msg.name().to_string(),
+        //     msg: msg.msg().to_string()
+        // }).unwrap();
 
-        if flash_res.name == "error".to_string() {
+        // context.class = flash_res.name;
+        // context.message = flash_res.msg;
 
-            match cookies.get_private(".form-data") {
-                Some(form_data_cookie) => {
-
-                    let decoded = match BASE64.decode(form_data_cookie.value().as_bytes()) {
-                        Ok(v) => v,
-                        Err(_) => {
-                            cookies.remove_private(form_data_cookie);
-                            drop(cookies);
-                            context.class = "error".to_string();
-                            context.message = "Form refill decoding failed.".to_string();
-                            return Template::render("index", &context);
-                        }
-                    };
-
-                    let deserialized: form::Mail = match bincode::deserialize(&decoded) {
-                        Ok(v) => v,
-                        Err(_) => {
-                            cookies.remove_private(form_data_cookie);
-                            drop(cookies);
-                            context.class = "error".to_string();
-                            context.message = "Form refill deserialization failed.".to_string();
-                            return Template::render("index", &context);
-                        }
-                    };
-
-                    cookies.remove_private(form_data_cookie);
-                    context.mail = Some(deserialized);
-
-                },
-                None => ()
-            };
-
-        }
-
-        // Drop cookies to prevent errors.
-        drop(cookies);
-
-        // println!("Flash response");
-
-        context.class = flash_res.name;
-        context.message = flash_res.msg;
-
-        return Template::render("index", &context)
-
-    } else {
-
-        return Template::render("index", &context)
+        context.class = String::from("success");
+        context.message = String::from("Mail sent!");
 
     }
+
+    return Template::render("index", &context)
 }
 
 #[get("/assets/<file..>")]
@@ -242,11 +99,19 @@ fn contact() -> RawRedirect {
     RawRedirect((), Location(String::from("/#contact")))
 }
 
+// TODO: Set csrf cookie
 #[post("/mail", data = "<mail>")]
-fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Flash<RawRedirect> {
+fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Result<Flash<RawRedirect>, Template> {
 
     let mail_data = mail.into_inner();
-    // let cookie = mail_data.refill().1;
+
+    // TODO: set csrf here
+    let mut context = templates::IndexTemplate {
+        csrf: mail_data._csrf.clone(),
+        class: String::from("error"),
+        mail: Some(mail_data.clone()),
+        ..Default::default()
+    };
 
     /*
      *  csrf check
@@ -256,15 +121,17 @@ fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
         None => "".to_string()
     };
 
+    drop(cookies);
+
     let protect = AesGcmCsrfProtection::from_key(conf::get_aes_key());
 
+    // TODO: unwrap
     let token_bytes = match BASE64.decode(mail_data._csrf.as_bytes()) {
         Ok(v) => v,
         Err(_) => {
             eprintln!("Failed to parse csrf token. Token not Base64.");
-            cookies.add_private(mail_data.refill().1);
-            drop(cookies);
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
+            context.message = String::from("CSRF validation failed. Try again.");
+            return Err(Template::render("index", &context))
         }
     };
 
@@ -272,19 +139,18 @@ fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
         Ok(v) => v,
         Err(_) => {
             eprintln!("Failed to parse csrf token bytes.");
-            cookies.add_private(mail_data.refill().1);
-            drop(cookies);
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
+            context.message = String::from("CSRF validation failed. Try again.");
+            return Err(Template::render("index", &context))
         }
     };
 
+    // TODO: unwrap
     let cookie_bytes = match BASE64.decode(csrf_cookie.as_bytes()) {
         Ok(v) => v,
         Err(_) => {
             eprintln!("Failed to parse csrf cookie. Cookie not Base64.");
-            cookies.add_private(mail_data.refill().1);
-            drop(cookies);
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
+            context.message = String::from("CSRF validation failed. Try again.");
+            return Err(Template::render("index", &context))
         }
     };
 
@@ -292,52 +158,44 @@ fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Flash<RawRedirect>
         Ok(v) => v,
         Err(_) => {
             eprintln!("Failed to parse csrf cookie bytes.");
-            cookies.add_private(mail_data.refill().1);
-            drop(cookies);
-            return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
+            context.message = String::from("CSRF validation failed. Try again.");
+            return Err(Template::render("index", &context))
         }
     };
 
     if !protect.verify_token_pair(&parsed_token, &parsed_cookie) {
         eprintln!("Failed to verify csrf token pair.");
-        cookies.add_private(mail_data.refill().1);
-        drop(cookies);
-        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "CSRF validation failed. Please try again.");
+        context.message = String::from("CSRF validation failed. Try again.");
+        return Err(Template::render("index", &context))
     }
 
     /*
      *  Form interactive?
      */
     if !mail_data._interactive {
-        cookies.add_private(mail_data.refill().1);
-        drop(cookies);
-        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form not activated, bot?")
+        context.message = String::from("Site not interacted with.");
+        return Err(Template::render("index", &context))
     }
 
     /*
      *  Validate form data.
      */
-    if !mail_data.validate() {
-        // return Redirect::to("/mail/error#contact");
-        cookies.add_private(mail_data.refill().1);
-        drop(cookies);
-        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Form data invalid.")
+    let (valid, errors) = mail_data.validate();
+    if !valid {
+        context.message = String::from("Invalid form data:");
+        context.alerts.append(&mut errors.clone());
+        return Err(Template::render("index", &context))
     }
 
     /*
      *  Send the email.
      */
     if !mailer::send(&mail_data) {
-        // Redirect::to("/mail/error#contact")
-        cookies.add_private(mail_data.refill().1);
-        drop(cookies);
-        return Flash::error(RawRedirect((), Location(String::from("/#contact"))), "Failed to send email.");
+        context.message = String::from("Sending message failed. Try agian.");
+        return Err(Template::render("index", &context))
     }
 
-    drop(cookies);
-
-    // return Redirect::to("/mail/success#contact");
-    Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!")
+    Ok(Flash::success(RawRedirect((), Location(String::from("/#contact"))), "Message sent!"))
 
 }
 
