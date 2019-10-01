@@ -89,8 +89,8 @@ impl Validate for MailConfig {
 pub fn read_config() -> Config {
 
     let conf_str = fs::read_to_string("Config.toml").unwrap_or_else(|e| {
-        eprintln!("{} {}", "MailConfig.toml not found.".bold().red(), e);
-        format!("MailConfig.toml not found. {}", e)
+        eprintln!("{} {}", "Config.toml not found.".bold().red(), e);
+        format!("Config.toml not found. {}", e)
     });
 
     let config: Config = toml::from_str(conf_str.as_str()).unwrap();
