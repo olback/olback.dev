@@ -30,11 +30,16 @@ div#cookie {
         margin-left: 1rem;
         outline: none;
         color: $darkGray;
-        transition: color ease-in-out 1s;
+        transition: background-color ease-in-out .15s;
         cursor: pointer;
+        font-weight: 800;
 
         &:hover {
-            color: $lightGray;
+            background-color: darken($accent, 7%);
+        }
+
+        &:active {
+            background-color: darken($accent, 10%);
         }
 
     }
@@ -79,10 +84,14 @@ div#scroll-top {
     padding: 1.5rem;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: box-shadow ease-in-out .15s, right ease-in-out .15s;
+    transition: background-color ease-in-out .15s, right ease-in-out .15s;
 
     &:hover {
-        box-shadow: 0 0 10px $accent;
+        background-color: darken($accent, 7%);
+    }
+
+    &:active {
+        background-color: darken($accent, 10%);
     }
 
     &.show {

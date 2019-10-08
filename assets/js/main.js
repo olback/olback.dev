@@ -93,8 +93,8 @@ window.addEventListener('DOMContentLoaded', async () => {
             let charArr = text.split('');
             underscore.hide();
             while (charArr.length) {
-                await timeout.char();
                 this.push(charArr.shift());
+                await timeout.char();
             }
             await timeout.char();
             profession.push('.');

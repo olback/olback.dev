@@ -76,13 +76,14 @@ jobs:
           name: Javascript Linting
           command: npm run lint:js
 
-      - run:
-          name: HTML Linting
-          command: npm run lint:html
+      # - run:
+      #     name: HTML Linting
+      #     command: npm run lint:html
 
-      - run:
-          name: Handlebars Linting
-          command: npm run lint:hbs
+      # HBS Linting is currently broken.
+      # - run:
+      #     name: Handlebars Linting
+      #     command: npm run lint:hbs
 
 workflows:
   version: 2
