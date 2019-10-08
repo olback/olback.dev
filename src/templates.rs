@@ -4,15 +4,18 @@
 
 extern crate chrono;
 use self::chrono::{Utc, Datelike};
-use mail;
+use form;
+use birthday;
 
 #[derive(Serialize)]
 pub struct IndexTemplate {
     pub class: String,
     pub message: String,
+    pub alerts: Vec<String>,
     pub csrf: String,
     pub year: i32,
-    pub mail: Option<mail::Mail>
+    pub age: u8,
+    pub mail: Option<form::Mail>
 }
 
 impl Default for IndexTemplate {
@@ -20,8 +23,10 @@ impl Default for IndexTemplate {
         IndexTemplate {
             class: String::from(""),
             message: String::from(""),
+            alerts: Vec::new(),
             csrf: String::from(""),
             year: Utc::now().year(),
+            age: birthday::get_age(),
             mail: None
         }
     }

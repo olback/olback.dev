@@ -14,23 +14,11 @@ use self::native_tls::{Protocol, TlsConnector};
 use self::lettre_email::EmailBuilder;
 use std::time::Duration;
 use conf;
+use form;
 
-#[derive(FromForm, Serialize, Debug)]
-pub struct Mail {
-    pub name: String,
-    pub email: String,
-    pub subject: String,
-    pub body: String,
-    pub copy: bool,
-    pub _csrf: String,
-    pub _interactive: bool,
-}
+pub fn send(mail_data: &form::Mail) -> bool {
 
-pub fn send(mail_data: Mail) -> bool {
-
-    println!("{:#?}", &mail_data);
-
-    let mail_config = conf::read_mail_config();
+    let mail_config = conf::read_config().mail;
     let body: String = format!("Name: {}\nEmail: {}\n\n{}",
         &mail_data.name,
         &mail_data.email,
@@ -40,12 +28,12 @@ pub fn send(mail_data: Mail) -> bool {
     let mut email = EmailBuilder::new()
     .to((mail_config.to.clone(), mail_config.name))
     .from((mail_config.from.clone(), mail_config.site.clone()))
-    .subject(mail_data.subject)
+    .subject(&mail_data.subject)
     .reply_to("contact@olback.net")
     .text(body);
 
     if mail_data.copy {
-        email = email.bcc((mail_data.email, format!("{}", &mail_data.name)));
+        email = email.bcc((&mail_data.email, format!("{}", &mail_data.name)));
     }
 
     let mut tls_builder = TlsConnector::builder();

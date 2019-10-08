@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="theme-color" content="#ff570c" />
+    <meta name="theme-color" content="#ff570c">
 
-    <meta name="author" content="Edwin Svensson" />
-    <meta name="owner" content="Edwin Svensson" />
-    <meta name="copyright" content="Edwin Svensson" />
-    <meta name="keywords" content="web developer, web, programmer, web development, web dev, dev, developer, typescript, javascript, angular, nodejs, express" />
-    <meta name="description" content="Hello, I'm Edwin and I'm a programmer and systems manager." />
+    <meta name="author" content="Edwin Svensson">
+    <meta name="owner" content="Edwin Svensson">
+    <meta name="copyright" content="Edwin Svensson">
+    <meta name="keywords" content="web developer, web, programmer, web development, web dev, dev, developer, typescript, javascript, angular, nodejs, express">
+    <meta name="description" content="Hello, I'm Edwin and I'm a programmer and systems manager.">
 
-    <meta property="og:title" content="Edwin - olback.net" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://olback.net" />
-    <meta property="og:description" content="Hello, I'm Edwin and I'm a programmer and systems manager." />
-    <meta property="og:site_name" content="olback.net" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:image:url" content="http://olback.net/assets/img/edwin.jpg" />
-    <meta property="og:image:secure_url" content="https://olback.net/assets/img/edwin.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:title" content="Edwin - olback.net">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://olback.net">
+    <meta property="og:description" content="Hello, I'm Edwin and I'm a programmer and systems manager.">
+    <meta property="og:site_name" content="olback.net">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image:url" content="http://olback.net/assets/img/edwin.jpg">
+    <meta property="og:image:secure_url" content="https://olback.net/assets/img/edwin.jpg">
+    <meta property="og:image:type" content="image/jpeg">
 
-    <link rel="stylesheet" href="/assets/css/main.min.css" />
-    <link rel="shortcut icon" href="/assets/img/edwin.jpg" />
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+    <link rel="shortcut icon" href="/assets/img/edwin.jpg">
 
     <title>Edwin - olback.net</title>
 </head>
@@ -48,8 +48,8 @@
 
         <section class="left">
             <picture>
-                <source srcset="/assets/img/edwin.webp" />
-                <img src="/assets/img/edwin.jpg" alt="Picture" />
+                <source srcset="/assets/img/edwin.webp">
+                <img src="/assets/img/edwin.jpg" alt="Picture">
             </picture>
         </section>
 
@@ -58,7 +58,7 @@
                 Hi<span class="accent">,</span> I<span class="accent">'</span>m Edwin<span class="accent">.</span>
             </h1>
             <h2>
-                <span id="profession">Webdeveloper<span class="accent">.</span></span><span id="underscore" class="blink">_</span>
+                <span id="profession">Web developer<span class="accent">.</span></span><span id="underscore" class="blink">_</span>
             </h2>
         </section>
 
@@ -89,7 +89,7 @@
                         <em>Chickens Attack Helicopters</em> is an online implementation of the popular table top party game
                         <a href="https://cardsagainsthumanity.com/" rel="noopener" target="_blank">Cards Against Humanity</a>.
                         It's a game for truly horrible people. Play it on <a href="https://cah.ninja?utm_source=olback.net" rel="noopener" target="_blank">cah.ninja</a>
-                        or contribute to the game <a href="https://github.com/olback/cah" rel="noopener" target="_blank">here</a>.
+                        or contribute to the game on <a href="https://github.com/olback/cah" rel="noopener" target="_blank">GitHub</a>.
                     </p>
                 </article>
 
@@ -108,7 +108,7 @@
 
         <section id="about">
 
-            <h2>About</h2>
+            <h2>About me</h2>
 
             <div class="body">
 
@@ -141,6 +141,11 @@
 
                 <div class="m-status {{ class }}">
                     {{ message }}
+                    <ul>
+                        {{#each alerts}}
+                        <li>{{ this }}</li>
+                        {{/each}}
+                    </ul>
                 </div>
 
                 <form action="/mail" method="POST">
@@ -149,19 +154,19 @@
 
                         <div class="input-group">
                             <label for="name">Full name:</label>
-                            <input required name="name" id="name" type="text" value="{{ mail.name }}" />
+                            <input required name="name" id="name" type="text" value="{{ mail.name }}">
                         </div>
 
                         <div class="input-group">
                             <label for="email">Your Email:</label>
-                            <input required name="email" id="email" type="email" value="{{ mail.email }}" />
+                            <input required name="email" id="email" type="email" value="{{ mail.email }}">
                         </div>
 
                     </div>
 
                     <div class="input-group">
                         <label for="subject">Subject:</label>
-                        <input required name="subject" id="subject" type="text" value="{{ mail.subject }}" />
+                        <input required name="subject" id="subject" type="text" value="{{ mail.subject }}">
                     </div>
 
                     <div class="input-group">
@@ -171,12 +176,16 @@
 
                     <div class="input-group checkbox">
                         <span>I want to receive a copy of this message:</span>
-                        <input id="copy" type="checkbox" checked />
+                        {{#if mail.copy}}
+                        <input id="copy" name="copy" type="checkbox" checked="checked">
+                        {{else}}
+                        <input id="copy" name="copy" type="checkbox">
+                        {{/if}}
                         <label for="copy"></label>
                     </div>
 
-                    <input type="hidden" name="_csrf" value="{{ csrf }}" />
-                    <input type="checkbox" name="_interactive" />
+                    <input type="hidden" name="_csrf" value="{{ csrf }}">
+                    <input type="checkbox" name="_interactive">
 
                     <button type="submit" disabled>Send</button>
 
@@ -192,11 +201,12 @@
         <p>This site uses cookies.</p> <button id="cookie-ok">OK</button>
     </div>
 
+    <div id="scroll-top" class="fas fa-chevron-up"></div>
+
     <footer>
         <p>Edwin &copy; olback.net {{ year }}</p>
+        <div id="darkmode-toggle" class="fas fa-adjust"></div>
     </footer>
-
-    <div id="scroll-top" class="fas fa-chevron-up"></div>
 
     <script src="/assets/js/main.min.js"></script>
 

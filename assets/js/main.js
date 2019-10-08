@@ -13,6 +13,11 @@ const professions = [
 
 window.addEventListener('DOMContentLoaded', async () => {
 
+    // If the pathname is /mail, scroll to the contact form real quick
+    if (location.pathname === '/mail') {
+        document.getElementById('contact').scrollIntoView();
+    }
+
     const timeout = {
 
         /**
@@ -88,8 +93,8 @@ window.addEventListener('DOMContentLoaded', async () => {
             let charArr = text.split('');
             underscore.hide();
             while (charArr.length) {
-                await timeout.char();
                 this.push(charArr.shift());
+                await timeout.char();
             }
             await timeout.char();
             profession.push('.');
@@ -202,6 +207,22 @@ window.addEventListener('DOMContentLoaded', async () => {
             });
 
         }
+
+    })();
+
+    // Darkmode toggle
+    (function() {
+
+        const itemKey = 'darkmode';
+
+        if (localStorage.getItem(itemKey) === 'true') {
+            document.body.classList.add('dark');
+        }
+
+        document.getElementById('darkmode-toggle')
+        .addEventListener('click', () => {
+            localStorage.setItem(itemKey, String(document.body.classList.toggle('dark')));
+        }, { passive: true });
 
     })();
 

@@ -28,4 +28,4 @@ download/
 /target
 **/*.rs.bk
 node_modules/
-MailConfig.toml
+Config.toml
