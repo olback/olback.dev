@@ -3,7 +3,8 @@
  */
 
 use rocket_contrib::templates::Template;
-use templates;
+use super::super::templates;
+use rocket::catch;
 
 #[catch(500)]
 pub fn internal_error() -> Template {

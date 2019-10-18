@@ -29,3 +29,6 @@ download/
 **/*.rs.bk
 node_modules/
 Config.toml
+
+# bin
+olback_net

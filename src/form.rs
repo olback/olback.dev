@@ -2,7 +2,9 @@
  *  olback.net web server
  */
 
-extern crate mailchecker;
+use mailchecker;
+use serde::{Serialize, Deserialize};
+use rocket::request::FromForm;
 
 pub trait Validate {
     fn validate(&self) -> (bool, Vec<String>);

@@ -2,9 +2,8 @@
  *  olback.net web server
  */
 
-use conf::{self, BirthdayConfig};
-extern crate chrono;
-use self::chrono::{Utc, Datelike};
+use super::conf::{self, BirthdayConfig};
+use chrono::{Utc, Datelike};
 
 /*
  *  BirthdayConfig

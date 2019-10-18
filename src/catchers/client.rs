@@ -3,8 +3,21 @@
  */
 
 use rocket_contrib::templates::Template;
-use rocket::request::Request;
-use templates;
+use rocket::{
+    catch,
+    request::Request
+};
+use super::super::templates;
+
+#[catch(400)]
+pub fn bad_request() -> Template {
+    let context = templates::ErrorTemplate {
+        code: 400,
+        message: format!("Bad request")
+    };
+
+    Template::render("error", &context)
+}
 
 #[catch(404)]
 pub fn not_found(req: &Request) -> Template {

@@ -2,17 +2,16 @@
  *  olback.net web server
  */
 
-extern crate rand;
-
 use colored::*;
 use std::fs;
 use serde::Deserialize;
-use self::rand::Rng;
+use rand::Rng;
 
 #[derive(Deserialize)]
 pub struct Config {
     pub birthday: BirthdayConfig,
     pub mail: MailConfig,
+    pub circle_ci: CircleCi
 }
 
 #[derive(Deserialize, Clone, Copy)]
@@ -32,6 +31,34 @@ pub struct MailConfig {
     pub to: String,
     pub name: String,
     pub site: String
+}
+
+#[derive(Deserialize)]
+pub struct CircleCi {
+    pub username: String,
+    pub repo_name: String,
+    pub branch: String,
+    pub token: String,
+    pub blob: String,
+    pub checksum: String
+}
+
+pub struct CircleCiUrl {
+    pub blob: String,
+    pub checksum: String
+}
+
+impl CircleCi {
+    pub fn get_urls(&self, build_num: String, node_index: String) -> CircleCiUrl {
+        let url = format!(
+            "https://circleci.com/api/v1.1/project/github/{username}/{repo_name}/{build_num}/artifacts/{node_index}/:file/?branch={branch}&filter=successful&circle-token={token}",
+            username = &self.username, repo_name = &self.repo_name, build_num = build_num, node_index = node_index, branch = &self.branch, token = &self.token
+        );
+        CircleCiUrl {
+            blob: url.replace(":file", &self.blob),
+            checksum: url.replace(":file", &self.checksum)
+        }
+    }
 }
 
 pub trait Validate {

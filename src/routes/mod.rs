@@ -2,17 +2,23 @@
  *  olback.net web server
  */
 
-use rocket::request::{FlashMessage};
-use rocket::http::{Cookie, Cookies};
+// use rocket::request::{FlashMessage};
+// use rocket::http::{Cookie, Cookies};
+use rocket::{
+    get,
+    request::FlashMessage,
+    http::{Cookie, Cookies}
+};
 use rocket_contrib::templates::Template;
 use csrf::{AesGcmCsrfProtection, CsrfProtection};
-use conf;
-use templates;
+use super::conf;
+use super::templates;
 
 // Re exports
 pub mod files;
 pub mod redirects;
 pub mod mail;
+pub mod utils;
 
 #[get("/")]
 pub fn index(flash: Option<FlashMessage>, mut cookies: Cookies) -> Template {

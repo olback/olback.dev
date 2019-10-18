@@ -3,7 +3,10 @@
  */
 
 use std::path::{Path, PathBuf};
-use rocket::response::{NamedFile};
+use rocket::{
+    get,
+    response::NamedFile
+};
 
 #[get("/assets/<file..>")]
 pub fn assets(file: PathBuf) -> Option<NamedFile> {
