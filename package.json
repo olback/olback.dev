@@ -1,13 +1,9 @@
 {
   "name": "olback.net",
-  "version": "4.0.0",
+  "version": "3.0.0",
   "description": "Website",
   "scripts": {
-    "lint:scss": "sass-lint --verbose",
-    "lint:js": "eslint assets/js/main.js",
-    "lint:html": "htmllint templates/*.hbs static/*.html",
-    "lint:hbs": "ember-template-lint templates/*.hbs",
-    "lint": "npm run lint:scss && npm run lint:js && npm run lint:html && npm run lint:hbs"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,9 +16,9 @@
   },
   "homepage": "https://olback.net",
   "devDependencies": {
-    "ember-template-lint": "^1.5.3",
-    "eslint": "^6.5.1",
-    "htmllint-cli": "^0.0.7",
-    "sass-lint": "^1.13.1"
+    "csslint": "^1.0.5",
+    "ember-template-lint": "^0.8.20",
+    "eslint": "^5.0.0",
+    "htmllint-cli": "0.0.7"
   }
 }
