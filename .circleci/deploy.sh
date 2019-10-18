@@ -1,6 +1,5 @@
 #!/bin/bash
 
-URL="http://localhost:5000/update"
 CIRCLE_BUILD_NUM=190
 CIRCLE_NODE_INDEX=0
 # URL="https://olback.net/update"
