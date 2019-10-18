@@ -111,13 +111,26 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
             }
         }
 
+        match std::process::Command::new("chmod").args(&["+x", &BIN_PATH]).spawn() {
+            Ok(_) => {
+                #[cfg(debug_assertions)]
+                println!("> Set premissions for blob");
+            },
+            Err(e) => {
+                eprintln!("{:#?}", e);
+                errors.push("Error changing permissions");
+            }
+        }
+
         // Restart
         #[cfg(not(debug_assertions))]
         match std::process::Command::new("systemctl").args(&["restart", "olback.net"]).spawn() {
-            Ok(_) => {},
+            Ok(_) => {
+                println!("> Restarting...");
+            },
             Err(e) => {
                 eprintln!("{:#?}", e);
-                errors.push("restart failed");
+                errors.push("systemctl failed");
             }
         }
 
