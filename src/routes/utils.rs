@@ -8,11 +8,14 @@ use last_git_commit::{LastGitCommit, Id};
 use rocket::{get, post, response::status, http::Status};
 use openssl::sha;
 use hex;
-use std::{
-    fs::File,
-    io::prelude::*
-};
+use std::fs;
 use super::super::conf;
+
+#[cfg(debug_assertions)]
+const BIN_PATH: &str = "target/debug/olback_net";
+
+#[cfg(not(debug_assertions))]
+const BIN_PATH: &str = "target/release/olback_net";
 
 #[derive(Serialize)]
 pub struct Version {
@@ -71,24 +74,61 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
     let checksum_calculated = hex::encode(sha::sha256(&blob));
 
     if checksum == checksum_calculated {
+
         // Git pull to update assets
         match std::process::Command::new("git").arg("pull").spawn() {
-            Ok(_) => {},
-            Err(_) => {
+            Ok(_) => {
+                #[cfg(debug_assertions)]
+                println!("> git pull successful");
+            },
+            Err(e) => {
+                eprintln!("{:#?}", e);
                 errors.push("git pull failed");
             }
         }
-        // Attempt to write file to disk
-        match File::create("target/release/olback_net") {
-            Ok(mut buffer) => {
-                buffer.write(&blob).unwrap();
+
+        // Remove old blob
+        match fs::remove_file(BIN_PATH) {
+            Ok(_) => {
+                #[cfg(debug_assertions)]
+                println!("> Removed old blob");
             },
-            Err(_) => {
+            Err(e) => {
+                eprintln!("{:#?}", e);
+                errors.push("Error removing binary blob");
+            }
+        }
+
+        // Write new blob
+        match fs::write(BIN_PATH, &blob) {
+            Ok(_) => {
+                #[cfg(debug_assertions)]
+                println!("> Wrote blob to disk");
+            },
+            Err(e) => {
+                eprintln!("{:#?}", e);
                 errors.push("Error writing blob to disk");
             }
         }
+
+        // Restart
+        #[cfg(not(debug_assertions))]
+        match std::process::Command::new("systemctl").args(&["restart", "olback.net"]).spawn() {
+            Ok(_) => {},
+            Err(e) => {
+                eprintln!("{:#?}", e);
+                errors.push("restart failed");
+            }
+        }
+
     } else {
+
         errors.push("Checksums does not match!");
+
+    }
+
+    if &errors.len() > &0 {
+        eprintln!("Errors: {:#?}", errors);
     }
 
     status::Custom(if &errors.len() > &0 { Status:: InternalServerError } else { Status::Ok }, Json(UpdateResponse {
