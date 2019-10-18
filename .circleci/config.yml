@@ -108,9 +108,11 @@ jobs:
   deploy:
     machine:
       enabled: true
-      image: ubuntu-1604:201903-01
+    #   image: ubuntu-1604:201903-01
 
     steps:
+      - checkout
+
       - restore_cache:
           name: Fetch Build Aritfacts
           key: olback_net-dist-{{ .Environment.CIRCLE_SHA1 }}
