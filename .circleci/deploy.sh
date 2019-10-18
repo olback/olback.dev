@@ -4,7 +4,7 @@ URL="https://olback.net/update"
 
 if [ $DEV ]; then
 
-    CIRCLE_BUILD_NUM=227
+    CIRCLE_BUILD_NUM=244
     CIRCLE_NODE_INDEX=0
     URL="http://localhost:5000/update"
 

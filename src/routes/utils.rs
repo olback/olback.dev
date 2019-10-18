@@ -124,7 +124,7 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
 
         // Restart
         #[cfg(not(debug_assertions))]
-        match std::process::Command::new("systemctl").args(&["restart", "olback.net"]).spawn() {
+        match std::process::Command::new("sudo").args(&["systemctl", "restart", "olback.net"]).spawn() {
             Ok(_) => {
                 println!("> Restarting...");
             },

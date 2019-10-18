@@ -1,0 +1,3 @@
+# Sudoers file /etc/sudoers.d/www-data
+
+%www-data ALL= NOPASSWD: /bin/systemctl restart olback.net
