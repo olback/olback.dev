@@ -29,7 +29,7 @@ div#cookie {
         border-radius: .5rem;
         margin-left: 1rem;
         outline: none;
-        color: $darkGray;
+        color: #000;
         transition: background-color ease-in-out .15s;
         cursor: pointer;
         font-weight: 800;
@@ -126,7 +126,7 @@ footer {
         border-radius: 50%;
         color: $darkGray;
         margin-left: 2rem;
-        transition: box-shadow ease-in-out .15s;
+        transition: box-shadow ease-in-out .15s, transform ease-in-out .15s;
         cursor: pointer;
         user-select: none;
 
@@ -148,4 +148,10 @@ footer {
         }
     }
 
+}
+
+body.dark > footer {
+    #darkmode-toggle {
+        transform: rotate(180deg);
+    }
 }

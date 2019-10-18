@@ -181,14 +181,13 @@ header {
             }
 
             h1 {
+                margin-top: 0;
                 font-size: 5rem;
-                text-shadow: 0 0 10px $lightGray;
             }
 
             h2 {
                 font-size: 3rem;
                 min-height: 3rem;
-                text-shadow: 0 0 5px $lightGray;
                 text-transform: capitalize;
 
                 #underscore {
@@ -203,6 +202,28 @@ header {
 
                 &.accent {
                     color: $accent;
+                }
+
+            }
+
+            div.actions {
+
+                button {
+                    background-color: $accent;
+                    padding: .9rem 1.8rem;
+                    border-radius: .3rem;
+                    border: none;
+                    font-size: 12pt;
+                    // color: $darkGray;
+                    color: #000;
+                    cursor: pointer;
+                    outline: none;
+                    transition: background-color .15s ease-in-out;
+
+                    &:hover {
+                        background-color: darken($accent, 10%);
+                    }
+
                 }
 
             }
@@ -287,6 +308,14 @@ header {
                     display: none;
                 }
 
+            }
+
+        }
+
+        section.right {
+
+            div.actions {
+                display: none;
             }
 
         }
