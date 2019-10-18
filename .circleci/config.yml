@@ -41,9 +41,29 @@ jobs:
             - "./target"
             - "/usr/local/cargo"
 
-      - store_artifacts:
-          name: Store Server Build
-          path: "./target/release/olback_net"
+      - run:
+          name: "Generate hash file"
+          command: "cd target/release && sha256sum olback_net > olback_net_checksum"
+
+      - run:
+          name: "Verify hash"
+          command: "cd target/release && sha256sum -c olback_net_checksum"
+
+    #   - store_artifacts:
+    #       name: Store Server Build
+    #       path: "./target/release/olback_net"
+    #       destination: "/artifacts/olback_net"
+
+    #   - store_artifacts:
+    #       name: Store Server Build Checksum
+    #       path: "./target/release/olback_net_checksum"
+    #       destination: "/artifacts/olback_net_checksum"
+
+      - save_cache:
+          paths:
+            - "target/release/olback_net"
+            - "target/release/olback_net_checksum"
+          key: olback_net-dist-{{ .Environment.CIRCLE_SHA1 }}
 
   lint:
     docker:
@@ -85,9 +105,38 @@ jobs:
       #     name: Handlebars Linting
       #     command: npm run lint:hbs
 
+  deploy:
+    machine:
+      enabled: true
+      image: ubuntu-1604:201903-01
+
+    steps:
+      - restore_cache:
+          name: Fetch Build Aritfacts
+          key: olback_net-dist-{{ .Environment.CIRCLE_SHA1 }}
+
+      - store_artifacts:
+          name: Store Server Build
+          path: "target/release/olback_net"
+
+      - store_artifacts:
+          name: Store Server Build Checksum
+          path: "target/release/olback_net_checksum"
+
+      - run:
+          name: Deploy
+          command: ".circleci/deploy.sh"
+
 workflows:
   version: 2
   lint_build:
     jobs:
       - lint
       - binary
+      - deploy:
+          requires:
+          - lint
+          - binary
+          filters:
+            branches:
+              only: "4.0"

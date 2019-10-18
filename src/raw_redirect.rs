@@ -2,7 +2,10 @@
  *  olback.net web server
  */
 
-use rocket::http::hyper::header::Location;
+use rocket::{
+    response::Responder,
+    http::hyper::header::Location
+};
 
 // https://github.com/SergioBenitez/Rocket/issues/842
 #[derive(Responder)]

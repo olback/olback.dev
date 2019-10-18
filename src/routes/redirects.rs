@@ -2,8 +2,11 @@
  *  olback.net web server
  */
 
-use raw_redirect::RawRedirect;
-use rocket::http::hyper::header::Location;
+use super::super::raw_redirect::RawRedirect;
+use rocket::{
+    get,
+    http::hyper::header::Location
+};
 
 #[get("/contact")]
 pub fn contact_to_contact() -> RawRedirect {

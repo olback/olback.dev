@@ -14,3 +14,11 @@ site = "" # Site domain
 year = 0000
 month = 1
 day = 1
+
+[circle_ci]
+username = "olback"
+repo_name = "olback.net"
+branch = "4.0"
+token = ""
+blob = "home/circleci/project/target/release/olback_net"
+checksum = "home/circleci/project/target/release/olback_net_checksum"

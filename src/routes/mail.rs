@@ -2,18 +2,24 @@
  *  olback.net web server
  */
 
-use templates;
-use form::{self, Validate};
-use conf;
-use mailer;
-use rocket::response::Flash;
-use rocket::request::Form;
-use rocket::http::{Cookie, Cookies};
-use rocket::http::hyper::header::Location;
-use raw_redirect::RawRedirect;
+use super::templates;
+use super::conf;
+use super::super::form::{self, Validate};
+use super::super::mailer;
+use super::super::raw_redirect::RawRedirect;
 use rocket_contrib::templates::Template;
 use csrf::{AesGcmCsrfProtection, CsrfProtection};
 use data_encoding::BASE64;
+use rocket::{
+    post,
+    response::Flash,
+    request::Form,
+    http::{
+        Cookie,
+        Cookies,
+        hyper::header::Location
+    }
+};
 
 // TODO: Set csrf cookie
 #[post("/mail", data = "<mail>")]

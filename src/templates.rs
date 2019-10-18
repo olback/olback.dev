@@ -2,10 +2,10 @@
  *  olback.net web server
  */
 
-extern crate chrono;
-use self::chrono::{Utc, Datelike};
-use form;
-use birthday;
+use chrono::{Utc, Datelike};
+use super::form;
+use super::birthday;
+use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct IndexTemplate {

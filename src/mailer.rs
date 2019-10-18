@@ -2,19 +2,25 @@
  *  olback.net web server
  */
 
-extern crate lettre;
-extern crate lettre_email;
-extern crate native_tls;
-
-use self::lettre::{ClientSecurity, ClientTlsParameters, SmtpClient, Transport};
-use self::lettre::smtp::authentication::{Credentials, Mechanism};
-use self::lettre::smtp::ConnectionReuseParameters;
-use self::lettre::smtp::extension::ClientId;
-use self::native_tls::{Protocol, TlsConnector};
-use self::lettre_email::EmailBuilder;
+use lettre::{
+    ClientSecurity,
+    ClientTlsParameters,
+    SmtpClient,
+    Transport,
+    smtp::{
+        ConnectionReuseParameters,
+        extension::ClientId,
+        authentication::{
+            Credentials,
+            Mechanism
+        }
+    }
+};
+use native_tls::{Protocol, TlsConnector};
+use lettre_email::EmailBuilder;
 use std::time::Duration;
-use conf;
-use form;
+use super::conf;
+use super::form;
 
 pub fn send(mail_data: &form::Mail) -> bool {
 

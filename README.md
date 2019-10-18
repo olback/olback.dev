@@ -1,9 +1,5 @@
 # [olback.net](https://olback.net)
-Build: [![CircleCI](https://circleci.com/gh/olback/olback.net/tree/3.0.svg?style=svg)](https://circleci.com/gh/olback/olback.net/tree/3.0)  
-
-```terminal
-OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0" cargo build
-```
+Build: [![CircleCI](https://circleci.com/gh/olback/olback.net/tree/4.0.svg?style=svg)](https://circleci.com/gh/olback/olback.net/tree/4.0)  
 
 ### Todo:
 * [x] Error page
@@ -15,7 +11,7 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [x] Cookie notice
 * [x] SEO https://support.google.com/webmasters/answer/79812?hl=en author/owner/description/keywords
 * [ ] i18n
-* ~~[ ] Last modified header/meta data~~
+* [ ] ~~Last modified header/meta data~~
 * [x] robots.txt
 * [x] ogp
 * [x] Generate random AES token
@@ -23,8 +19,9 @@ OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl
 * [x] `/steam.html`
 * [x] Fix linting errors
 * [x] Automatically update age
-* [ ] Automatic delivery/deploy
+* [x] Automatic delivery/deploy
 * [x] Dark mode
 * [x] Refill form on failure
 * [x] Split routes to diffrent files
 * [x] Refactor imports
+* [x] Update Rust edition to 2018
