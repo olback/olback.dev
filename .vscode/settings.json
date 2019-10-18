@@ -11,5 +11,10 @@
     ],
     "liveSassCompile.settings.autoprefix": [
         "> 1%"
+    ],
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        ".vscode/**",
+        "assets/css/vendor/**"
     ]
 }

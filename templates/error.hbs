@@ -17,11 +17,6 @@
             <p>{{ message }}</p>
             <a id="back">Go back</a>
         </main>
-        <!-- This should not work with the current CSP settings! --->
-        <script>
-            document.getElementById('back').addEventListener('click', function() {
-                window.history.back();
-            }, { passive: true });
-        </script>
+        <script src="/assets/js/error-page.min.js"></script>
     </body>
 </html>

@@ -151,41 +151,43 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     })();
 
-    // Handle arrow click
+    // Handle arrow & read more click
     (() => {
 
-        document.getElementById('arrow').addEventListener('click', () => {
-
+        function scrollToOSS() {
             document.getElementById('oss').scrollIntoView({ behavior: 'smooth' });
+        }
 
-        }, { passive: true });
+        document.getElementById('arrow').addEventListener('click', scrollToOSS, { passive: true });
+        document.getElementById('read-more').addEventListener('click', scrollToOSS, { passive: true });
 
     })();
 
     // Handle to-top arrow and click
-    (() => {
+    // (() => {
 
-        const arrow = document.getElementById('scroll-top');
+    //     const arrow = document.getElementById('scroll-top');
 
-        arrow.addEventListener('click', () => {
+    //     arrow.addEventListener('click', () => {
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    //         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        }, { passive: true });
+    //     }, { passive: true });
 
-        const minScrollHeight = window.innerHeight * 0.7;
+    //     const minScrollHeight = window.innerHeight * 0.7;
 
-        window.addEventListener('scroll', () => {
+    //     // TODO: Hide to top button if footer is visible
+    //     window.addEventListener('scroll', () => {
 
-            if (window.pageYOffset >= minScrollHeight) {
-                arrow.classList.add('show');
-            } else {
-                arrow.classList.remove('show');
-            }
+    //         if (window.pageYOffset >= minScrollHeight) {
+    //             arrow.classList.add('show');
+    //         } else {
+    //             arrow.classList.remove('show');
+    //         }
 
-        }, { passive: true });
+    //     }, { passive: true });
 
-    })();
+    // })();
 
     // Cookie stuff
     (async function () {
