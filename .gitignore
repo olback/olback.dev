@@ -27,6 +27,8 @@ download/
 # Other
 /target
 **/*.rs.bk
-src/conf.rs
-
 node_modules/
+Config.toml
+
+# bin
+olback_net

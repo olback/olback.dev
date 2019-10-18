@@ -1,0 +1,42 @@
+/*
+ *  olback.net v4.0
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
+
+@import 'vars';
+
+::selection {
+    background-color: $accent;
+    color: $darkGray;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $accent;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $darkGray;
+}
+
+body {
+    margin: 0;
+    color: $darkGray;
+    background-color: $white;
+    * {
+        font-family: 'Open Sans', sans-serif;
+    }
+    &.dark {
+        background-color: $darkGray;
+        color: $white;
+    }
+}
+
+@import 'header';
+@import 'main';
+@import 'footer';
