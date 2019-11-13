@@ -7,6 +7,7 @@ use super::conf;
 use super::super::form::{self, Validate};
 use super::super::mailer;
 use super::super::raw_redirect::RawRedirect;
+use super::super::guards::abuse_ip_db::AbuseIpDb;
 use rocket_contrib::templates::Template;
 use csrf::{AesGcmCsrfProtection, CsrfProtection};
 use data_encoding::BASE64;
@@ -23,7 +24,7 @@ use rocket::{
 
 // TODO: Set csrf cookie
 #[post("/mail", data = "<mail>")]
-pub fn send_mail(mail: Form<form::Mail>, mut cookies: Cookies) -> Result<Flash<RawRedirect>, Template> {
+pub fn send_mail(_abuse: AbuseIpDb, mail: Form<form::Mail>, mut cookies: Cookies) -> Result<Flash<RawRedirect>, Template> {
 
     let mail_data = mail.into_inner();
     let protect = AesGcmCsrfProtection::from_key(conf::get_aes_key());
