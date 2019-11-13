@@ -12,6 +12,7 @@ mod raw_redirect;
 mod birthday;
 mod routes;
 mod catchers;
+mod guards;
 
 use std::process;
 use rocket::{catchers, routes};

@@ -2,8 +2,6 @@
  *  olback.net web server
  */
 
-// use rocket::request::{FlashMessage};
-// use rocket::http::{Cookie, Cookies};
 use rocket::{
     get,
     request::FlashMessage,

@@ -22,3 +22,6 @@ branch = "4.0"
 token = ""
 blob = "home/circleci/project/target/release/olback_net"
 checksum = "home/circleci/project/target/release/olback_net_checksum"
+
+[abuse_ip_db]
+token = "<token>"

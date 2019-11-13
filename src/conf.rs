@@ -11,7 +11,8 @@ use rand::Rng;
 pub struct Config {
     pub birthday: BirthdayConfig,
     pub mail: MailConfig,
-    pub circle_ci: CircleCi
+    pub circle_ci: CircleCi,
+    pub abuse_ip_db: AbuseIpDb
 }
 
 #[derive(Deserialize, Clone, Copy)]
@@ -41,6 +42,11 @@ pub struct CircleCi {
     pub token: String,
     pub blob: String,
     pub checksum: String
+}
+
+#[derive(Deserialize)]
+pub struct AbuseIpDb {
+    pub token: String
 }
 
 pub struct CircleCiUrl {
