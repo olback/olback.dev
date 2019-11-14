@@ -19,6 +19,16 @@ pub fn bad_request() -> Template {
     Template::render("error", &context)
 }
 
+#[catch(403)]
+pub fn forbidden() -> Template {
+    let context = templates::ErrorTemplate {
+        code: 403,
+        message: format!("Forbidden")
+    };
+
+    Template::render("error", &context)
+}
+
 #[catch(404)]
 pub fn not_found(req: &Request) -> Template {
     let context = templates::ErrorTemplate {

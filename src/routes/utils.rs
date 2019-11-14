@@ -78,7 +78,6 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
         // Git pull to update assets
         match std::process::Command::new("git").arg("pull").spawn() {
             Ok(_) => {
-                #[cfg(debug_assertions)]
                 println!("> git pull successful");
             },
             Err(e) => {
@@ -90,7 +89,6 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
         // Remove old blob
         match fs::remove_file(BIN_PATH) {
             Ok(_) => {
-                #[cfg(debug_assertions)]
                 println!("> Removed old blob");
             },
             Err(e) => {
@@ -102,7 +100,6 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
         // Write new blob
         match fs::write(BIN_PATH, &blob) {
             Ok(_) => {
-                #[cfg(debug_assertions)]
                 println!("> Wrote blob to disk");
             },
             Err(e) => {
@@ -113,7 +110,6 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
 
         match std::process::Command::new("chmod").args(&["+x", &BIN_PATH]).spawn() {
             Ok(_) => {
-                #[cfg(debug_assertions)]
                 println!("> Set premissions for blob");
             },
             Err(e) => {

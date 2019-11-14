@@ -42,6 +42,7 @@ fn main() {
     .attach(Template::fairing())
     .register(catchers![
         catchers::client::bad_request,
+        catchers::client::forbidden,
         catchers::client::not_found,
         catchers::client::unprocessable_entity,
         catchers::server::internal_error

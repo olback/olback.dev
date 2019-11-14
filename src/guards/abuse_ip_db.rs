@@ -47,18 +47,18 @@ pub struct AbuseIpDb(bool);
 
 impl<'a, 'r> FromRequest<'a, 'r> for AbuseIpDb {
 
-    // type Error = std::convert::Infallible;
-    // return Failure((rocket::http::Status::new(403, "Forbidden"), String::from("No Ipv4")))
-
     type Error = Self;
 
     fn from_request(request: &'a Request<'r>) -> Outcome<Self, Self::Error> {
 
         let config = conf::read_config();
 
-        let ip_address = match request.remote().unwrap().ip() {
-            IpAddr::V4(v) => format!("{}", v),
-            IpAddr::V6(v) => format!("{}", v)
+        let ip_address = match request.headers().get_one("X-Real-IP") {
+            Some(v) => String::from(v),
+            None => match request.remote().unwrap().ip() {
+                IpAddr::V4(v) => format!("{}", v),
+                IpAddr::V6(v) => format!("{}", v)
+            }
         };
 
         let client = reqwest::Client::new();
@@ -71,6 +71,7 @@ impl<'a, 'r> FromRequest<'a, 'r> for AbuseIpDb {
 
         if res_data.data.abuseConfidenceScore > 30 {
 
+            println!("=> Denied {}", ip_address);
             Failure((rocket::http::Status::new(403, "Forbidden"), AbuseIpDb(false)))
 
         } else {
