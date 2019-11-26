@@ -13,6 +13,7 @@ mod birthday;
 mod routes;
 mod catchers;
 mod guards;
+mod projects;
 
 use std::process;
 use rocket::{catchers, routes};

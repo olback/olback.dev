@@ -76,15 +76,19 @@ pub fn update(update_json: Json<Update>) -> status::Custom<Json<UpdateResponse>>
     if checksum == checksum_calculated {
 
         // Git pull to update assets
-        match std::process::Command::new("git").arg("pull").spawn() {
-            Ok(_) => {
-                println!("> git pull successful");
+        match std::process::Command::new("git").arg("pull").output() {
+            Ok(output) => {
+                if output.status.success() {
+                    println!("> git pull successful");
+                } else {
+                    eprintln!("git pull failed");
+                }
             },
             Err(e) => {
                 eprintln!("{:#?}", e);
                 errors.push("git pull failed");
             }
-        }
+        };
 
         // Remove old blob
         match fs::remove_file(BIN_PATH) {

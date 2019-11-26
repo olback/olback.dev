@@ -75,37 +75,26 @@
 
             <div class="items">
 
-                <article>
-                    <h3>es6-css-minify</h3>
-                    <p>
-                        <em>es6-css-minify</em> is a open-source VS Code extension that lets you minify JavaScript,
-                        CSS and generate source maps with a simple click.
-                        View source on <a href="http://github.com/olback/es6-css-minify" rel="noopener" target="_blank">Github</a>
-                        or download from the
-                        <a href="https://marketplace.visualstudio.com/items?itemName=olback.es6-css-minify" rel="noopener" target="_blank">VSC Marketplace</a>.
-                    </p>
-                </article>
+                {{#each projects}}
 
                 <article>
-                    <h3>Chickens Attack Helicopters</h3>
-                    <p>
-                        <em>Chickens Attack Helicopters</em> is an online implementation of the popular table top party game
-                        <a href="https://cardsagainsthumanity.com/" rel="noopener" target="_blank">Cards Against Humanity</a>.
-                        It's a game for truly horrible people. Play it on <a href="https://cah.ninja?utm_source=olback.net" rel="noopener" target="_blank">cah.ninja</a>
-                        or contribute to the game on <a href="https://github.com/olback/cah" rel="noopener" target="_blank">GitHub</a>.
-                    </p>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.body}}</p>
+                    <div>
+                        <span class="lang-dot" data-lang-color="{{this.language.color}}"></span>
+                        <span class="lang">{{this.language.name}}</span>
+                        <a class="git" href="{{this.git.url}}">{{this.git.display}}</a>
+                        {{#if this.website}}
+                        <a class="website" href="{{this.website.url}}">{{this.website.display}}</a>
+                        {{/if}}
+                    </div>
                 </article>
 
-                <article>
-                    <h3>rdg-linux</h3>
-                    <p>
-                        <em>rdg-linux</em> is a simple front-end application for the CLI tool rdesktop.
-                        This was created for people that don't like using the terminal for everything.
-                        View <a href="https://github.com/olback/rdg-linux" rel="noopener" target="_blank">source</a> or <a href="https://github.com/olback/rdg-linux/releases/latest" rel="noopener" target="_blank">download</a> on Github.
-                    </p>
-                </article>
+                {{/each}}
 
             </div>
+
+            <h3>... and many more can be found on <a href="https://github.com/olback" rel="noopner", target="_blank">Github</a>!</h3>
 
         </section>
 
