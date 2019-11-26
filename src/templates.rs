@@ -5,6 +5,7 @@
 use chrono::{Utc, Datelike};
 use super::form;
 use super::birthday;
+use super::projects;
 use serde::Serialize;
 
 #[derive(Serialize)]
@@ -15,6 +16,7 @@ pub struct IndexTemplate {
     pub csrf: String,
     pub year: i32,
     pub age: u8,
+    pub projects: projects::Projects,
     pub mail: Option<form::Mail>
 }
 
@@ -27,6 +29,7 @@ impl Default for IndexTemplate {
             csrf: String::from(""),
             year: Utc::now().year(),
             age: birthday::get_age(),
+            projects: projects::load_projects(),
             mail: None
         }
     }

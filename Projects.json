@@ -1,0 +1,82 @@
+[
+  {
+    "title": "es6-css-minify",
+    "body": "es6-css-minify is a open-source VS Code extension that lets you minify JavaScript, CSS and generate source maps with a simple click. View source on Github or download from the VSC Marketplace.",
+    "git": {
+      "display": "Github",
+      "url": "http://github.com/olback/es6-css-minify"
+    },
+    "website": {
+      "display": "VSC Marketplace",
+      "url": "https://marketplace.visualstudio.com/items?itemName=olback.es6-css-minify"
+    },
+    "language": {
+      "name": "TypeScript",
+      "color": "#2b7489"
+    }
+  },
+  {
+    "title": "Chickens Attack Helicopters",
+    "body": "Chickens Attack Helicopters is an online implementation of the popular table top party game Cards Against Humanity. It's a game for truly horrible people. Play it on cah.ninja or contribute to the game on GitHub.",
+    "git": {
+      "display": "Github",
+      "url": "https://github.com/olback/cah"
+    },
+    "website": {
+      "display": "cah.ninja",
+      "url": "https://cah.ninja/?utm_source=olback.net"
+    },
+    "language": {
+      "name": "TypeScript",
+      "color": "#2b7489"
+    }
+  },
+  {
+    "title": "Library Loader",
+    "body": "Library Loader is a free and open source implementations of the SamacSys Library Loader. This version is compatible with all three major platforms: Windows, Max and Linux!",
+    "git": {
+      "display": "Github",
+      "url": "https://github.com/olback/library-loader"
+    },
+    "language": {
+      "name": "Rust",
+      "color": "#dea584"
+    }
+  },
+  {
+    "title": "Autoplank",
+    "body": "Lorem ipsum...",
+    "git": {
+      "display": "Github",
+      "url": "https://github.com/olback/autoplank"
+    },
+    "language": {
+      "name": "Rust",
+      "color": "#dea584"
+    }
+  },
+  {
+    "title": "rdg-linux",
+    "body": "rdg-linux is a simple front-end application for the CLI tool rdesktop. This was created for people that don't like using the terminal for everything. View source or download on Github.",
+    "git": {
+      "display": "Github",
+      "url": "https://github.com/olback/rdg-linux"
+    },
+    "language": {
+      "name": "C",
+      "color": "#555555"
+    }
+  },
+  {
+    "title": "Shoplistic",
+    "body": "Shoplistic is a shopping list app which allows you to scan barcodes to add item to the shopping list. Shoplistic also provides hardware for physical scanners for your kitchen!",
+    "git": {
+      "display": "Github",
+      "url": "https://github.com/shoplistic"
+    },
+    "language": {
+      "name": "TypeScript",
+      "color": "#2b7489"
+    }
+  }
+]

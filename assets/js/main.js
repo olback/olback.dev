@@ -213,7 +213,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     })();
 
     // Darkmode toggle
-    (function() {
+    (() => {
 
         const itemKey = 'darkmode';
 
@@ -225,6 +225,19 @@ window.addEventListener('DOMContentLoaded', async () => {
         .addEventListener('click', () => {
             localStorage.setItem(itemKey, String(document.body.classList.toggle('dark')));
         }, { passive: true });
+
+    })();
+
+    // Set language colors
+    (() => {
+
+        const langDots = document.getElementsByClassName('lang-dot');
+
+        for (const ld of langDots) {
+            const color = ld.getAttribute('data-lang-color');
+            // @ts-ignore
+            ld.style.backgroundColor = color;
+        }
 
     })();
 
