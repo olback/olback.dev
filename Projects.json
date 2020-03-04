@@ -33,7 +33,7 @@
   },
   {
     "title": "Library Loader",
-    "body": "Library Loader is a free and open source implementations of the SamacSys Library Loader. This version is compatible with all three major platforms: Windows, Max and Linux!",
+    "body": "Library Loader is a free and open source implementations of the SamacSys Library Loader. This version is compatible with all three major platforms: Windows, Mac and Linux!",
     "git": {
       "display": "Github",
       "url": "https://github.com/olback/library-loader"
