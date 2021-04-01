@@ -14,6 +14,7 @@ mod routes;
 mod catchers;
 mod guards;
 mod projects;
+mod social_media;
 
 use std::process;
 use rocket::{catchers, routes};

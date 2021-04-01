@@ -5,6 +5,7 @@
 // @ts-check
 
 const professions = [
+    'systems developer',
     'web developer',
     'back-end developer',
     'DevOps',
@@ -225,6 +226,20 @@ window.addEventListener('DOMContentLoaded', async () => {
         .addEventListener('click', () => {
             localStorage.setItem(itemKey, String(document.body.classList.toggle('dark')));
         }, { passive: true });
+
+        let match = window.matchMedia('(prefers-color-scheme: light)');
+        if (localStorage.getItem(itemKey) === null && match.matches === false) {
+            document.body.classList.add('dark');
+        }
+        match.addEventListener('change', (change) => {
+            if (localStorage.getItem(itemKey) === null) {
+                if (change.matches) { // Light
+                    document.body.classList.remove('dark');
+                } else { // Dark
+                    document.body.classList.add('dark');
+                }
+            }
+        }, { passive: true })
 
     })();
 

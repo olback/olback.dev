@@ -3,10 +3,13 @@
  */
 
 use chrono::{Utc, Datelike};
-use super::form;
-use super::birthday;
-use super::projects;
 use serde::Serialize;
+use super::{
+    form,
+    birthday,
+    projects,
+    social_media
+};
 
 #[derive(Serialize)]
 pub struct IndexTemplate {
@@ -17,6 +20,7 @@ pub struct IndexTemplate {
     pub year: i32,
     pub age: u8,
     pub projects: projects::Projects,
+    pub social_media: social_media::SocialMedia,
     pub mail: Option<form::Mail>
 }
 
@@ -30,6 +34,7 @@ impl Default for IndexTemplate {
             year: Utc::now().year(),
             age: birthday::get_age(),
             projects: projects::load_projects(),
+            social_media: social_media::load_social_media(),
             mail: None
         }
     }

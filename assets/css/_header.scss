@@ -100,31 +100,13 @@ header {
                     margin-bottom: 0;
                 }
 
-                &:hover {
-
-                    &.fa-github {
-                        $github: #000;
-                        color: $github;
-                    }
-
-                    &.fa-twitter {
-                        $twitter: #1da1f2;
-                        color: $twitter;
-                    }
-
-                    &.fa-linkedin {
-                        $linkedin: #2a66c2;
-                        color: $linkedin;
-                    }
-
-                }
-
                 span {
 
                     opacity: 0;
                     transition: opacity ease-in-out .15s;
                     color: $darkGray;
                     margin-left: .75rem;
+                    font-family: $fontFamily;
 
                     .dark > & {
                         color: $white;
@@ -187,8 +169,9 @@ header {
 
             h2 {
                 font-size: 3rem;
+                font-family: monospace !important;
                 min-height: 3rem;
-                text-transform: capitalize;
+                // text-transform: capitalize;
 
                 #underscore {
                     min-height: inherit;

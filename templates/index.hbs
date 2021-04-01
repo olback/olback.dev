@@ -41,9 +41,12 @@
         </section>
 
         <section class="social">
-            <a href="https://github.com/olback" aria-hidden="true" class="fab fa-github" rel="noopener" target="_blank"><span>olback</span></a>
+            {{!-- <a href="https://github.com/olback" aria-hidden="true" class="fab fa-github" rel="noopener" target="_blank"><span>olback</span></a>
             <a href="https://twitter.com/mrolback" aria-hidden="true" class="fab fa-twitter" rel="noopener" target="_blank"><span>MrOlback</span></a>
-            <a href="https://www.linkedin.com/in/olback/" aria-hidden="true" class="fab fa-linkedin" rel="noopener" target="_blank"><span>olback</span></a>
+            <a href="https://www.linkedin.com/in/olback/" aria-hidden="true" class="fab fa-linkedin" rel="noopener" target="_blank"><span>olback</span></a> --}}
+            {{#each social_media}}
+            <a href="{{this.url}}" aria-hidden="true" class="fab fa-{{this.logo}}" rel="noopener" target="_blank"><span>{{this.label}}</span></a>
+            {{/each}}
         </section>
 
         <section class="left">

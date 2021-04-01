@@ -30,9 +30,7 @@ body {
     margin: 0;
     color: $darkGray;
     background-color: $white;
-    * {
-        font-family: 'Open Sans', sans-serif;
-    }
+    font-family: $fontFamily;
     &.dark {
         background-color: $darkGray;
         color: $white;
