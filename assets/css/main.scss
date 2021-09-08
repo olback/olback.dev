@@ -1,13 +1,13 @@
 /*
- *  olback.net v4.0
+ *  olback.dev v5.0
  */
 
-@import 'vendor/font-awesome/fontawesome.scss';
-@import 'vendor/font-awesome/brands.scss';
-@import 'vendor/font-awesome/solid.scss';
-@import 'vendor/google-fonts/open-sans';
+@import "vendor/font-awesome/fontawesome.scss";
+@import "vendor/font-awesome/brands.scss";
+@import "vendor/font-awesome/solid.scss";
+@import "vendor/google-fonts/open-sans";
 
-@import 'vars';
+@import "vars";
 
 ::selection {
     background-color: $accent;
@@ -31,7 +31,7 @@ body {
     color: $darkGray;
     background-color: $white;
     * {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
     }
     &.dark {
         background-color: $darkGray;
@@ -39,6 +39,6 @@ body {
     }
 }
 
-@import 'header';
-@import 'main';
-@import 'footer';
+@import "header";
+@import "main";
+@import "footer";

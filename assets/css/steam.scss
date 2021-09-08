@@ -1,8 +1,8 @@
 /*
- *  olback.net v4.0
+ *  olback.dev v5.0
  */
 
-@import 'vars'; 
+@import "vars";
 
 body {
     margin: 0;
@@ -16,7 +16,7 @@ main {
     position: fixed;
     transform: translate(-50%, -50%);
     font-size: 14pt;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
 
     a {
         display: block;
@@ -29,5 +29,4 @@ main {
             color: darken($accent, 10%);
         }
     }
-
 }
