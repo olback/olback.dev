@@ -7,11 +7,72 @@ header {
     height: 100vh;
     display: grid;
     grid-template-columns: 15vw 35vw 35vw 15vw;
-    grid-template-rows: 30vh 40vh 30vh;
+    grid-template-rows: min-content 30vh fit-content 30vh;
 
     background-image: url("/assets/img/bg.svg");
     background-position: center;
     background-size: cover;
+    overflow-x: hidden;
+
+    div#top-message {
+        $fg: white;
+        $bg: black;
+
+        grid-row: 1;
+        grid-column-start: 1;
+        grid-column-end: 5;
+        background-color: $bg;
+        color: $fg;
+        // background-color: black;
+        // color: white;
+        padding: 1rem;
+        text-align: center;
+        height: min-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+            color: $fg;
+            // display: block;
+            line-height: 0;
+        }
+
+        ::selection {
+            background-color: $fg;
+            color: $bg;
+        }
+
+        svg {
+            width: 2.5rem;
+            fill: $fg;
+        }
+
+        span {
+            padding: 0 1rem;
+            margin: 0;
+        }
+
+        button {
+            display: none;
+            padding: 0;
+            margin-top: 0.15rem;
+            i {
+                padding: 0.5rem;
+            }
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: $fg;
+            cursor: pointer;
+
+            &:hover {
+                color: $bg;
+                background-color: $fg;
+                border-radius: 50%;
+            }
+        }
+    }
 
     section {
         color: inherit;
@@ -20,7 +81,7 @@ header {
             display: grid;
             grid-column-start: 2;
             grid-column-end: 4;
-            grid-row-start: 3;
+            grid-row-start: 4;
             align-items: end;
             justify-self: center;
 
@@ -75,7 +136,7 @@ header {
 
         &.social {
             grid-column: 1;
-            grid-row: 3;
+            grid-row: 4;
             justify-self: start;
             align-self: end;
             padding: 0 0 4rem 4rem;
@@ -128,7 +189,7 @@ header {
 
         &.left {
             grid-column: 2;
-            grid-row: 2;
+            grid-row: 3;
             justify-self: center;
             align-self: center;
 
@@ -149,7 +210,7 @@ header {
 
         &.right {
             grid-column: 3;
-            grid-row: 2;
+            grid-row: 3;
             justify-self: start;
             align-self: center;
 
@@ -223,7 +284,7 @@ header {
 @media screen and (max-width: 1200px) {
     header {
         grid-template-columns: 100vw;
-        grid-template-rows: 10vh 40vh 5vh 25vh 20vh;
+        grid-template-rows: min-content auto auto 15vh;
 
         section.left {
             grid-column: 1;
@@ -232,7 +293,7 @@ header {
 
         section.right {
             grid-column: 1;
-            grid-row: 4;
+            grid-row: 3;
             justify-self: center;
 
             h1 {

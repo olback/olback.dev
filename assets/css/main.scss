@@ -26,6 +26,10 @@
     background-color: $darkGray;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     color: $darkGray;

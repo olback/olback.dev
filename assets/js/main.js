@@ -138,7 +138,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     (() => {
 
         function scrollToAbout() {
-            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('oss').scrollIntoView({ behavior: 'smooth' });
         }
 
         document.getElementById('arrow').addEventListener('click', scrollToAbout, { passive: true });
@@ -173,6 +173,15 @@ window.addEventListener('DOMContentLoaded', async () => {
             ld.style.backgroundColor = color;
         }
 
+    })();
+
+    // Top-message close button
+    (() => {
+        const div = document.getElementById('top-message');
+        const button = document.getElementById('top-message-close-button');
+        button.addEventListener('click', () => {
+            div.style.display = 'none';
+        }, { passive: true });
     })();
 
 }, { passive: true });
