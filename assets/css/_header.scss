@@ -168,6 +168,11 @@ header {
                         $linkedin: #2a66c2;
                         color: $linkedin;
                     }
+
+                    &.fa-mastodon {
+                        $mastodon: #2b90d9;
+                        color: $mastodon;
+                    }
                 }
 
                 span {
